@@ -1,0 +1,15 @@
+#root {
+  max-width: 1280px;
+  margin: 0;
+  text-align: start;
+}
+
+body {
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
