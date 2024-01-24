@@ -28,7 +28,7 @@ export function Aside() {
         };
 
         try {
-            const response = await axios.get(`http://10.1.0.4:3500/uploads/${fileHash}`, config)
+            const response = await axios.get(`http://20.223.156.203:3500/uploads/${fileHash}`, config)
             
             let responseString = response.data[0].body.data[0].content[0].text.value;
             responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
@@ -61,7 +61,7 @@ export function Aside() {
             withCredentials: true,
         }
         
-        axios.get("http://10.1.0.4:3500/uploads", config)
+        axios.get("http://20.223.156.203/uploads", config)
         .then(response => {
             const responseData = response.data;
             const pdfArray = Object.keys(responseData).map(hash => {

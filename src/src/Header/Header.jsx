@@ -46,7 +46,7 @@ export function Header() {
 
     if (action === 'login') {
       try {
-        const response =  await axios.post('http://10.1.0.4/auth', JSON.stringify(userData), config);
+        const response =  await axios.post('http://20.223.156.203/auth', JSON.stringify(userData), config);
         console.log('Logged in successfully', response.data);
         setTimeout(async () => {
         try {
@@ -64,12 +64,12 @@ export function Header() {
       }
     } else if (action === 'register') {
       try {
-        const response =  await axios.post('http://10.1.0.4/register', JSON.stringify(userData), config);
+        const response =  await axios.post('http://20.223.156.203/register', JSON.stringify(userData), config);
       } catch (error) {
         console.error('Error posting data:', error);
       }
       try {
-        const response =  await axios.post('http://10.1.0.4/auth', JSON.stringify(userData), config);
+        const response =  await axios.post('http://20.223.156.203/auth', JSON.stringify(userData), config);
         console.log('Logged in successfully', response.data);
         setTimeout(async () => {
         try {
@@ -95,7 +95,7 @@ export function Header() {
       withCredentials: true,
     }
     try {
-      const response =  await axios.post('http://10.1.0.4/logout', JSON.stringify(userData), config);
+      const response =  await axios.post('http://20.223.156.203/logout', JSON.stringify(userData), config);
       console.log('Logged out successfully', response.data);
       setLogout();
       setIsLogin(false);
