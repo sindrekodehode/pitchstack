@@ -73,7 +73,7 @@ export function Dropbox() {
       withCredentials: true,
     }
     try {
-      const response = await axios.post('https://20.223.156.203/uploads', formData, config);
+      const response = await axios.post('https://20.223.156.203:443/uploads', formData, config);
       setFileHash(response.data.fileHash);
       console.log('Response filehash:',response.data.fileHash);
       console.log('Upload successful', response.data);
