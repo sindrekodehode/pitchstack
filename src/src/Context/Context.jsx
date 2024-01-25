@@ -45,7 +45,7 @@ export const refreshToken = async () => {
         withCredentials: true,
     };
     try {
-        const refresh = await axios.post('http://20.223.156.203:3500/refresh', {}, config);
+        const refresh = await axios.post('https://20.223.156.203:3500/refresh', {}, config);
 
 
     } catch (error) {
