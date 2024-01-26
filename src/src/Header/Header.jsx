@@ -46,7 +46,7 @@ export function Header() {
 
     if (action === 'login') {
       try {
-        const response =  await axios.post('https://20.223.156.203:443/auth', JSON.stringify(userData), config);
+        const response =  await axios.post('https://4cb4-20-223-156-203.ngrok-free.app/auth', JSON.stringify(userData), config);
         console.log('Logged in successfully', response.data);
         setTimeout(async () => {
         try {
@@ -64,12 +64,12 @@ export function Header() {
       }
     } else if (action === 'register') {
       try {
-        const response =  await axios.post('https://20.223.156.203:443/register', JSON.stringify(userData), config);
+        const response =  await axios.post('https://4cb4-20-223-156-203.ngrok-free.app/register', JSON.stringify(userData), config);
       } catch (error) {
         console.error('Error posting data:', error);
       }
       try {
-        const response =  await axios.post('https://20.223.156.203:443/auth', JSON.stringify(userData), config);
+        const response =  await axios.post('https://4cb4-20-223-156-203.ngrok-free.app/auth', JSON.stringify(userData), config);
         console.log('Logged in successfully', response.data);
         setTimeout(async () => {
         try {
@@ -95,7 +95,7 @@ export function Header() {
       withCredentials: true,
     }
     try {
-      const response =  await axios.post('https://20.223.156.203:443/logout', JSON.stringify(userData), config);
+      const response =  await axios.post('https://4cb4-20-223-156-203.ngrok-free.app/logout', JSON.stringify(userData), config);
       console.log('Logged out successfully', response.data);
       setLogout();
       setIsLogin(false);

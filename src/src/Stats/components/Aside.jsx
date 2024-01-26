@@ -28,7 +28,7 @@ export function Aside() {
         };
 
         try {
-            const response = await axios.get(`https://20.223.156.203:443/uploads/${fileHash}`, config)
+            const response = await axios.get(`https://4cb4-20-223-156-203.ngrok-free.app/uploads/${fileHash}`, config)
             
             let responseString = response.data[0].body.data[0].content[0].text.value;
             responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
@@ -61,7 +61,7 @@ export function Aside() {
             withCredentials: true,
         }
         
-        axios.get("https://20.223.156.203:443/uploads", config)
+        axios.get("https://4cb4-20-223-156-203.ngrok-free.app/uploads", config)
         .then(response => {
             const responseData = response.data;
             const pdfArray = Object.keys(responseData).map(hash => {
