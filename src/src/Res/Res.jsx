@@ -16,7 +16,7 @@ export function Res() {
                 headers: {'Content-Type': 'multipart/form-data'},
                 withCredentials: true,
             }
-            axios.get(`https://20.223.156.203:443/uploads/${fileHash}`, config)
+            axios.get(`https://c7db-20-223-156-203.ngrok-free.app/uploads/${fileHash}`, config)
                 .then(response => {
                     let responseString = response.data[0].body.data[0].content[0].text.value;
                     responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
