@@ -120,10 +120,10 @@ export function Header() {
               <div className={styles.login}>
                   <form>
                     <label>Username:
-                      <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Username" required/>
+                      <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter Username" maxlength="10" required/>
                     </label>
                     <label>Password:
-                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" required/>
+                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" maxlength="10" required/>
                     </label>
                     <div className={styles.btnContainer}>
                       <button type='submit' onClick={(e) => handleSubmit(e, 'login')}>Login</button>
