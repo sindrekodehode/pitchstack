@@ -13,10 +13,9 @@ export function Res() {
     useEffect(() => {
         if (fileHash) {
             const config = {
-                headers: {'Content-Type': 'multipart/form-data'},
                 withCredentials: true,
             }
-            axios.get(`https://7cca-20-223-156-203.ngrok-free.app/${fileHash}`, config)
+            axios.get(`https://88b3-20-223-156-203.ngrok-free.app/${fileHash}`, config)
                 .then(response => {
                     let responseString = response.data[0].body.data[0].content[0].text.value;
                     responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
