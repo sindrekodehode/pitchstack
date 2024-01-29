@@ -22,12 +22,12 @@ export function Aside() {
             ...prevState,
             [fileHash]: isChecked
         }));
-        const config = {
-            withCredentials: true
-        };
+        // const config = {
+        //     withCredentials: true
+        // };
 
         try {
-            const response = await axios.get(`https://36b4-20-223-156-203.ngrok-free.app/uploads/${fileHash}`, config)
+            const response = await axios.get(`https://36b4-20-223-156-203.ngrok-free.app/uploads/${fileHash}`)
             
             let responseString = response.data[0].body.data[0].content[0].text.value;
             responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
@@ -59,7 +59,7 @@ export function Aside() {
             withCredentials: true,
         }
         
-        axios.get("https://36b4-20-223-156-203.ngrok-free.app/uploads", config)
+        axios.get("https://36b4-20-223-156-203.ngrok-free.app/uploads")
         .then(response => {
             const responseData = response.data;
             const pdfArray = Object.keys(responseData).map(hash => {
