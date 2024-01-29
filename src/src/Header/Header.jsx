@@ -81,7 +81,7 @@ export function Header() {
         } catch (error) {
           console.error('Error requesting refreshtoken:', error);
         }
-      }, 100)
+      }, 200)
       } catch (error) {
         console.error('Error posting data:', error.response ? error.response.data : error.message);
       }
