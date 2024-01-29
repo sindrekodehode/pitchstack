@@ -23,8 +23,7 @@ export function Aside() {
             [fileHash]: isChecked
         }));
         const config = {
-            headers: {'Content-Type': 'multipart/form-data'},
-            withCredentials: true,
+            withCredentials: true
         };
 
         try {
@@ -57,8 +56,7 @@ export function Aside() {
 
     useEffect(() => {
         const config = {
-            headers: {'Content-Type': 'multipart/form-data'},
-            withCredentials: true,
+            withCredentials: true
         }
         
         axios.get("https://7cca-20-223-156-203.ngrok-free.app/uploads", config)
