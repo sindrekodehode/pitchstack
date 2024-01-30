@@ -18,7 +18,7 @@ export function Res() {
                   },
                 withCredentials: true,
             }
-            axios.get(`https://living-quietly-orca.ngrok-free.app/${fileHash}`, config)
+            axios.get(`https://piglet-picked-gratefully.ngrok-free.app/${fileHash}`, config)
                 .then(response => {
                     let responseString = response.data[0].body.data[0].content[0].text.value;
                     responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');

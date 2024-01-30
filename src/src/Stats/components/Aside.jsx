@@ -30,7 +30,7 @@ export function Aside() {
         };
 
         try {
-            const response = await axios.get(`https://living-quietly-orca.ngrok-free.app/uploads/${fileHash}`, config);
+            const response = await axios.get(`https://piglet-picked-gratefully.ngrok-free.app/uploads/${fileHash}`, config);
             
             let responseString = response.data[0].body.data[0].content[0].text.value;
             responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
@@ -65,7 +65,7 @@ export function Aside() {
             withCredentials: true,
         }
         
-        axios.get("https://living-quietly-orca.ngrok-free.app/uploads", config)
+        axios.get("https://piglet-picked-gratefully.ngrok-free.app/uploads", config)
         .then(response => {
             const responseData = response.data;
             const pdfArray = Object.keys(responseData).map(hash => {
