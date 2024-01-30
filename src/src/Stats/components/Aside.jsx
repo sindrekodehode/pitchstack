@@ -75,6 +75,7 @@ export function Aside() {
                 };
             });
             setResponseObj(pdfArray);
+            console.log(response);
         })
         .catch(error => {
             setError(error);
