@@ -73,7 +73,7 @@ export function Dropbox() {
       withCredentials: true,
     }
     try {
-      const response = await axios.post('https://2012-20-223-156-203.ngrok-free.app/uploads', formData, config);
+      const response = await axios.post('https://living-quietly-orca.ngrok-free.app/uploads', formData, config);
       setFileHash(response.data.fileHash);
       console.log('Response filehash:',response.data.fileHash);
       console.log('Upload successful', response.data);
