@@ -69,7 +69,7 @@ export function Dropbox() {
     formData.append('file', files[0]);
 
     const config = {
-      headers: {'Content-Type': 'multipart/form-data'},
+      headers: {'Content-Type': 'multipart/form-data', 'ngrok-skip-browser-warning':true},
       withCredentials: true,
     }
     try {

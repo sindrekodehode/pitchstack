@@ -13,6 +13,9 @@ export function Res() {
     useEffect(() => {
         if (fileHash) {
             const config = {
+                headers : { 
+                    'ngrok-skip-browser-warning':true
+                  },
                 withCredentials: true,
             }
             axios.get(`https://36b4-20-223-156-203.ngrok-free.app/${fileHash}`, config)

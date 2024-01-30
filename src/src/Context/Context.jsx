@@ -40,7 +40,8 @@ export const ContextProvider = ({ children }) => {
 export const refreshToken = async () => {
     const config = {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning':true
         },
         withCredentials: true,
     };
