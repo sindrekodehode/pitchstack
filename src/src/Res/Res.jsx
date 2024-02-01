@@ -13,9 +13,6 @@ export function Res() {
     useEffect(() => {
         if (fileHash) {
             const config = {
-                headers : { 
-                    'ngrok-skip-browser-warning':true
-                  },
                 withCredentials: true,
             }
             axios.get(`https://aivispitchstackserver.azurewebsites.net/${fileHash}`, config)
