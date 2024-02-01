@@ -15,6 +15,7 @@ export const ContextProvider = ({ children }) => {
     const [canLogin, setCanLogin] = useState(false);
     const [canLogout, setCanLogout] = useState(false);
     const [selectedFileNames, setSelectedFileNames] = useState([]);
+    const [checkedState, setCheckedState] = useState({});
     
 
     const value = {
@@ -31,7 +32,9 @@ export const ContextProvider = ({ children }) => {
         canLogout,
         setCanLogout,
         selectedFileNames,
-        setSelectedFileNames
+        setSelectedFileNames,
+        checkedState, 
+        setCheckedState
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

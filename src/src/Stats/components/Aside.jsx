@@ -6,9 +6,8 @@ import { AppContext } from '../../Context/Context';
 export function Aside() {
     const [responseObj, setResponseObj] = useState([]);
     const [error, setError] = useState(null);
-    const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames } = useContext(AppContext);
+    const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState } = useContext(AppContext);
     const [isOpen, setIsOpen] = useState(true);
-    const [checkedState, setCheckedState] = useState({});
 
     const handleCheckBoxChange =  async (fileHash, isChecked, fileName) => {
         const checkedCount = Object.values(checkedState).filter(val => val).length;
