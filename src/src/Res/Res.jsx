@@ -39,7 +39,6 @@ export function Res() {
                 return "grey";
         }
     }
-
     
     return (
         <div className={styles.container}>
