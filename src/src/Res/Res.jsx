@@ -15,7 +15,7 @@ export function Res() {
             const config = {
                 withCredentials: true,
             }
-            axios.get(`https://aivispitchstackserver.azurewebsites.net/${fileHash}`, config)
+            axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
                 .then(response => {
                     let responseString = response.data[0].body.data[0].content[0].text.value;
                     responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
