@@ -11,7 +11,7 @@ import { jokesArray } from './jokesarray'
 export function Dropbox() {
   const [isUploadComplete, setUploadComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const  {fileHash, setFileHash}  = useContext(AppContext);
+  const  {fileHash, setFileHash, setRetryAttempt}  = useContext(AppContext);
   const messages = jokesArray;
 
   const [currentMessage, setCurrentMessage] = useState('');
@@ -117,6 +117,7 @@ export function Dropbox() {
         setIsLoading(false);
         removeEventListeners()
         setUploadComplete(true);
+        setRetryAttempt(false);
       }
       
     };

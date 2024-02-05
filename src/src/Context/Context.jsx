@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
     const [canLogout, setCanLogout] = useState(false);
     const [selectedFileNames, setSelectedFileNames] = useState([]);
     const [checkedState, setCheckedState] = useState({});
+    const [retryAttempt, setRetryAttempt] = useState(false);
     
 
     const value = {
@@ -34,7 +35,9 @@ export const ContextProvider = ({ children }) => {
         selectedFileNames,
         setSelectedFileNames,
         checkedState, 
-        setCheckedState
+        setCheckedState,
+        retryAttempt,
+        setRetryAttempt
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
@@ -65,7 +68,7 @@ export function setLoginState(user) {
         expiry: now.getTime() + (24 * 60 * 60 * 10000),
     };
     localStorage.setItem("loginState", JSON.stringify(item));
-}
+};
 
 export function checkLoginState() {
     const itemStr = localStorage.getItem("loginState");
@@ -86,8 +89,35 @@ export function checkLoginState() {
         hasSubmitted: item.hasSubmitted,
         username: item.username,
     }
-}
+};
 
 export function setLogout() {
     localStorage.removeItem("loginState");
-}
+};
+
+
+export function normalizeResponseString(responseString) {
+    let normalizedString = responseString.trim().replace(/```[a-z]*\n/g, '').replace(/```\s*$/, '').replace(/\n/g, '\\n').replace(/\\n\s*\"/g, '\"').replace(/}\s*,\s*{/g, '},{');
+    return normalizedString;
+};
+
+export function fetchNewData(fileHash) {
+        const config = {
+            withCredentials: true,
+        }
+        axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
+            .then(response => {
+                const responseString = response.data[0].body.data[0].content[0].text.value;
+                const normalizedResponseString = normalizeResponseString(responseString);
+                return normalizedResponseString
+            });
+    };
+
+export function deleteResponse(fileHash) {
+        const config = {
+            withCredentials: true,
+        }
+        axios.delete(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
+            .then(response => console.log("Deleted response successfully", response))
+            .catch(error => Promise.reject(error));
+    };

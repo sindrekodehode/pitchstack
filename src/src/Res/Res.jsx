@@ -2,30 +2,39 @@ import axios from 'axios';
 import styles from './res.module.css'
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../Context/Context';
+import { deleteResponse, fetchNewData } from '../Context/Context';
 
 
 
 export function Res() {
     const [response, setResponse] = useState([]);
     const [error, setError] = useState(null);
-    const { fileHash } = useContext(AppContext);
+    const { fileHash, retryAttempt, setRetryAttempt } = useContext(AppContext);
 
     useEffect(() => {
         if (fileHash) {
-            const config = {
-                withCredentials: true,
-            }
-            axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
-                .then(response => {
-                    let responseString = response.data[0].body.data[0].content[0].text.value;
-                    responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
-                    const responseObject = JSON.parse(responseString);
+            const normalizedResponseString = fetchNewData(fileHash)
+                try {
+                    const responseObject = JSON.parse(normalizedResponseString);
                     setResponse(responseObject);
-                })
-                .catch(error => {
-                    setError(error.message)
-                })
-    }}, [fileHash]);
+                } catch (error) {
+                    console.error("Error parsing response:", error);
+
+                    if (!retryAttempt) {
+                        setRetryAttempt(true);
+
+                        deleteResponse(fileHash).then(() => {
+                            fetchNewData(fileHash);
+                        }).catch(deleteError => {
+                            console.error("Error deleting the problematic response:", deleteError);
+                            setError("Failed to delete and re-fetch the data");
+                        }); 
+                    } else {
+                        deleteResponse(fileHash);
+                        setError("Failed to parse response after retry. Original error:" + error.message);
+                    }
+                }
+        }}, [fileHash]);
 
     function getColor(rating) {
         switch (rating) {
@@ -47,8 +56,8 @@ export function Res() {
                 <div key={key} className={styles.itemCard}>
                     <div className={styles.cardText}>
                     <h3>{key}:</h3>
-                    <p>{value.item}</p>
-                    <p>{value.evaluation}</p>
+                    <p>{value.item || 'No item provided'}</p>
+                    <p>{value.evaluation || 'No evaluation provided'}</p>
                     </div>
                     <div className={styles.colorBox} style={{ backgroundColor: getColor(value.rating) }}>
                     </div>
