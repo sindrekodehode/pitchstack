@@ -26,7 +26,7 @@ export function Res() {
                         setRetryAttempt(true);
 
                         deleteResponse(fileHash).then(() => {
-                            fetchNewData(fileHash);
+                            navigate('/');
                         }).catch(deleteError => {
                             console.error("Error deleting the problematic response:", deleteError);
                             setError("Failed to delete and re-fetch the data");
