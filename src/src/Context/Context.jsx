@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import axios from 'axios';
-import jsonrepair from 'jsonrepair';
+import { jsonrepair } from 'jsonrepair';
 
 export const AppContext = createContext()
 
