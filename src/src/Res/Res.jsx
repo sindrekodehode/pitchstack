@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../Context/Context';
 import { deleteResponse, fetchNewData } from '../Context/Context';
+import { jsonrepair } from 'jsonrepair';
 
 
 
@@ -25,18 +26,26 @@ export function Res() {
                 } catch (error) {
                     console.error("Error parsing response:", error);
 
-                    if (!retryAttempt) {
-                        setRetryAttempt(true);
+                    try {
+                    const responseString = await fetchNewData(fileHash)
+                    const responseObject = JSON.parse(responseString);
+                    setResponse(responseObject);
+                    setRetryAttempt(false);
 
-                        deleteResponse(fileHash).then(() => {
-                            navigate('/');
-                        }).catch(deleteError => {
-                            console.error("Error deleting the problematic response:", deleteError);
-                            setError("Failed to delete and re-fetch the data");
-                        }); 
-                    } else {
-                        deleteResponse(fileHash);
-                        setError("Failed to parse response after retry. Original error:" + error.message);
+                    } catch (error) {
+                        if (!retryAttempt) {
+                            setRetryAttempt(true);
+
+                            deleteResponse(fileHash).then(() => {
+                                navigate('/');
+                            }).catch(deleteError => {
+                                console.error("Error deleting the problematic response:", deleteError);
+                                setError("Failed to delete and re-fetch the data");
+                            }); 
+                        } else {
+                            deleteResponse(fileHash);
+                            setError("Failed to parse response after retry. Original error:" + error.message);
+                        }
                     }
                 }
             }
