@@ -18,6 +18,7 @@ export function Res() {
                 try {
                     const responseObject = JSON.parse(normalizedResponseString);
                     setResponse(responseObject);
+                    setRetryAttempt(false);
                 } catch (error) {
                     console.error("Error parsing response:", error);
 
