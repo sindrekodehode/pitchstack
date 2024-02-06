@@ -12,6 +12,7 @@ export function Res() {
     const { fileHash, retryAttempt, setRetryAttempt } = useContext(AppContext);
 
     useEffect(() => {
+        const fetchData = async () => {
         if (fileHash) {
             const normalizedResponseString = fetchNewData(fileHash)
                 try {
@@ -34,7 +35,10 @@ export function Res() {
                         setError("Failed to parse response after retry. Original error:" + error.message);
                     }
                 }
-        }}, [fileHash]);
+            }
+        }
+    fetchData();
+        }, [fileHash]);
 
     function getColor(rating) {
         switch (rating) {
