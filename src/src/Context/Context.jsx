@@ -104,11 +104,12 @@ export async function fetchNewData(fileHash) {
         }
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            const responseString = response.data[0].body.data[0].content[0].text.value;
+            let responseString = response.data[0]?.body?.data[0]?.content[0]?.text?.value;
             console.log(responseString);
             if (responseString === undefined) {
                 console.error("responseString is undefined");
             } else {
+                responseString = responseString.replace(/^```plaintext\s*|\s*```$/g, '').trim()
                 const repairedString = jsonrepair(responseString);
                 return repairedString;
             }
