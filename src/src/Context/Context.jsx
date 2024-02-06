@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react'
 import axios from 'axios';
+import jsonrepair from 'jsonrepair';
 
 export const AppContext = createContext()
 
@@ -96,27 +97,24 @@ export function setLogout() {
 };
 
 
-export function normalizeResponseString(responseString) {
-    let normalizedString = responseString.trim().replace(/```[a-z]*\n/g, '').replace(/```\s*$/, '').replace(/\n/g, '\\n').replace(/\\n\s*\"/g, '\"').replace(/}\s*,\s*{/g, '},{');
-    console.log("After normalization:", normalizedString);
-    return normalizedString;
-};
 
-export function fetchNewData(fileHash) {
+export async function fetchNewData(fileHash) {
         const config = {
             withCredentials: true,
         }
-        return axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
-            .then(response => {
-                const responseString = response.data[0].body.data[0].content[0].text.value;
-                if (responseString === undefined) {
-                    console.error("responseString is undefined");
-                } else {
-                return normalizeResponseString(responseString);
+        try {
+            const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
+            const responseString = response.data[0].body.data[0].content[0].text.value;
+            if (responseString === undefined) {
+                console.error("responseString is undefined");
+            } else {
+                const repairedString = jsonrepair(responseString);
+                return repairedString;
             }
-            }).catch(error => {
-                console.error("Error fetching data:", error);
-            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            throw error;
+        }
     };
 
 export function deleteResponse(fileHash) {

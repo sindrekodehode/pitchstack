@@ -1,8 +1,10 @@
 import axios from 'axios';
 import styles from './res.module.css'
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../Context/Context';
 import { deleteResponse, fetchNewData } from '../Context/Context';
+
 
 
 
@@ -10,13 +12,14 @@ export function Res() {
     const [response, setResponse] = useState([]);
     const [error, setError] = useState(null);
     const { fileHash, retryAttempt, setRetryAttempt } = useContext(AppContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
         if (fileHash) {
                 try {
-                    const normalizedResponseString = await fetchNewData(fileHash)
-                    const responseObject = JSON.parse(normalizedResponseString);
+                    const responseString = await fetchNewData(fileHash)
+                    const responseObject = JSON.parse(responseString);
                     setResponse(responseObject);
                     setRetryAttempt(false);
                 } catch (error) {
