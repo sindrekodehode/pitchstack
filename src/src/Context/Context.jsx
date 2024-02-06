@@ -106,15 +106,16 @@ export function fetchNewData(fileHash) {
         const config = {
             withCredentials: true,
         }
-        axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
+        return axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
             .then(response => {
                 const responseString = response.data[0].body.data[0].content[0].text.value;
                 if (responseString === undefined) {
                     console.error("responseString is undefined");
                 } else {
-                const normalizedResponseString = normalizeResponseString(responseString);
-                return normalizedResponseString
+                return normalizeResponseString(responseString);
             }
+            }).catch(error => {
+                console.error("Error fetching data:", error);
             });
     };
 

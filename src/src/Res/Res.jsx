@@ -14,8 +14,8 @@ export function Res() {
     useEffect(() => {
         const fetchData = async () => {
         if (fileHash) {
-            const normalizedResponseString = fetchNewData(fileHash)
                 try {
+                    const normalizedResponseString = await fetchNewData(fileHash)
                     const responseObject = JSON.parse(normalizedResponseString);
                     setResponse(responseObject);
                     setRetryAttempt(false);
