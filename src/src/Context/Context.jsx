@@ -98,6 +98,7 @@ export function setLogout() {
 
 export function normalizeResponseString(responseString) {
     let normalizedString = responseString.trim().replace(/```[a-z]*\n/g, '').replace(/```\s*$/, '').replace(/\n/g, '\\n').replace(/\\n\s*\"/g, '\"').replace(/}\s*,\s*{/g, '},{');
+    console.log("After normalization:", normalizedString);
     return normalizedString;
 };
 
@@ -108,8 +109,12 @@ export function fetchNewData(fileHash) {
         axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
             .then(response => {
                 const responseString = response.data[0].body.data[0].content[0].text.value;
+                if (responseString === undefined) {
+                    console.error("responseString is undefined");
+                } else {
                 const normalizedResponseString = normalizeResponseString(responseString);
                 return normalizedResponseString
+            }
             });
     };
 
