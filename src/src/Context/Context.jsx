@@ -110,6 +110,7 @@ export async function fetchNewData(fileHash) {
                 console.error("responseString is undefined");
             } else {
                 responseString = responseString.replace(/^```plaintext\s*|\s*```$/g, '').trim()
+                responseString = responseString.replace(/^```json\s*|\s*```$/g, '').trim()
                 const repairedString = jsonrepair(responseString);
                 return repairedString;
             }
