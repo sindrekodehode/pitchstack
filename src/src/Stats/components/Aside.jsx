@@ -2,7 +2,7 @@ import styles from './aside.module.css'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
-import { deleteResponse, fetchNewData } from '../Context/Context';
+import { deleteResponse, fetchNewData } from '../../Context/Context';
 
 export function Aside() {
     const [responseObj, setResponseObj] = useState([]);
