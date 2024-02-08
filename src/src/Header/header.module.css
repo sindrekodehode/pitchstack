@@ -68,6 +68,10 @@ a:hover, button:hover {
     flex-direction: column;
 }
 
+.login form input {
+    display: block;
+}
+
 .login button {
     width: 4rem;
     height: 2rem;
