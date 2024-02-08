@@ -2,6 +2,7 @@ import styles from './aside.module.css'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
+import { deleteResponse, fetchNewData } from '../Context/Context';
 
 export function Aside() {
     const [responseObj, setResponseObj] = useState([]);
@@ -29,10 +30,7 @@ export function Aside() {
         };
 
         try {
-            const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            
-            let responseString = response.data[0].body.data[0].content[0].text.value;
-            responseString = responseString.replace(/```[a-z]*\n/g, '').replace(/```/g, '');
+            const responseString = await fetchNewData(fileHash)
             const responseObject = JSON.parse(responseString);
                 
             setSelectedPDFData(currentSelected => {
