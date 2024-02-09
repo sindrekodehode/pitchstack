@@ -30,8 +30,8 @@
     align-items: center;
     justify-content: center;
     padding-top: 2px;
+    width: -moz-fit-content;
     width: fit-content;
-    width: -moz-fit-content
 }
 
 .itemCard {
