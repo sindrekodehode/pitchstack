@@ -178,7 +178,7 @@ export function Dropbox() {
           {displayedMessage}
         </div>
       )}
-        <div ref={drop} id='dropbox' aria-labelledby='dropboxlabel' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
+        <div ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
         <div id='dropboxlabel'>Drop pitchstack her
         <span
           role='img'
@@ -192,6 +192,7 @@ export function Dropbox() {
           type="file"
           ref={fileInput}
           onChange={handleFileSelect}
+          aria-labelledby='dropboxlabel'
           style={{ display: "none" }}
           accept=".pdf"
           />
