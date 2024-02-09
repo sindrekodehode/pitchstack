@@ -96,6 +96,7 @@ export function Dropbox() {
 
   useEffect(() => {
     if (isUploadComplete && fileHash) {
+      setUploadComplete(false);
       navigate('/res');
     }
   }, [isUploadComplete, fileHash, navigate]);
