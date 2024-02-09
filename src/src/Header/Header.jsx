@@ -110,7 +110,7 @@ export function Header() {
   return (
     <>
     <div className={styles.header}>
-      <img src='/stacklogo.svg' className={styles.logo}></img>
+      <img src='/stacklogo.svg' alt='crab pitchstack logo' className={styles.logo}></img>
       <div className={styles.navContainer}>
         <ul className={styles.list}>
             <li><Link to="/">Dropbox</Link></li>
@@ -135,7 +135,7 @@ export function Header() {
         {hasSubmitted && (
           <li>
             <div className={styles.profile}>
-              <img src='/profile.svg' onClick={() => setCanLogout(!canLogout)} className={styles.profileimg}></img>
+              <img src='/profile.svg' alt='profile picture' onClick={() => setCanLogout(!canLogout)} className={styles.profileimg}></img>
               <p>{username}</p>
             </div>
           </li>
