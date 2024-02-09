@@ -71,7 +71,7 @@ export function Dropbox() {
     setFileHash(null);
     
     if (files[0] && files[0].type !== 'application/pdf') {
-      setUploadError('Only valid PDF files are allowed.');
+      setUploadError('Crabs only like valid PDF files.');
       setIsLoading(false);
       return;
     }
