@@ -148,7 +148,7 @@ export function Dropbox() {
   
   
   const handleFileSelect = (e) => {
-    const { files } = e.target.files;
+    const { files } = e.target;
     
     if (files && files.length) {
       onUpload(files);
