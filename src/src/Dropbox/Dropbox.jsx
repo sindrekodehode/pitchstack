@@ -152,6 +152,10 @@ export function Dropbox() {
     
     if (files && files.length) {
       onUpload(files);
+      setIsLoading(false);
+      removeEventListeners()
+      setUploadComplete(true);
+      setRetryAttempt(false);
     }
   };
 
