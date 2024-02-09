@@ -20,7 +20,7 @@
     flex-direction: column;
     align-items: center;
     width: 40vw;
-    font-size: 11px;
+    font-size: 9px;
     line-height: normal;
     height: inherit;
 }
@@ -60,7 +60,7 @@
 }
 
 .itemCard:hover {
-    transform: scale(1.5);
+    transform: scale(1.7);
     z-index: 10;
 }
 
