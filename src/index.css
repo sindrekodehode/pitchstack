@@ -6,6 +6,9 @@
   color-scheme: light dark;
   color: #E0E0DE;
   background-color: #0a2422;
+  background-image: url("/stacklogobg.svg");
+  background-size: cover;
+  background-position: center 8rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
