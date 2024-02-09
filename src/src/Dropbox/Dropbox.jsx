@@ -178,8 +178,8 @@ export function Dropbox() {
           {displayedMessage}
         </div>
       )}
-        <div ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
-        <label htmlFor='dropbox' >Drop pitchstack her
+        <div ref={drop} id='dropbox' aria-labelledby='dropboxlabel' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
+        <div id='dropboxlabel'>Drop pitchstack her
         <span
           role='img'
           aria-label='emoji'
@@ -187,7 +187,7 @@ export function Dropbox() {
         >
           &#128526;
         </span>
-        </label>
+        </div>
         <input
           type="file"
           ref={fileInput}
