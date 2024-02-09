@@ -65,19 +65,23 @@ export function Dropbox() {
   }, [currentMessage, isLoading]);
 
   const onUpload = async (files) => {
+    setUploadError('');
+    setIsLoading(true);
+    
     if (files[0] && files[0].type !== 'application/pdf') {
-      setUploadError('Only PDF files are allowed.');
+      setUploadError('Only valid PDF files are allowed.');
       setIsLoading(false);
       return;
     }
-    const formData = new FormData();
 
+    const formData = new FormData();
     formData.append('file', files[0]);
 
     const config = {
       headers: {'Content-Type': 'multipart/form-data'},
       withCredentials: true,
-    }
+    };
+
     try {
       const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
       setFileHash(response.data.fileHash);
@@ -85,6 +89,8 @@ export function Dropbox() {
       console.log('Upload successful', response.data);
     } catch (error) {
       console.error('Error uploading file:', error);
+    } finally {
+      setIsLoading(false);
     }
     };
 
@@ -92,7 +98,7 @@ export function Dropbox() {
     if (isUploadComplete && fileHash) {
       navigate('/res');
     }
-  }, [isUploadComplete, navigate]);
+  }, [isUploadComplete, fileHash, navigate]);
 
 
   useEffect(() => {
@@ -110,6 +116,7 @@ export function Dropbox() {
       e.preventDefault();
       e.stopPropagation();
     };
+
 
     const handleDrop = async (e) => {
       e.preventDefault();
@@ -141,7 +148,7 @@ export function Dropbox() {
   
   
   const handleFileSelect = (e) => {
-    const { files } = e.target;
+    const { files } = e.target.files;
     
     if (files && files.length) {
       onUpload(files);
@@ -150,7 +157,7 @@ export function Dropbox() {
 
   const handleClick = () => {
     fileInput.current.click();
-  }
+  };
 
   return (
     <div className={styles.dropbox}>
