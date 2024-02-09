@@ -1,7 +1,7 @@
 .container {
     display: flex;
     width: 100vw;
-    height: calc(100vw - 8rem);
+    height: calc(100vh - 14rem);
 }
 
 .stats {
@@ -45,23 +45,23 @@
     margin: 0 0.5rem 0.5rem 0.5rem;
     border: 2px solid #0A433F;
     background-color: #0a2422;
-    overflow: hidden;
+    
 }
 
 .cardText {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 70%;
     margin-left: 1rem;
     justify-content: center;
     align-items: start;
+    overflow: hidden;
 }
 
 .colorBox {
     max-width: 40px;
     max-height: 40px;
     border-radius: 50%;
-    background-color: pink;
     display: flex;
     margin-right: 50px;
     margin-left: 20px;
