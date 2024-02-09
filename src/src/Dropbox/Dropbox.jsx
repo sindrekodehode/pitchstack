@@ -67,6 +67,8 @@ export function Dropbox() {
   const onUpload = async (files) => {
     setUploadError('');
     setIsLoading(true);
+    setUploadComplete(false);
+    setFileHash(null);
     
     if (files[0] && files[0].type !== 'application/pdf') {
       setUploadError('Only valid PDF files are allowed.');
@@ -96,7 +98,6 @@ export function Dropbox() {
 
   useEffect(() => {
     if (isUploadComplete && fileHash) {
-      setUploadComplete(false);
       navigate('/res');
     }
   }, [isUploadComplete, fileHash, navigate]);
