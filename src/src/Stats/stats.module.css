@@ -57,6 +57,7 @@
 
 .itemCard:hover {
     height: 100%;
+    font-size: 18px;
     z-index: 10;
 }
 
