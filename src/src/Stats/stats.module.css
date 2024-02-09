@@ -53,14 +53,15 @@
     border: 2px solid #0A433F;
     background-color: #0a2422;
     overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    position: relative;
+    transform-origin: center;
 }
 
 .itemCard:hover {
-    height: 100%;
-    padding: 2rem;
-    font-size: 18px;
+    transform: scale(1.5);
     z-index: 10;
-    overflow: visible;
 }
 
 .cardText {
