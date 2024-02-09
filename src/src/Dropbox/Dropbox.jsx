@@ -17,6 +17,7 @@ export function Dropbox() {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageIndex, setMessageIndex] = useState(Math.floor(Math.random() * messages.length));
   const [displayedMessage, setDisplayedMessage] = useState('');
+  const [uploadError, setUploadError] = useState('');
 
   
   const navigate = useNavigate()
@@ -64,6 +65,11 @@ export function Dropbox() {
   }, [currentMessage, isLoading]);
 
   const onUpload = async (files) => {
+    if (files[0] && files[0].type !== 'application/pdf') {
+      setUploadError('Only PDF files are allowed.');
+      setIsLoading(false);
+      return;
+    }
     const formData = new FormData();
 
     formData.append('file', files[0]);
@@ -112,6 +118,7 @@ export function Dropbox() {
       const {files} = e.dataTransfer;
     
       if (files && files.length) {
+        setUploadError('');
         setIsLoading(true);
         await onUpload(files);
         setIsLoading(false);
@@ -147,6 +154,11 @@ export function Dropbox() {
 
   return (
     <div className={styles.dropbox}>
+      {uploadError && (
+        <div className={styles.errorMessage}>
+          {uploadError}
+        </div>
+      )}
       {isLoading && (
         <div className={styles.loadingContainer}>
           <img src='/loading.svg' className={styles.placeholderImg}></img>
@@ -168,6 +180,7 @@ export function Dropbox() {
           ref={fileInput}
           onChange={handleFileSelect}
           style={{ display: "none" }}
+          accept=".pdf"
           />
       </div>
     </div> 
