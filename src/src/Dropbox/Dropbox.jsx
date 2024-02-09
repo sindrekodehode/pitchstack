@@ -168,7 +168,7 @@ export function Dropbox() {
     <div className={styles.dropbox}>
       {uploadError && (
         <div className={styles.errorMessage}>
-          {uploadError}
+          <h1>{uploadError}</h1>
         </div>
       )}
       {isLoading && (
