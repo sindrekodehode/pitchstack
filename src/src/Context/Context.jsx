@@ -81,17 +81,17 @@ export async function checkLoginState() {
     const item = JSON.parse(itemStr);
     const now = new Date();
 
-    try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true,
-        };
-       return await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', JSON.stringify(item), config);
-    } catch (error) {
-        console.error("Error fetching cookie:", error);
-    }
+    // try {
+    //     const config = {
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         withCredentials: true,
+    //     };
+    //    return await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', JSON.stringify(item), config);
+    // } catch (error) {
+    //     console.error("Error fetching cookie:", error);
+    // }
 
     if (now.getTime() > item.expiry) {
         localStorage.removeItem("loginState");
