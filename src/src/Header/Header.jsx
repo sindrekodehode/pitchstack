@@ -65,6 +65,7 @@ export function Header() {
     } else if (action === 'register') {
       try {
         const response =  await axios.post('https://aivispitchstackserver.azurewebsites.net/register', JSON.stringify(userData), config);
+        console.log('Registered new user:', response.data);
       } catch (error) {
         console.error('Error posting data:', error);
       }
