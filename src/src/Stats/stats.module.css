@@ -20,13 +20,14 @@
     flex-direction: column;
     align-items: center;
     width: inherit;
-    font-size: 14px;
+    font-size: 12px;
     line-height: normal;
     height: inherit;
 }
 
 .pdfcontainer h1 {
     margin-top: 1rem;
+    font-size: 19px;
 }
 
 
@@ -35,7 +36,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 3rem;
     padding-top: 2px;
     width: inherit;
     height: inherit;
@@ -46,7 +47,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    height: 12rem;
+    height: 11.5rem;
     background-color: #02020279;
     border-radius: 12px;
 }
@@ -75,8 +76,8 @@
 }
 
 .colorBox img {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
 }
 
 .score {

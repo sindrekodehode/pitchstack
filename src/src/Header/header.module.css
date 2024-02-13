@@ -2,7 +2,7 @@
     display: flex;
     background: #1c1c1c;
     width: 100vw;
-    height: 8rem;
+    height: 6rem;
     justify-content: space-between;
     background-color: #222222;
     padding: 1rem 0;
@@ -33,22 +33,16 @@ a, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-radius: 6px; */
     height: 4rem;
     width: 8rem;
     border: none;
-    /* background-image: linear-gradient(#008478, #0a2422); */
-    /* border: 1px solid black; */
-    /* margin: 1rem; */
     color: #f5f5f5;
     font-size: 24px;
-    /* opacity: 80%; */
     text-decoration: none;
     background-color: #222222;
 }
 
 a:hover, button:hover {
-    /* opacity: 100%; */
     border-bottom: 1px solid whitesmoke;
 }
 
@@ -95,7 +89,7 @@ a:hover, button:hover {
     flex-direction: column;
     align-items: center;
     margin-left: 2rem;
-    max-width: 80px;
+    max-width: 50px;
 }
 
 .profileimg {
@@ -105,5 +99,5 @@ a:hover, button:hover {
 .rainbowRoad {
     background-image: linear-gradient(to right, #d61f9a, #8d4de7);
     width: 100vw;
-    height: 1.5rem;
+    height: 1rem;
 }
