@@ -179,7 +179,7 @@ export function Dropbox() {
         </div>
       )}
         <div ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
-        <div id='dropboxlabel'>Drop pitchstack her
+        <div id='dropboxlabel'>Drop pitchstack here
         <span
           role='img'
           aria-label='emoji'
