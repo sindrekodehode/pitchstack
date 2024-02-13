@@ -75,10 +75,10 @@ export function Res() {
                     <h3>{key}:</h3>
                     <p>{value.item || 'No item provided'}</p>
                     <p>{value.evaluation || 'No evaluation provided'}</p>
-                        <div>
-                            <div className={styles.colorBox} >
-                                <img src={ getColor(value.rating) } ></img>
-                            </div>
+                    </div>
+                    <div>
+                        <div className={styles.colorBox} >
+                            <img src={ getColor(value.rating) } ></img>
                         </div>
                     </div>
                 </div>
