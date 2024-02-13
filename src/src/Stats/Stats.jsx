@@ -60,7 +60,7 @@ export function Stats() {
                         <div key={index} className={styles.pdfcontainer}>
                             {/* <h2>{selectedFileNames.find(file => file.hash === pdfData.hash)?.originalFileName || "Unknown FileName"}</h2> */}
                             <div className={styles.pdfstats}>
-                            <div className={styles.score}><h1>Your pitchscore: <span className={styles.scoreNum}>{score}</span></h1></div>
+                            <div className={styles.score}><h1>Your pitchscore: <span className={styles.scoreNum}><h1>{score}</h1></span></h1></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
                                 <div key={key} className={styles.itemCard}>
                                     <div className={styles.cardText}>
