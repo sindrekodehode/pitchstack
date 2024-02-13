@@ -58,8 +58,9 @@ export function Stats() {
 
                         return (
                         <div key={index} className={styles.pdfcontainer}>
-                            <h2>{selectedFileNames.find(file => file.hash === pdfData.hash)?.originalFileName || "Unknown FileName"}</h2>
+                            {/* <h2>{selectedFileNames.find(file => file.hash === pdfData.hash)?.originalFileName || "Unknown FileName"}</h2> */}
                             <div className={styles.pdfstats}>
+                            <div className={styles.score}><h1>Score: {score}</h1></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
                                 <div key={key} className={styles.itemCard}>
                                     <div className={styles.cardText}>
@@ -74,7 +75,6 @@ export function Stats() {
                             ))}
 
                             </div>
-                            <div className={styles.score}><h1>Score: {score}</h1></div>
                         </div>
                         );
                     })}
