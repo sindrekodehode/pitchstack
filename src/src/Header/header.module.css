@@ -4,7 +4,7 @@
     width: 100vw;
     height: 8rem;
     justify-content: space-between;
-    background-image: linear-gradient(to right, #008478, #0a2422);
+    background-color: #222222;
     padding: 1rem 0;
 }
 
@@ -98,4 +98,10 @@ a:hover, button:hover {
 
 .profileimg {
     width: 100%;
+}
+
+.rainbowRoad {
+    background-image: linear-gradient(#d61f9a, #8d4de7);
+    width: 100vw;
+    height: 6px;
 }

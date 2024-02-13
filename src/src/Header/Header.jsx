@@ -153,7 +153,8 @@ export function Header() {
       )}
         </ul>
       </div>
-    </div> 
+    </div>
+    <div className={styles.rainbowRoad}></div>
     
     
     </>
