@@ -10,11 +10,11 @@ export function Stats() {
     function getColor(rating) {
         switch (rating) {
             case "green" : 
-                return "#054E17";
+                return "/Green_pitchstack.svg";
             case "yellow": 
-                return "#8E9A0E";
+                return "/yellow_pitchstack.svg";
             case "red": 
-                return "#352320";
+                return "/red_pitchstack.svg";
             default:
                 return "grey";
         }
@@ -67,7 +67,8 @@ export function Stats() {
                                     <p>{value.item}</p>
                                     <p>{value.evaluation}</p>
                                     </div>
-                                    <div className={styles.colorBox} style={{ backgroundColor: getColor(value.rating) }}>
+                                    <div className={styles.colorBox} >
+                                        <img src={ getColor(value.rating) } ></img>
                                     </div>
                                 </div>
                             ))}

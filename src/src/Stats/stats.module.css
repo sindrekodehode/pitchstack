@@ -33,12 +33,10 @@
 .pdfstats {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding-top: 2px;
-    /* width: -moz-fit-content; */
     width: inherit;
     height: inherit;
 }
@@ -60,7 +58,7 @@
 }
 
 .itemCard:hover {
-    transform: scale(1.7);
+    transform: scale(1.17);
     z-index: 10;
 }
 
