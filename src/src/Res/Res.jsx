@@ -53,18 +53,18 @@ export function Res() {
     fetchData();
         }, [fileHash]);
 
-    function getColor(rating) {
-        switch (rating) {
-            case "green" : 
-                return "#054E17";
-            case "yellow": 
-                return "#8E9A0E";
-            case "red": 
-                return "#352320";
-            default:
-                return "grey";
+        function getColor(rating) {
+            switch (rating) {
+                case "green" : 
+                    return "/Green_pitchstack.svg";
+                case "yellow": 
+                    return "/yellow_pitchstack.svg";
+                case "red": 
+                    return "/red_pitchstack.svg";
+                default:
+                    return "grey";
+            }
         }
-    }
     
     return (
         <div className={styles.container}>
@@ -75,8 +75,11 @@ export function Res() {
                     <h3>{key}:</h3>
                     <p>{value.item || 'No item provided'}</p>
                     <p>{value.evaluation || 'No evaluation provided'}</p>
-                    </div>
-                    <div className={styles.colorBox} style={{ backgroundColor: getColor(value.rating) }}>
+                        <div>
+                            <div className={styles.colorBox} >
+                                <img src={ getColor(value.rating) } ></img>
+                            </div>
+                        </div>
                     </div>
                 </div>
                ))}

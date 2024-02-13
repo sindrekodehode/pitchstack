@@ -20,13 +20,11 @@
 .itemCard {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 0 0.5rem 0.5rem 0.5rem;
-    border: 2px solid #0A433F;
-    background-color: #0a2422;
+    height: 12rem;
+    background-color: #02020279;
+    border-radius: 12px;
 }
 
 .cardText {
@@ -39,13 +37,18 @@
 }
 
 .colorBox {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: pink;
     display: flex;
-    margin-right: 50px;
-    margin-left: 20px;
     align-items: center;
-    box-shadow: 0px 0px 5px black;
+    justify-content: center;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+    height: inherit;
+    margin-right: 15px;
 }
+
+.colorBox img {
+    width: 5rem;
+    height: 5rem;
+}
+
