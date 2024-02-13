@@ -48,7 +48,7 @@
     justify-content: space-around;
     height: 12rem;
     background-color: #02020279;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .cardText {
@@ -71,7 +71,7 @@
     width: -webkit-fit-content;
     width: fit-content;
     height: inherit;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .colorBox img {
