@@ -66,7 +66,7 @@ export function Res() {
         return scoreValue;
     }
 
-    const score = calculateScore(response);
+    const score = calculateScore(response.data);
     
     return (
         <div className={styles.container}>
