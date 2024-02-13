@@ -85,6 +85,12 @@
 }
 
 .score {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 36px;
     background-color: pink;
     grid-column: span 2;
+
 }
