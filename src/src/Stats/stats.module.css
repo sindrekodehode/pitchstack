@@ -100,7 +100,8 @@
 
 .scoreNum {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     font-size: 8rem;
+    font-weight: bolder;
 }
