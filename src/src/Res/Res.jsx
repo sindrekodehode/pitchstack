@@ -66,13 +66,14 @@ export function Res() {
         return scoreValue;
     }
 
-    const score = calculateScore(response.data);
+    console.log(response);
+    // const score = calculateScore(response.data);
     
     return (
         <div className={styles.container}>
             <div className={styles.stats}>
                 <div className={styles.score}>
-                    <h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div>
+                    {/* <h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div> */}
                 </div>
                {Object.entries(response).map(([key, value]) => (
                 <div key={key} className={styles.itemCard}>
