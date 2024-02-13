@@ -86,4 +86,5 @@
 
 .score {
     background-color: pink;
+    grid-column: span 2;
 }
