@@ -101,3 +101,8 @@ a:hover, button:hover {
     width: 100vw;
     height: 1rem;
 }
+
+.logo {
+    display: flex;
+    gap: 1rem;
+}

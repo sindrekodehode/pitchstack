@@ -54,3 +54,25 @@
     height: 5rem;
 }
 
+.score {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.score h2 {
+    font-size: 3rem;
+}
+
+.scoreNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3rem;
+    font-size: 8rem;
+    font-weight: bolder;
+}
