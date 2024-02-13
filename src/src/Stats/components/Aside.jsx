@@ -97,7 +97,7 @@ export function Aside() {
                 <h3>Tidligere resultater</h3>
                 {responseObj.map((element, index) => (
                     <div key={index}>
-                        <input type="checkbox" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleCheckBoxChange(element.hash, e.target.checked, element.originalFileName)} value="1"></input>
+                        <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleCheckBoxChange(element.hash, e.target.checked, element.originalFileName)} value="1"></input>
                         <label htmlFor={`pdf-${index}`}>{element.originalFileName}</label>
                     </div>
                 ))}
