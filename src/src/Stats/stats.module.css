@@ -21,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     width: inherit;
-    font-size: 12px;
+    font-size: 14px;
     line-height: normal;
     height: inherit;
 }
@@ -63,6 +63,7 @@
 
 .itemCard h3 {
     padding-bottom: 0.5rem;
+    font-size: 19px;
 }
 
 .colorBox {
