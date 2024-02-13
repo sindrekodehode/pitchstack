@@ -76,11 +76,11 @@ export function Res() {
                     <p>{value.item || 'No item provided'}</p>
                     <p>{value.evaluation || 'No evaluation provided'}</p>
                     </div>
-                    <div>
-                        <div className={styles.colorBox} >
-                            <img src={ getColor(value.rating) } ></img>
-                        </div>
+                    
+                    <div className={styles.colorBox} >
+                        <img src={ getColor(value.rating) } ></img>
                     </div>
+                    
                 </div>
                ))}
             </div>
