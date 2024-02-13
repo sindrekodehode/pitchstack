@@ -48,6 +48,7 @@
     justify-content: space-around;
     height: 12rem;
     background-color: #02020279;
+    border-radius: 10%;
 }
 
 .cardText {
@@ -74,8 +75,8 @@
 }
 
 .colorBox img {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .score {
