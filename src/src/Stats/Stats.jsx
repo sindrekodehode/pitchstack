@@ -73,7 +73,7 @@ export function Stats() {
                             ))}
 
                             </div>
-                            <h1>Score: {score}</h1>
+                            <div className={styles.score}><h1>Score: {score}</h1></div>
                         </div>
                         );
                     })}
