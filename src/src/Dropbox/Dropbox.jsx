@@ -185,7 +185,7 @@ export function Dropbox() {
           aria-label='emoji'
           className='area__icon'
         >
-          &#128526;
+          &#129408;
         </span>
         </div>
         <input

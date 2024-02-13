@@ -104,5 +104,11 @@ a:hover, button:hover {
 
 .logo {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 6rem;
+    width: 6rem;
 }
