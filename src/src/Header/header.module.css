@@ -33,21 +33,22 @@ a, button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     height: 4rem;
     width: 8rem;
     border: none;
-    background-image: linear-gradient(#008478, #0a2422);
-    border: 1px solid black;
-    margin: 1rem;
+    /* background-image: linear-gradient(#008478, #0a2422); */
+    /* border: 1px solid black; */
+    /* margin: 1rem; */
     color: whitesmoke;
     font-size: 24px;
-    opacity: 80%;
+    /* opacity: 80%; */
     text-decoration: none;
 }
 
 a:hover, button:hover {
-    opacity: 100%;
+    /* opacity: 100%; */
+    border-bottom: 1px solid whitesmoke;
 }
 
 .login {
