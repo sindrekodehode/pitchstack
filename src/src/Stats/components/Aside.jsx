@@ -10,24 +10,19 @@ export function Aside() {
     const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState } = useContext(AppContext);
     const [isOpen, setIsOpen] = useState(true);
 
-    const handleCheckBoxChange =  async (fileHash, fileName) => {
-        // const checkedCount = Object.values(checkedState).filter(val => val).length;
+    const handleCheckBoxChange =  async (fileHash, isChecked, fileName) => {
+        const checkedCount = Object.values(checkedState).filter(val => val).length;
 
-        // if (isChecked && checkedCount >= 1) {
-        //     console.log("Can't check more than 1 box");
-        //     return;
-        // }
+        if (isChecked && checkedCount >= 1) {
+            console.log("Can't check more than 1 box");
+            return;
+        }
 
         setCheckedState(prevState => ({
             ...prevState,
             [fileHash]: isChecked
         }));
-        // const config = {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     withCredentials: true,
-        // };
+        
 
         try {
             const responseString = await fetchNewData(fileHash)
@@ -97,7 +92,7 @@ export function Aside() {
                 <h3>Tidligere resultater</h3>
                 {responseObj.map((element, index) => (
                     <div key={index}>
-                        <input type="radio" id={`pdf-${index}`}  onChange={(e) => handleCheckBoxChange(element.hash, e.target.checked, element.originalFileName)} value="1"></input>
+                        <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleCheckBoxChange(element.hash, e.target.checked, element.originalFileName)} value="1"></input>
                         <label htmlFor={`pdf-${index}`}>{element.originalFileName}</label>
                     </div>
                 ))}

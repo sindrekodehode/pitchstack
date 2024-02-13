@@ -105,5 +105,5 @@ a:hover, button:hover {
 .rainbowRoad {
     background-image: linear-gradient(to right, #d61f9a, #8d4de7);
     width: 100vw;
-    height: 2rem;
+    height: 1.5rem;
 }
