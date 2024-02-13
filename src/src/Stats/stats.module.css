@@ -1,7 +1,7 @@
 .container {
     display: flex;
-    width: 100vw;
-    height: calc(100vh - 14rem);
+    width: 98vw;
+    height: calc(100vh - 15.5rem);
 }
 
 .stats {
@@ -46,10 +46,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    /* height: -moz-fit-content;
-    height: -webkit-fit-content; */
     height: 12rem;
-    /* padding: 1.5rem; */
     background-color: #02020279;
 }
 
