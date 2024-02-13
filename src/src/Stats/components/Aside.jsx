@@ -10,38 +10,14 @@ export function Aside() {
     const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState } = useContext(AppContext);
     const [isOpen, setIsOpen] = useState(true);
 
-    const handleCheckBoxChange =  async (fileHash, isChecked, fileName) => {
-        const checkedCount = Object.values(checkedState).filter(val => val).length;
-
-        if (isChecked && checkedCount >= 1) {
-            console.log("Can't check more than 1 box");
-            return;
-        }
-
-        setCheckedState(prevState => ({
-            ...prevState,
-            [fileHash]: isChecked
-        }));
+    const handleRadioButtonChange =  async (fileHash, fileName) => {
         
-
         try {
             const responseString = await fetchNewData(fileHash)
             const responseObject = JSON.parse(responseString);
                 
-            setSelectedPDFData(currentSelected => {
-                const isAlreadySelected = currentSelected.some(data => data.hash === fileHash);
-                if (isAlreadySelected) {
-                    return currentSelected.filter(data => data.hash !== fileHash);
-                } else {
-                    return [...currentSelected.slice(-1), {hash: fileHash, data: responseObject }];
-                }
-            });
-
-        if (isChecked) {
-            setSelectedFileNames(prev => [...prev, {hash: fileHash, originalFileName: fileName}]);
-        } else {
-            setSelectedFileNames(prev => prev.filter(file => file.hash !== fileHash));
-        }
+            setSelectedPDFData([{ hash: fileHash, data: responseObject }]);
+            selectedFileNames([{ hash: fileHash, originalFileName: fileName }]);
                
         } catch (error) {
             console.error("Error fetching PDF data:", error);
@@ -92,7 +68,7 @@ export function Aside() {
                 <h3>Tidligere resultater</h3>
                 {responseObj.map((element, index) => (
                     <div key={index}>
-                        <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleCheckBoxChange(element.hash, e.target.checked, element.originalFileName)} value="1"></input>
+                        <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
                         <label htmlFor={`pdf-${index}`}>{element.originalFileName}</label>
                     </div>
                 ))}
