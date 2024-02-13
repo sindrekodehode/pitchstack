@@ -23,7 +23,9 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    height: 12rem;
+    height: -moz-fit-content;
+    height: -webkit-fit-content;
+    height: fit-content;
     background-color: #02020279;
     border-radius: 12px;
 }
