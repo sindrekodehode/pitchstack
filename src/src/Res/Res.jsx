@@ -45,10 +45,10 @@ export function Res() {
         }
     }
 
-    function calculateScore(pdfData) {
+    function calculateScore(responseData) {
         let totalScore = 0
-        Object.values(pdfData.data).forEach(value => {
-            switch (value.rating) {
+        Object.values(responseData).forEach(item => {
+            switch (item.rating) {
                 case "green":
                     totalScore += 3;
                     break;
@@ -66,14 +66,13 @@ export function Res() {
         return scoreValue;
     }
 
-    console.log(response);
-    // const score = calculateScore(response.data);
+    const score = calculateScore(response);
     
     return (
         <div className={styles.container}>
             <div className={styles.stats}>
                 <div className={styles.score}>
-                    {/* <h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div> */}
+                    <h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div>
                 </div>
                {Object.entries(response).map(([key, value]) => (
                 <div key={key} className={styles.itemCard}>
