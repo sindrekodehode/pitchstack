@@ -44,6 +44,7 @@ a, button {
     font-size: 24px;
     /* opacity: 80%; */
     text-decoration: none;
+    background-color: #222222;
 }
 
 a:hover, button:hover {
