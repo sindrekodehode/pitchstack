@@ -38,8 +38,8 @@
     justify-content: center;
     gap: 1rem;
     padding-top: 2px;
-    width: -moz-fit-content;
-    width: fit-content;
+    /* width: -moz-fit-content; */
+    width: inherit;
     height: inherit;
 }
 
