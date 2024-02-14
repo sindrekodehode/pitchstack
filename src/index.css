@@ -10,7 +10,7 @@
   background-size: cover;
   background-position: center 8rem;
   box-sizing: border-box;
-  height: 100vh;
+  /* height: 100vh; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

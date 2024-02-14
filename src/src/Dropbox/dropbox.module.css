@@ -43,6 +43,7 @@
     align-items: center;
     text-align: center;
     font-size: 28px;
+    margin-top: 15rem;
 }
 .loadingContainer img {
     height: 20rem;
