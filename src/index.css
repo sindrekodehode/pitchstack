@@ -5,12 +5,11 @@
 
   color-scheme: light dark;
   color: #E0E0DE;
-  /* background-color: #0a2422; */
   background-image: linear-gradient(to bottom right, #8d4de7, #d61f9a);
   background-size: cover;
   background-position: center 8rem;
   box-sizing: border-box;
-  /* height: 100vh; */
+  min-height: 100vh;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

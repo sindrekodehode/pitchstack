@@ -1,7 +1,7 @@
 .container {
     display: flex;
     width: 98vw;
-    /* height: calc(100vh - 15.5rem); */
+    min-height: calc(100vh - 15.5rem);
 }
 
 .stats {
