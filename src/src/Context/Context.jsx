@@ -116,20 +116,26 @@ export async function fetchNewData(fileHash) {
         }
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            let responseString = response.data[0]?.body?.data[0]?.content[0]?.text?.value;
-            if (responseString === undefined) {
-                console.error("responseString is undefined");
-            } else {
-                responseString = responseString.replace(/^```plaintext\s*|\s*```$/g, '').trim()
-                responseString = responseString.replace(/^```json\s*|\s*```$/g, '').trim()
-                const repairedString = jsonrepair(responseString);
-                return repairedString;
+
+            if (response?.data) {
+                let responseString = response.data[0]?.body?.data[0]?.content[0]?.text?.value;
+
+                    if (responseString !== undefined) {
+                        responseString = responseString.replace(/^```plaintext\s*|\s*```$/g, '').trim()
+                        responseString = responseString.replace(/^```json\s*|\s*```$/g, '').trim()
+                        const repairedString = jsonrepair(responseString);
+                        return repairedString;
+                    } else {
+                        console.error("responseString is undefined");
+                    }
+                } else {
+                    console.error("response.data is undefined");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                throw error;
             }
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            throw error;
-        }
-    };
+        };
 
 export function deleteResponse(fileHash) {
         const config = {
