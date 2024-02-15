@@ -18,7 +18,7 @@ export function Aside() {
             const responseObject = JSON.parse(responseString);
                 
             setSelectedPDFData([{ hash: fileHash, data: responseObject }]);
-            selectedFileNames([{ hash: fileHash, originalFileName: fileName }]);
+            setSelectedFileNames([{ hash: fileHash, originalFileName: fileName }]);
                
         } catch (error) {
             console.error("Error fetching PDF data:", error);
