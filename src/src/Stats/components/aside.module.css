@@ -20,3 +20,7 @@
 .menu {
     width: 2rem;
 }
+
+.radioContainer {
+    display: flex;
+}

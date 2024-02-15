@@ -53,6 +53,14 @@ export function Aside() {
         
     }, []);
 
+    function shortenPdfName(filename) {
+        let shortenedFilename = filename.replace(/\.pdf$/i, '');
+        if (shortenedFilename.length > 20) {
+            shortenedFilename = shortenedFilename.substring(0, 20);
+        }
+        return shortenedFilename
+    }
+
 
     useEffect(() => {
         if (responseObj.length > 0) {
@@ -68,9 +76,9 @@ export function Aside() {
             <div className={styles.aside}>
                 <h3>Tidligere resultater</h3>
                 {responseObj.map((element, index) => (
-                    <div key={index}>
+                    <div className={styles.radioContainer} key={index}>
                         <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
-                        <label htmlFor={`pdf-${index}`}>{element.originalFileName}</label>
+                        <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
                     </div>
                 ))}
                 
