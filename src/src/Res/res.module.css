@@ -28,6 +28,12 @@
     border-radius: 12px;
     box-shadow: 2px 2px 4px black;
     overflow:auto;
+    scrollbar-width: 0;
+}
+
+.itemCard::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .cardText {
