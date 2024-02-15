@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import { Header } from './src/Header/Header'
@@ -7,7 +7,6 @@ import { Stats } from './src/Stats/Stats'
 import { Res } from './src/Res/Res'
 import axios from 'axios';
 import { ContextProvider, refreshToken } from './src/Context/Context'
-import { useContext, useEffect, useState } from 'react'
 
 
 
