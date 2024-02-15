@@ -7,9 +7,14 @@ import { Stats } from './src/Stats/Stats'
 import { Res } from './src/Res/Res'
 import axios from 'axios';
 import { ContextProvider, refreshToken } from './src/Context/Context'
+import { useContext, useEffect, useState } from 'react'
+
 
 
 function App() {
+
+  const {hasSubmitted, setHasSubmitted, canLogin, setCanLogin, canLogout, setCanLogout} = useContext(AppContext);
+
 
   useEffect(() => {
     try {
@@ -29,7 +34,6 @@ function App() {
     setCanLogout(false);
   }
   }, []);
-  
   
 
   return (

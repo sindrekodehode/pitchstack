@@ -18,7 +18,9 @@ export const ContextProvider = ({ children }) => {
     const [selectedFileNames, setSelectedFileNames] = useState([]);
     const [checkedState, setCheckedState] = useState({});
     const [retryAttempt, setRetryAttempt] = useState(false);
-    
+    const [isLogin, setIsLogin] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const value = {
         accessToken,
@@ -38,7 +40,14 @@ export const ContextProvider = ({ children }) => {
         checkedState, 
         setCheckedState,
         retryAttempt,
-        setRetryAttempt
+        setRetryAttempt,
+        isLogin,
+        setIsLogin,
+        username,
+        setUsername,
+        password,
+        setPassword
+
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
