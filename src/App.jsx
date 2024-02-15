@@ -12,29 +12,6 @@ import { ContextProvider, refreshToken } from './src/Context/Context'
 
 function App() {
 
-  const {hasSubmitted, setHasSubmitted, canLogin, setCanLogin, canLogout, setCanLogout} = useContext(AppContext);
-
-
-  useEffect(() => {
-    try {
-      const loginState = checkLoginState()
-      if (loginState && loginState.hasSubmitted) {
-        setHasSubmitted(true);
-        setUsername(loginState.username);
-        setCanLogin(false);
-      } else {
-        setHasSubmitted(false);
-        setCanLogin(true);
-        setCanLogout(false);
-      }
-  } catch (err) {
-    console.error('Error checking localstorage', err);
-    setCanLogin(true);
-    setCanLogout(false);
-  }
-  }, []);
-  
-
   return (
     <Router>
       <ContextProvider>
