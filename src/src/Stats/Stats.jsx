@@ -58,7 +58,6 @@ export function Stats() {
 
                         return (
                         <div key={index} className={styles.pdfcontainer}>
-                            {/* <h2>{selectedFileNames.find(file => file.hash === pdfData.hash)?.originalFileName || "Unknown FileName"}</h2> */}
                             <div className={styles.pdfstats}>
                             <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
