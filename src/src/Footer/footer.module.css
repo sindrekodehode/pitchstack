@@ -13,7 +13,6 @@
 .contactForm {
     grid-column: 2;
     display: flex;
-    flex-direction: column;
 }
 
 .info {
@@ -27,7 +26,7 @@
 }
 
 .rainbowRoad {
-    background-image: linear-gradient(to right, #d61f9a, #8d4de7);
+    background-image: linear-gradient(to right, #8d4de7,  #d61f9a);
     width: 100vw;
     height: 1rem;
 }
