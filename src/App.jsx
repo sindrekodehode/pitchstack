@@ -5,6 +5,7 @@ import { Header } from './src/Header/Header'
 import { Dropbox } from './src/Dropbox/Dropbox'
 import { Stats } from './src/Stats/Stats'
 import { Res } from './src/Res/Res'
+import { Footer } from './src/Footer/Footer'
 import axios from 'axios';
 
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="stats" element= {<Stats />}/>
             <Route path="*" element= {<h1>404 Not Found</h1>}/>
           </Routes>
+          <Footer />
         </div>
     </Router>
   )
