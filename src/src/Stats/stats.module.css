@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    padding-top: 2px;
+    padding-bottom: 1rem;
     width: inherit;
     height: inherit;
 }
@@ -48,7 +48,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-around;
-    height: 11.5rem;
+    height: 15.5rem;
     background-color: #02020279;
     border-radius: 12px;
     overflow:auto;
@@ -125,7 +125,7 @@
     
     grid-column: span 2;
     padding: 0 3rem 0 3rem;
-    height: 11.5rem;
+    height: 13.5rem;
     background-color: #02020279;
     border-radius: 12px;
     overflow:auto;
