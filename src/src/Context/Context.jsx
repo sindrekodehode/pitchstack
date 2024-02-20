@@ -23,10 +23,11 @@ export const ContextProvider = ({ children }) => {
     const [password, setPassword] = useState("");
 
     useEffect( async () => {
-        const loginState = await localStorage.getItem('loginState');
-        const storedUsername = await localStorage.getItem('username');
+        const loginState = localStorage.getItem('loginState');
+        const storedUsername = localStorage.getItem('username');
         console.log("Testing loginState", loginState);
         if (loginState.hasSubmitted === 'true' && storedUsername) {
+            await refreshToken()
             setIsLogin(false);
             setCanLogin(false);
             setHasSubmitted(true);
@@ -103,13 +104,7 @@ export async function checkLoginState() {
     const now = new Date();
 
     try {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            withCredentials: true,
-        };
-       return await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', {}, config);
+        await refreshToken();
     } catch (error) {
         console.error("Error fetching cookie:", error);
     }
