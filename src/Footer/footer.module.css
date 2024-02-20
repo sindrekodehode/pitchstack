@@ -1,0 +1,25 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background: #1c1c1c;
+    width: 100vw;
+    height: 6rem;
+    justify-content: space-between;
+    background-color: #222222;
+    padding: 1rem 0;
+
+}
+
+
+
+
+.logo {
+    height: 6rem;
+    width: 6rem;
+}
+
+.rainbowRoad {
+    background-image: linear-gradient(to right, #d61f9a, #8d4de7);
+    width: 100vw;
+    height: 1rem;
+}
