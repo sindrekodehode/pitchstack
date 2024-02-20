@@ -109,7 +109,7 @@ export async function checkLoginState() {
             },
             withCredentials: true,
         };
-       return await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', JSON.stringify(userData), config);
+       return await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', {}, config);
     } catch (error) {
         console.error("Error fetching cookie:", error);
     }
