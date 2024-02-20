@@ -92,8 +92,6 @@ export function setLoginState(user) {
 
 export async function checkLoginState() {
     const itemStr = localStorage.getItem("loginState");
-    const userData = { user: username, pwd: password }
-
 
     if (!itemStr) {
         return { hasSubmitted: false };
