@@ -22,6 +22,16 @@ export const ContextProvider = ({ children }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    useEffect(() => {
+        const loginState = localStorage.getItem('loginState');
+        const storedUsername = localStorage.getItem('username');
+
+        if (loginState === 'true' && storedUsername) {
+            setHasSubmitted(true);
+            setUsername(storedUsername);
+        }
+    }, []);
+
     const value = {
         accessToken,
         setAccessToken,
@@ -93,7 +103,7 @@ export async function checkLoginState() {
     try {
         const config = {
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             withCredentials: true,
         };
