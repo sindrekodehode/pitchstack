@@ -3,7 +3,7 @@
     grid-template-columns: repeat(5, 1fr);
     background: #1c1c1c;
     width: 100vw;
-    height: 12rem;
+    height: 22rem;
     justify-content: space-between;
     background-color: #222222;
     padding: 1rem 0;
@@ -16,12 +16,14 @@
     gap: 1.5rem;
     margin-top: auto;
     margin-bottom: auto;
+    font-size: 20px;
 }
 
 .info {
     grid-column: 4;
     margin-top: auto;
     margin-bottom: auto;
+    font-size: 20px;
 }
 
 
