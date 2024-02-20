@@ -92,6 +92,8 @@ export function setLoginState(user) {
 
 export async function checkLoginState() {
     const itemStr = localStorage.getItem("loginState");
+    const userData = { user: username, pwd: password }
+
 
     if (!itemStr) {
         return { hasSubmitted: false };
@@ -107,7 +109,7 @@ export async function checkLoginState() {
             },
             withCredentials: true,
         };
-       return await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', config);
+       return await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', JSON.stringify(userData), config);
     } catch (error) {
         console.error("Error fetching cookie:", error);
     }

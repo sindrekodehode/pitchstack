@@ -6,10 +6,6 @@ import { AppContext, ContextProvider, refreshToken } from '../Context/Context';
 import { setLoginState, checkLoginState, setLogout } from '../Context/Context';
 
 export function Header() {
-
-  // const [isLogin, setIsLogin] = useState(false);
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
   const {hasSubmitted, setHasSubmitted, canLogin, setCanLogin, canLogout, setCanLogout, isLogin, setIsLogin, username, setUsername, password, setPassword} = useContext(AppContext);
 
   const userData = { user: username, pwd: password }
