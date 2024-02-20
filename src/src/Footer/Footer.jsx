@@ -8,12 +8,14 @@ export function Footer() {
             <div className={styles.container}>
                 <div className={styles.contactForm}>
                     <img src="/vis_logo1_RGB_vis_White.png" alt='vis logo' className={styles.logo}></img>
-                    <ul>
-                        <h2>Kontakt oss</h2>
-                        <li>Vestlandets Innovasjonsselskap AS</li>
-                        <li>Thormøhlens­gate 51,</li>
-                        <li>5006 Bergen</li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <h2>Kontakt oss</h2>
+                            <li>Vestlandets Innovasjonsselskap AS</li>
+                            <li>Thormøhlens­gate 51,</li>
+                            <li>5006 Bergen</li>
+                        </ul>
+                    </div>
                 </div>
                 <div className={styles.info}>
                     <ul>
