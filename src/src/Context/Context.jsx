@@ -27,15 +27,12 @@ export const ContextProvider = ({ children }) => {
             const loginStateStr = localStorage.getItem('loginState');
             const loginState = loginStateStr ? JSON.parse(loginStateStr) : null;
             const storedUsername = loginState.username;
-            console.log("Testing loginState", loginState);
             if (loginState?.hasSubmitted && storedUsername) {
-                console.log("Getting refreshToken");
                 await refreshToken();
                 setIsLogin(false);
                 setCanLogin(false);
                 setHasSubmitted(true);
                 setUsername(storedUsername);
-                console.log("hasSubmitted state:", hasSubmitted);
             }  
         };
         initializeState();
