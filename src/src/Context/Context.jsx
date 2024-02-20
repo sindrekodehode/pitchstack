@@ -25,7 +25,7 @@ export const ContextProvider = ({ children }) => {
     useEffect(() => {
         const loginState = localStorage.getItem('loginState');
         const storedUsername = localStorage.getItem('username');
-
+        console.log("Testing loginState", loginState);
         if (loginState === 'true' && storedUsername) {
             setIsLogin(false);
             setCanLogin(false);
