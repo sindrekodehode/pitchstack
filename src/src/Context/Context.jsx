@@ -27,6 +27,8 @@ export const ContextProvider = ({ children }) => {
         const storedUsername = localStorage.getItem('username');
 
         if (loginState === 'true' && storedUsername) {
+            setIsLogin(false);
+            setCanLogin(false);
             setHasSubmitted(true);
             setUsername(storedUsername);
         }
