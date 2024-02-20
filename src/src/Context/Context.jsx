@@ -26,7 +26,7 @@ export const ContextProvider = ({ children }) => {
         const initializeState = async () => {
             const loginStateStr = localStorage.getItem('loginState');
             const loginState = loginStateStr ? JSON.parse(loginStateStr) : null;
-            const storedUsername = localStorage.getItem('username');
+            const storedUsername = loginState.username;
             console.log("Testing loginState", loginState);
             if (loginState?.hasSubmitted && storedUsername) {
                 console.log("Getting refreshToken");
