@@ -24,7 +24,8 @@ export const ContextProvider = ({ children }) => {
 
     useEffect( () => {
         const initializeState = async () => {
-            const loginState = localStorage.getItem('loginState');
+            const loginStateStr = localStorage.getItem('loginState');
+            const loginState = loginStateStr ? JSON.parse(loginStateStr) : null;
             const storedUsername = localStorage.getItem('username');
             console.log("Testing loginState", loginState);
             if (loginState?.hasSubmitted && storedUsername) {
