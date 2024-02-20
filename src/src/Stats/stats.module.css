@@ -71,6 +71,7 @@
 
 .cardTextHeaderContainer {
     display: flex;
+    align-items: center;
 }
 
 .itemCard h3 {
