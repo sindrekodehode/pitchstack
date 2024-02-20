@@ -22,17 +22,18 @@ export const ContextProvider = ({ children }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect( async () => {
-        const loginState = localStorage.getItem('loginState');
-        const storedUsername = localStorage.getItem('username');
-        console.log("Testing loginState", loginState);
-        if (loginState.hasSubmitted === 'true' && storedUsername) {
-            await refreshToken()
-            setIsLogin(false);
-            setCanLogin(false);
-            setHasSubmitted(true);
-            setUsername(storedUsername);
-        }
+    useEffect( () => {
+        const initializeState = async () => {
+            const loginState = localStorage.getItem('loginState');
+            const storedUsername = localStorage.getItem('username');
+            console.log("Testing loginState", loginState);
+            if (loginState?.hasSubmitted && storedUsername) {
+                await refreshToken();
+                setHasSubmitted(true);
+                setUsername(storedUsername);
+            }  
+        };
+        initializeState();
     }, []);
 
     const value = {
