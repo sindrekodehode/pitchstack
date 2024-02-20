@@ -31,6 +31,8 @@ export const ContextProvider = ({ children }) => {
             if (loginState?.hasSubmitted && storedUsername) {
                 console.log("Getting refreshToken");
                 await refreshToken();
+                setIsLogin(false);
+                setCanLogin(false);
                 setHasSubmitted(true);
                 setUsername(storedUsername);
                 console.log("hasSubmitted state:", hasSubmitted);
