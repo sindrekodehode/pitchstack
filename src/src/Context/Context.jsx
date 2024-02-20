@@ -22,9 +22,9 @@ export const ContextProvider = ({ children }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    useEffect(() => {
-        const loginState = localStorage.getItem('loginState');
-        const storedUsername = localStorage.getItem('username');
+    useEffect( async () => {
+        const loginState = await localStorage.getItem('loginState');
+        const storedUsername = await localStorage.getItem('username');
         console.log("Testing loginState", loginState);
         if (loginState.hasSubmitted === 'true' && storedUsername) {
             setIsLogin(false);
