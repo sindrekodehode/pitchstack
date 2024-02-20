@@ -10,6 +10,11 @@ export function Header() {
 
   const userData = { user: username, pwd: password }
 
+  const navigate = useNavigate();
+
+  const navigateHome = () =>  {
+    navigate('/');
+  }
 
   useEffect(() => {
     try {
@@ -108,7 +113,7 @@ export function Header() {
     <>
     <div className={styles.header}>
       <div className={styles.logo}>
-        <img src='/crabiconlarge.svg' alt='crab pitchstack logo' className={styles.logo}></img>
+        <img src='/crabiconlarge.svg' alt='crab pitchstack logo' onClick={navigateHome} className={styles.logo}></img>
         <h2>Pitchstack</h2>
       </div>
       <div className={styles.navContainer}>
