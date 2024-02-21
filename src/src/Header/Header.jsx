@@ -37,6 +37,12 @@ export function Header() {
   
 
   const handleSubmit = async (e, action) => {
+
+    if (!username.includes('@')) {
+      alert('Email must contain an @ symbol.');
+      return;
+    }
+
     e.preventDefault();
     const config = {
       headers: {'Content-Type': 'application/json'},
@@ -125,10 +131,10 @@ export function Header() {
               <div className={styles.login}>
                   <form>
                     <label>Email:
-                      <input type='text' value={username} pattern=".*@.*" onChange={(e) => setUsername(e.target.value)} title ="The input must contain an email" placeholder="Enter Email" maxLength="10" required/>
+                      <input type='text' value={username} onChange={(e) => setUsername(e.target.value)} title ="The input must contain an email" placeholder="Enter Email" maxLength="30" required/>
                     </label>
                     <label>Password:
-                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" maxLength="10" required/>
+                    <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Password" maxLength="30" required/>
                     </label>
                     <div className={styles.btnContainer}>
                       <button type='submit' onClick={(e) => handleSubmit(e, 'login')}>Login</button>
