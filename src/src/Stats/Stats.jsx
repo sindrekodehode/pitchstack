@@ -68,7 +68,9 @@ export function Stats() {
                                         <div className={styles.colorBox} >
                                             <img src={ getColor(value.rating) } ></img>
                                         </div>
-                                        <h3>{key}:</h3>
+                                        <div className={styles.textcontainer}>
+                                            <h3>{key}:</h3>
+                                        </div>
                                     </div>
                                     <p>{value.item}</p>
                                     <p>{value.evaluation}</p>
