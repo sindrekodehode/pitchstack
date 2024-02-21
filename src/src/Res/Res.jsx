@@ -83,7 +83,7 @@ export function Res() {
                     </div>
                     
                     <div className={styles.colorBox} >
-                        <img src={ getColor(value.rating) } ></img>
+                        <img src={ getColor(value.rating) } alt='crab color rating image' ></img>
                     </div>
                     
                 </div>

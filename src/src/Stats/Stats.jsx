@@ -66,7 +66,7 @@ export function Stats() {
                                     <div className={styles.cardText}>
                                     <div className={styles.cardTextHeaderContainer}>
                                         <div className={styles.colorBox} >
-                                            <img src={ getColor(value.rating) } ></img>
+                                            <img src={ getColor(value.rating) } alt='crab color rating image'></img>
                                         </div>
                                         <div className={styles.textcontainer}>
                                             <h3>{key}:</h3>
