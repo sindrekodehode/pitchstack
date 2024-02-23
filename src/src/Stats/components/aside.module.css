@@ -102,13 +102,8 @@
 
 .radioContainer input[type="radio"]:checked + label:hover::after, 
 .radioContainer input[type="radio"]:checked + label::after {
-  background-color: #222;
-  border-color: #222;
-}
-
-
-.radioContainer input[type="radio"]:focus + label::before {
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+  /* background-color: #222;
+  border-color: #222; */
   content: '';
   position: absolute;
   top: 4px;
@@ -117,6 +112,11 @@
   height: 20px;
   border-radius: 50%;
   background: #222;
+}
+
+
+.radioContainer input[type="radio"]:focus + label::before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 .radioSlider::before {
