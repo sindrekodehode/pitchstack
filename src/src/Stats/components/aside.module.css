@@ -78,22 +78,26 @@
   background: #222;
 }
 
-.radioContainer label:hover::after {
+/* .radioContainer label:hover::after {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 4px;
+  left: 4px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #9b1818;
-  z-index: 2;
-}
+  background: #9b1818;
+} */
 
 .radioContainer label:hover::after, input[type="radio"]:hover + label::after {
-  background-color: #f1f1f1;
-  border-color: #222;
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #9b1818;
 }
 
 .radioContainer input[type="radio"]:checked + label::after {
