@@ -28,7 +28,7 @@
 .radioContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 10px;
     gap: 0.5rem;
 }
@@ -64,7 +64,7 @@ label::before {
   width: 24px;
   background: white;
   border-radius: 50%;
-  border: 2px solid #000;
+  border: 2px solid #222;
 }
 
 input[type="radio"]:checked + label::after {
@@ -75,12 +75,29 @@ input[type="radio"]:checked + label::after {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #000;
+  background: #222;
 }
 
 label:hover::before {
   background-color: #f8f8f8;
 }
+
+label:hover::after, input[type="radio"]:hover + label::after {
+  background-color: #f1f1f1;
+  border-color: #222;
+}
+
+input[type="radio"]:checked + label::after {
+  content: '';
+  background-color: #222;
+  border-color: #222;
+}
+
+input[type="radio"]:checked + label:hover::after, input[type="radio"]:checked + label::after {
+  background-color: #222;
+  border-color: #222;
+}
+
 
 input[type="radio"]:focus + label::before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
