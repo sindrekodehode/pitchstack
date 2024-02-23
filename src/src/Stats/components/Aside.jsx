@@ -20,6 +20,11 @@ export function Aside() {
                 
             setSelectedPDFData([{ hash: fileHash, data: responseObject }]);
             setSelectedFileNames([{ hash: fileHash, originalFileName: fileName }]);
+
+            setCheckedState(prevState => ({
+                ...Object.keys(prevState).reduce((acc, hash) => ({ ...acc, [hash]: false}), {}),
+                [fileHash]: true
+            }));
                
         } catch (error) {
             console.error("Error fetching PDF data:", error);
