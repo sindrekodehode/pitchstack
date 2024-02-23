@@ -16,7 +16,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#radio-slider {
+.radio-slider {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -76,12 +76,12 @@ input[type="radio"]:focus + label::before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
-#radio-slider::before {
+.radio-slider::before {
   content: '';
   position: absolute;
   height: 2px;
   width: 100%;
-  background: #000;
+  background: #f1f0f0;
   top: 50%;
   left: 0;
   transform: translateY(-50%);

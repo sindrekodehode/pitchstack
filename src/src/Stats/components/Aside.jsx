@@ -79,7 +79,7 @@ export function Aside() {
         <div className={styles.asideContainer}>
             <div className={styles.wrapper}>
                 <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
-                <div id="radio-slider" style={sliderTrackStyle}>
+                <div className={styles.radio-slider} style={sliderTrackStyle}>
                     {hasSubmitted && isOpen && (
                     <div className={styles.radioContainer}>
                         <h3>Tidligere resultater</h3>
@@ -87,7 +87,7 @@ export function Aside() {
                             <React.Fragment key={index}>
                                 <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
                                 <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
-                                <div id="radio-pos" style={calculatePosition(index)}></div>
+                                <div className={styles.radio-pos} style={calculatePosition(index)}></div>
                             </React.Fragment>
                         ))}
                         
