@@ -83,7 +83,9 @@ export function Aside() {
 
         <div className={styles.asideContainer}>
             <div className={styles.wrapper}>
-                <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
+                <div className={styles.menuContainer}>
+                    <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
+                </div>
                 <div className={styles.radioSlider} style={sliderTrackStyle}>
                     {hasSubmitted && isOpen && (
                     <div className={styles.radioContainer}>
