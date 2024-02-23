@@ -77,6 +77,7 @@
   height: 20px;
   border-radius: 50%;
   background: #222;
+  transform: scale(0.9);
 }
 
 .radioContainer label:hover::after, input[type="radio"]:hover + label::after {
@@ -88,6 +89,7 @@
   height: 20px;
   border-radius: 50%;
   background: #d61f9a;
+  transform: scale(1.3);
 }
 
 .radioContainer input[type="radio"]:checked + label::after {
