@@ -1,4 +1,4 @@
-import styles from './aside.module.scss'
+import styles from './aside.module.css'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
