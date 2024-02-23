@@ -38,13 +38,13 @@
   z-index: 9;
 }
 
-input[type="radio"] {
+.radioContainer input[type="radio"] {
     opacity: 0;
     position: fixed;
     width: 0;
 }
 
-label {
+.radioContainer label {
   position: relative;
   padding-left: 35px;
   cursor: pointer;
@@ -55,7 +55,7 @@ label {
   z-index: 9;
 }
 
-label::before {
+.radioContainer label::before {
   content: '';
   position: absolute;
   left: 0;
@@ -67,7 +67,7 @@ label::before {
   border: 2px solid #222;
 }
 
-input[type="radio"]:checked + label::after {
+.radioContainer input[type="radio"]:checked + .radioContainer label::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -78,28 +78,28 @@ input[type="radio"]:checked + label::after {
   background: #222;
 }
 
-label:hover::before {
+.radioContainer label:hover::before {
   background-color: #f8f8f8;
 }
 
-label:hover::after, input[type="radio"]:hover + label::after {
+.radioContainer label:hover::after, input[type="radio"]:hover + .radioContainer label::after {
   background-color: #f1f1f1;
   border-color: #222;
 }
 
-input[type="radio"]:checked + label::after {
+.radioContainer input[type="radio"]:checked + .radioContainer label::after {
   content: '';
   background-color: #222;
   border-color: #222;
 }
 
-input[type="radio"]:checked + label:hover::after, input[type="radio"]:checked + label::after {
+.radioContainer input[type="radio"]:checked + .radioContainer label:hover::after, .radioContainer input[type="radio"]:checked + .radioContainer label::after {
   background-color: #222;
   border-color: #222;
 }
 
 
-input[type="radio"]:focus + label::before {
+.radioContainer input[type="radio"]:focus + .radioContainer label::before {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
