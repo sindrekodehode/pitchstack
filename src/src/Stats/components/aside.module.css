@@ -78,7 +78,7 @@
   background: #222;
 }
 
-.radioContainer label:hover {
+.radioContainer label:hover::after {
   content: '';
   position: absolute;
   top: 4px;
