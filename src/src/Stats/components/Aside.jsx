@@ -1,4 +1,4 @@
-import styles from './aside.module.css'
+import styles from './aside.module.scss'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
@@ -24,7 +24,6 @@ export function Aside() {
             console.error("Error fetching PDF data:", error);
         }
     }
-
 
     useEffect(() => {
         const config = {
@@ -67,22 +66,33 @@ export function Aside() {
             console.log("Crab");
         }
     }, [responseObj]);
+
+    const numberOfOptions = responseObj.length;
+    const sliderTrackStyle = { width: `calc(100 * (${numberOfOptions -1} / ${numberOfOptions}))`, };
+    const calculatePosition = (index) => ({
+        left: `${(index * 100 / numberOfOptions)}%`,
+    });
     
     return (
 
         <div className={styles.asideContainer}>
-            <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
-            {hasSubmitted && isOpen && (
-            <div className={styles.aside}>
-                <h3>Tidligere resultater</h3>
-                {responseObj.map((element, index) => (
-                    <div className={styles.radioContainer} key={index}>
-                        <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
-                        <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
-                    </div>
-                ))}
-                
-            </div>)}
+            <div className={styles.wrapper}>
+                <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
+                <div id="radio-slider" style={sliderTrackStyle}>
+                    {hasSubmitted && isOpen && (
+                    <div className={styles.radioContainer}>
+                        <h3>Tidligere resultater</h3>
+                        {responseObj.map((element, index) => (
+                            <React.Fragment key={index}>
+                                <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
+                                <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
+                                <div id="radio-pos" style={calculatePosition(index)}></div>
+                            </React.Fragment>
+                        ))}
+                        
+                    </div>)}
+                </div>
+            </div>
         </div>
     );
 }
