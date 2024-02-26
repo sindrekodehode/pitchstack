@@ -1,34 +1,36 @@
+:root {
+    --custom-dimension: 12rem;
+    --custom-100: calc(var(--custom-dimension) / 0.85);
+    --custom-15: calc(var(--custom-100) * 0.15);
+    --custom-9: calc(var(--custom-100) * 0.09);
+}
+
 .container {
     display: flex;
-    justify-content: center;
-    margin-left: 6rem;
-    margin-right: 6rem;
-    padding-top: 3rem;
-    width: calc(100vw - 12rem);
+    width: 98vw;
+    min-height: calc(100vh - 15.5rem);
 }
 
 
 .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center;
+    display: flex;
     justify-content: center;
-    gap: 1rem;
-    font-size: 14px;
-    padding-top: 2px;
-    width: 100vw;
+    width: 100%;
+    height: inherit;
+    padding: 10rem 5rem 0 7rem;
 }
 
 .itemCard {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 14rem;
+    height: var(--custom-dimension);
+    width: calc(var(--custom-100) * 1.62);
     background-color: #02020279;
+    padding:  var(--custom-9) var(--custom-15);
     border-radius: 12px;
-    box-shadow: 2px 2px 4px black;
     overflow:auto;
-    scrollbar-width: 0;
+    scrollbar-width: none;
+    box-shadow: 2px 2px 4px black;
 }
 
 .itemCard::-webkit-scrollbar {
@@ -57,8 +59,8 @@
 }
 
 .colorBox img {
-    width: 5rem;
-    height: 5rem;
+    width: var(--custom-15);
+    height: var(--custom-15);
 }
 
 .score {

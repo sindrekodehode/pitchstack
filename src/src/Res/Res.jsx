@@ -71,22 +71,23 @@ export function Res() {
     return (
         <div className={styles.container}>
             <div className={styles.stats}>
-                <div className={styles.score}>
-                    <h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div>
-                </div>
+                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div></div>
                {Object.entries(response).map(([key, value]) => (
                 <div key={key} className={styles.itemCard}>
-                    <div className={styles.cardText}>
-                    <h3>{key}:</h3>
-                    <p>{value.item || 'No item provided'}</p>
-                    <p>{value.evaluation || 'No evaluation provided'}</p>
-                    </div>
-                    
+                <div className={styles.cardText}>
+                <div className={styles.cardTextHeaderContainer}>
                     <div className={styles.colorBox} >
-                        <img src={ getColor(value.rating) } alt='crab color rating image' ></img>
+                        <img src={ getColor(value.rating) } alt='crab color rating image'></img>
                     </div>
-                    
+                    <div className={styles.textcontainer}>
+                        <h3>{key}:</h3>
+                    </div>
                 </div>
+                <p>{value.item}</p>
+                <p>{value.evaluation}</p>
+                </div>
+                
+            </div>
                ))}
             </div>
         </div>
