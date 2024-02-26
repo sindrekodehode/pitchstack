@@ -106,7 +106,7 @@
 
 .radioContainer input[type="radio"]:checked + label:hover::after, 
 .radioContainer input[type="radio"]:checked + label::after {
-  background-color: #222;
+  background-color: #d61f9a;
   border-color: #222;
 }
 
