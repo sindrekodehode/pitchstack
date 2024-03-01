@@ -44,6 +44,7 @@ a, button {
 
 a:hover, button:hover {
     border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
 }
 
 .login {

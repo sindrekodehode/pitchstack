@@ -20,9 +20,9 @@ export function Footer() {
                 <div className={styles.info}>
                     <ul>
                         <h2>Informasjon</h2>
-                        <li>Personvernerklæring</li>
-                        <li>Cookies</li>
-                        <li>Åpenhetsloven</li>
+                        <li><a href="https://www.visinnovasjon.no/personvernerklaering/">Personvernerklæring</a></li>
+                        <li><a href="https://www.visinnovasjon.no/cookie-policy/">Cookies</a></li>
+                        <li><a href="https://www.visinnovasjon.no/cookie-policy/">Åpenhetsloven</a></li>
                         <li>org. nr: 987 753 153</li>
                     </ul>
                 </div>
