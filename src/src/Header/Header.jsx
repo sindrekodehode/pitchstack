@@ -126,6 +126,7 @@ export function Header() {
         <ul className={styles.list}>
             <li><Link to="/">Dropbox</Link></li>
             <li><Link to="/stats">Stats</Link></li>
+            <li><Link to="/faq">FAQ</Link></li>
             {canLogin && (<li><button onClick={() => setIsLogin(!isLogin)}>Login</button></li>)}
             {isLogin && (
               <div className={styles.login}>

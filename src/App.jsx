@@ -20,6 +20,7 @@ function App() {
             <Route path="/" element= {<Dropbox />}/>
             <Route path="res" element= {<Res />}/>
             <Route path="stats" element= {<Stats />}/>
+            <Route path="faq" element= {<FAQ />}/>
             <Route path="*" element= {<h1>404 Not Found</h1>}/>
           </Routes>
           <Footer />
