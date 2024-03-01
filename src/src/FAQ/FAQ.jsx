@@ -21,7 +21,7 @@ return (
         <div className={styles.container}>
             {faqData.map(({ id, question, answer }) => (
                 <div key={id} onClick={() => toggleItem(id)} className={styles.list}>
-                    <div>{question}<img src='/darrow.svg' alt='double arrow pointing down' className={styles.darrow}></img></div>
+                    <div className={styles.qdiv}>{question}<img src='/darrow.svg' alt='double arrow pointing down' className={styles.darrow}></img></div>
                 {openItemId === id && <div>{answer}</div>}
                 </div>
             ))}
