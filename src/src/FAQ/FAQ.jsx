@@ -5,7 +5,7 @@ export function FAQ() {
     return (
         <>
             <div className={styles.container}>
-                <ul>
+                <ul className={styles.list}>
                     <li>Q: How does it work?  </li>
                     A:Simply drop a pitch pdf in the field and wait for the results to show up.
                     <li>Q: I'm not getting a result / the result is not as expected. </li>
