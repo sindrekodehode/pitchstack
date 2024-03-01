@@ -26,6 +26,11 @@
     font-size: 20px;
 }
 
+li {
+    height: 2.4rem;
+    list-style: none;
+}
+
 .info a {
     display: block;
     text-decoration: none;
