@@ -27,8 +27,13 @@
 }
 
 .info a {
+    display: block;
     text-decoration: none;
     color: #f1f1f1;
+    font-size: 20px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: inherit;
 }
 
 .info a:hover {
