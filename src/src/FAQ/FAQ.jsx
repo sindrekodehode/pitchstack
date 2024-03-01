@@ -20,7 +20,7 @@ export function FAQ() {
 return (
         <div className={styles.container}>
             {faqData.map(({ id, question, answer }) => (
-                <div key={id} onClick={() => toggleItem(id)}>
+                <div key={id} onClick={() => toggleItem(id)} className={styles.list}>
                     <div>{question}</div>
                 {openItemId === id && <div>{answer}</div>}
                 </div>
