@@ -6,6 +6,7 @@ import { Dropbox } from './src/Dropbox/Dropbox'
 import { Stats } from './src/Stats/Stats'
 import { Res } from './src/Res/Res'
 import { Footer } from './src/Footer/Footer'
+import { FAQ } from './src/FAQ/FAQ'
 import axios from 'axios';
 
 
