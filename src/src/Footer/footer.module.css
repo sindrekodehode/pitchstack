@@ -39,6 +39,7 @@ li {
     width: -moz-fit-content;
     width: fit-content;
     height: inherit;
+    border-bottom: 1px solid transparent;
 }
 
 .info a:hover {
