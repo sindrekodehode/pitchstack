@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './faq.module.css'
 
 const faqData = [
