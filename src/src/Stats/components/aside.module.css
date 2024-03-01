@@ -37,6 +37,9 @@
 .radioContainer h3 {
   background: #222;
   z-index: 9;
+  border: 2px solid #f1f1f1;
+  border-radius: 18px;
+  padding: 6px;
 }
 
 .radioContainer input[type="radio"] {
@@ -143,7 +146,7 @@
   height: 95%;
   width: 2px;
   background: #f1f0f0;
-  left: 50%;
+  left: 8%;
   transform: translateX(-50%);
 }
 
