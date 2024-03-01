@@ -5,7 +5,14 @@ export function FAQ() {
     return (
         <>
             <div className={styles.container}>
-                Stuff and things
+                <ul>
+                    <li>How does it work?  Simply drop a pitch pdf in the field and wait for the results to show up.</li>
+                    <li>I'm not getting a result / the result is not as expected. The pdf needs to contain text in order for the interpreter to work.  If the pdf is a collection of images or if there is very little text, the result may be incorrect.</li>
+                    <li>My pdf is correct, but I'm still not getting a result.  You can try to create a new user and upload the pdf again, if it still doesn't show any result, please contact VIS for further instructions.</li>
+                    <li>Tbd</li>
+                    <li>Tbd</li>
+                    <li>Tbd</li>
+                </ul>
             </div>
         </>
     )
