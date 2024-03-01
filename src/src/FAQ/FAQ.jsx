@@ -1,6 +1,6 @@
 import styles from './faq.module.css'
 
-export function Footer() {
+export function FAQ() {
 
     return (
         <>
