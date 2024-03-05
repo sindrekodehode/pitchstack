@@ -89,6 +89,7 @@ export function Dropbox() {
       setFileHash(response.data.fileHash);
       console.log('Response filehash:',response.data.fileHash);
       console.log('Upload successful', response.data);
+      setUploadComplete(true);
     } catch (error) {
       console.error('Error uploading file:', error);
     } finally {
