@@ -86,9 +86,9 @@ export function Dropbox() {
 
     try {
       const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
-      setFileHash(response.data.metadata.fileHash);
-      console.log('Response filehash:',response.data.metadata.fileHash);
       console.log('Upload successful', response.data);
+      console.log('Response filehash:',response.data.metadata.fileHash);
+      setFileHash(response.data.metadata.fileHash);
     } catch (error) {
       console.error('Error uploading file:', error);
     } finally {
