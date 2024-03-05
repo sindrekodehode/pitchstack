@@ -141,7 +141,7 @@ export async function fetchNewData(fileHash) {
                 let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
 
                     if (responseString !== undefined) {
-                        responseString = responseString.replace(/^```(plaintext|json)\s*|\s*```$/g, '').trim()
+                        responseString = responseString.replace(/^```\s*(plaintext|json)?\s*\n?|\n?\s*```$/gm, '').trim()
                         const repairedString = jsonrepair(responseString);
                         return repairedString;
                     } else {
