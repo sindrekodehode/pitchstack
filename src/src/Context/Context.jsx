@@ -138,7 +138,7 @@ export async function fetchNewData(fileHash) {
             console.log(response.data)
 
             if (response?.data) {
-                let responseString = response.data[0]?.body?.data[0]?.content[0]?.text?.value;
+                let responseString = response.data[0]?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
 
                     if (responseString !== undefined) {
                         responseString = responseString.replace(/^```(plaintext|json)\s*|\s*```$/g, '').trim()
