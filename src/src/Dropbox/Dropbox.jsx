@@ -167,7 +167,7 @@ export function Dropbox() {
   };
 
   return (
-    <div className={styles.dropbox} key={key}>
+    <div className={styles.dropbox} >
       {uploadError && (
         <div className={styles.errorMessage}>
           <h1>{uploadError}</h1>
@@ -180,7 +180,7 @@ export function Dropbox() {
           {displayedMessage}
         </div>
       )}
-        <div ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
+        <div key={key} ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
         <div id='dropboxlabel'>Drop pitchstack here
         <span
           role='img'
