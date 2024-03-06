@@ -18,6 +18,7 @@ export function Dropbox() {
   const [messageIndex, setMessageIndex] = useState(Math.floor(Math.random() * messages.length));
   const [displayedMessage, setDisplayedMessage] = useState('');
   const [uploadError, setUploadError] = useState('');
+  const [key, setKey] = useState(0);
 
   
   const navigate = useNavigate()
@@ -91,6 +92,7 @@ export function Dropbox() {
       setFileHash(response.data.metadata.fileHash);
     } catch (error) {
       console.error('Error uploading file:', error);
+      setKey(prevKey => prevKey + 1);
     } finally {
       setIsLoading(false);
     }
@@ -165,7 +167,7 @@ export function Dropbox() {
   };
 
   return (
-    <div className={styles.dropbox}>
+    <div className={styles.dropbox} key={key}>
       {uploadError && (
         <div className={styles.errorMessage}>
           <h1>{uploadError}</h1>
