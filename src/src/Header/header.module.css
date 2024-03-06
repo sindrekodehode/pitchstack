@@ -78,6 +78,7 @@ a:hover, button:hover {
 .logo {
     border-radius: 20%;
     margin-left: 10rem;
+    cursor: pointer;
 }
 
 .btnContainer {

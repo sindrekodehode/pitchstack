@@ -118,8 +118,8 @@ export function Header() {
   return (
     <>
     <div className={styles.header}>
-      <div className={styles.logo}>
-        <img src='/crabiconlarge.svg' alt='crab pitchstack logo' onClick={navigateHome} className={styles.logo}></img>
+      <div className={styles.logo} onClick={navigateHome} >
+        <img src='/crabiconlarge.svg' alt='crab pitchstack logo' className={styles.logo}></img>
         <h2>Pitchstack</h2>
       </div>
       <div className={styles.navContainer}>
