@@ -73,7 +73,7 @@ export function Res() {
         let index = 0;
         return Object.entries(data).map(([key, value]) => {
             const rating = ratings[index];
-            const newValue = value.value * rating;
+            const newValue = value.rating * rating;
             index++;
             return {
                 ...value,
