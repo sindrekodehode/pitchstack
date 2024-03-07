@@ -84,9 +84,12 @@ export function Res() {
 
     function calculateWeightedScore(data, ratings) {
         let index = 0;
+        console.log("Data:", data);
+        console.log("Ratings:", ratings);
         return Object.entries(data).map(([key, value]) => {
             const rating = ratings[index];
             const newValue = calculateWeightScore(value.rating) * rating;
+            console.log("Processing:", key, value, "with rating", rating);
             index++;
             return {
                 ...value,
