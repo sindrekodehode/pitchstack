@@ -43,6 +43,36 @@ export function Stats() {
         return scoreValue;
     }
 
+    function calculateWeightScore(data) {
+        switch (data) {
+            case "green":
+                return 3;
+            case "yellow":
+                return 1;
+            case "red":
+                return 0;
+            default:
+                return 0;       
+        }
+    }
+
+    const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1];
+
+    function calculateWeightedScore(responseData, ratings) {
+        let totalScore = 0;
+        console.log("Data:", responseData);
+        console.log("Ratings:", ratings);
+        Object.entries(responseData).forEach(([key, value], index) => {
+            const ratingValue = calculateWeightScore(value.rating);
+            if (index < ratings.length) {
+                const weight = ratings[index];
+                totalScore += ratingValue * weight;
+            }
+        });
+        return totalScore;
+    };
+
+
 
     useEffect(() => {
         checkLoginState()
@@ -55,11 +85,11 @@ export function Stats() {
                 <div className={styles.stats}>
                     {selectedPDFData.map((pdfData, index) => {
                         const score = calculateScore(pdfData);
-
+                        const weightedScore = calculateWeightedScore(pdfData, ratings);
                         return (
                         <div key={index} className={styles.pdfcontainer}>
                             <div className={styles.pdfstats}>
-                            <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div></div>
+                            <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div><div>{weightedScore}</div></div>
                             <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  Point are given as follows: Green score = 3 points, Yellow score = 1 point and Red score = 0 points.  These points are then distributed to make a scale from 1-100.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup. </p></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
                                 <div key={key} className={styles.itemCard}>
