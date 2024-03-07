@@ -23,7 +23,7 @@ export function Res() {
                     const responseObject = JSON.parse(responseString);
                     setResponse(responseObject);
                     setRetryAttempt(false);
-                    console.log(response);
+                    console.log("response:",response);
                 } catch (error) {
                     console.error("Error parsing response:", error);
                     setError("Failed to fetch data");
@@ -81,13 +81,13 @@ export function Res() {
         }
     }
 
-    const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1]
+    const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1];
 
     function calculateWeightedScore(responseData, ratings) {
         let totalScore = 0;
         console.log("Data:", responseData);
         console.log("Ratings:", ratings);
-        Object.values(responseData).forEach(([value], index) => {
+        Object.values(responseData).forEach(([key, value], index) => {
             const ratingValue = calculateWeightScore(value.rating);
             if (index < ratings.length) {
                 const weight = ratings[index];
