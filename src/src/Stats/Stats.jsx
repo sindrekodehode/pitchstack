@@ -87,7 +87,7 @@ export function Stats() {
                 <div className={styles.stats}>
                     {selectedPDFData.map((pdfData, index) => {
                         const score = calculateScore(pdfData);
-                        const weightedScore = calculateWeightedScore(pdfData, ratings);
+                        const weightedScore = calculateWeightedScore(pdfData.data, ratings);
                         return (
                         <div key={index} className={styles.pdfcontainer}>
                             <div className={styles.pdfstats}>
