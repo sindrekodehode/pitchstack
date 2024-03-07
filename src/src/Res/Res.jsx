@@ -47,7 +47,7 @@ export function Res() {
 
 
     function calculateScore(responseData) {
-        let totalScore = 0
+        let totalScore = 0;
         Object.values(responseData).forEach(item => {
             switch (item.rating) {
                 case "green":
@@ -67,13 +67,26 @@ export function Res() {
         return scoreValue;
     }
 
+    function calculateWeightScore(data) {
+        switch (data) {
+            case "green":
+                return 3;
+            case "yellow":
+                return 1;
+            case "red":
+                return 0;
+            default:
+                return 0;       
+        }
+    }
+
     const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1]
 
     function calculateWeightedScore(data, ratings) {
         let index = 0;
         return Object.entries(data).map(([key, value]) => {
             const rating = ratings[index];
-            const newValue = value.rating * rating;
+            const newValue = calculateWeightScore(value.rating) * rating;
             index++;
             return {
                 ...value,
