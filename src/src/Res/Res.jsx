@@ -93,7 +93,7 @@ export function Res() {
             <div className={styles.stats}>
             <div className={styles.pdfcontainer}>
                 <div className={styles.pdfstats}>
-                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div></div>
+                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div><div>{result}</div></div>
                 <div className={styles.infographic}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore inventore esse, labore hic optio, nam explicabo, voluptates modi officiis suscipit assumenda veritatis repudiandae ipsam amet porro? Fugit aspernatur quas quam expedita facilis suscipit, nulla, dolorem reiciendis numquam itaque beatae. Necessitatibus, nam in! Quisquam necessitatibus tenetur fuga obcaecati dignissimos unde harum.</p></div>
                
                         {Object.entries(response).map(([key, value]) => (
