@@ -60,7 +60,7 @@ export function Stats() {
                         <div key={index} className={styles.pdfcontainer}>
                             <div className={styles.pdfstats}>
                             <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div></div>
-                            <div className={styles.infographic}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore inventore esse, labore hic optio, nam explicabo, voluptates modi officiis suscipit assumenda veritatis repudiandae ipsam amet porro? Fugit aspernatur quas quam expedita facilis suscipit, nulla, dolorem reiciendis numquam itaque beatae. Necessitatibus, nam in! Quisquam necessitatibus tenetur fuga obcaecati dignissimos unde harum.</p></div>
+                            <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  Point are given as follows: Green score = 3 points, Yellow score = 1 point and Red score = 0 points.  These points are then distributed to make a scale from 1-100.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup. </p></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
                                 <div key={key} className={styles.itemCard}>
                                     <div className={styles.cardText}>
