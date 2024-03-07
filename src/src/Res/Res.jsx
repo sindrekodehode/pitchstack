@@ -94,7 +94,8 @@ export function Res() {
                 totalScore += ratingValue * weight;
             }
         });
-        return totalScore;
+        const scoreValue = (totalScore / 300) * 100
+        return scoreValue;
     };
 
     
