@@ -45,6 +45,7 @@ export function Res() {
         }
     }
 
+
     function calculateScore(responseData) {
         let totalScore = 0
         Object.values(responseData).forEach(item => {
@@ -65,6 +66,25 @@ export function Res() {
         const scoreValue = Math.floor((totalScore / 66) *100);
         return scoreValue;
     }
+
+    const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1]
+
+    function calculateWeightedScore(data, ratings) {
+        let index = 0;
+        return Object.entries(data).map(([key, value]) => {
+            const rating = ratings[index];
+            const newValue = value.value * rating;
+            index++;
+            return {
+                ...value,
+                newValue: newValue
+            };
+        });
+    };
+
+    const result = calculateWeightedScore(responseData, ratings)
+
+    console.log(result);
 
     const score = calculateScore(response);
     
