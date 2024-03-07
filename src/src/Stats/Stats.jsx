@@ -65,11 +65,13 @@ export function Stats() {
         Object.entries(responseData).forEach(([key, value], index) => {
             const ratingValue = calculateWeightScore(value.rating);
             if (index < ratings.length) {
-                const weight = ratings[index];
+                const weight = ratings[index] ?? 0;
+                console.log(`Processing ${key}: Rating ${value.rating}, Value ${ratingValue}, Weight ${weight}`);
                 totalScore += ratingValue * weight;
             }
         });
-        return totalScore;
+        const scoreValue = Math.floor((totalScore / 300) * 100);
+        return scoreValue;
     };
 
 
