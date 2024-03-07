@@ -82,11 +82,11 @@ export function Res() {
 
     const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1]
 
-    function calculateWeightedScore(data, ratings) {
+    function calculateWeightedScore(responseData, ratings) {
         let totalScore = 0;
-        console.log("Data:", data);
+        console.log("Data:", responseData);
         console.log("Ratings:", ratings);
-        Object.entries(data).forEach(([key, value], index) => {
+        Object.values(responseData).forEach(([key, value], index) => {
             const ratingValue = calculateWeightScore(value.rating);
             if (index < ratings.length) {
                 const weight = ratings[index];
