@@ -23,6 +23,7 @@ export function Res() {
                     const responseObject = JSON.parse(responseString);
                     setResponse(responseObject);
                     setRetryAttempt(false);
+                    console.log(response);
                 } catch (error) {
                     console.error("Error parsing response:", error);
                     setError("Failed to fetch data");
@@ -86,7 +87,7 @@ export function Res() {
         let totalScore = 0;
         console.log("Data:", responseData);
         console.log("Ratings:", ratings);
-        Object.values(responseData).forEach(([key, value], index) => {
+        Object.values(responseData).forEach(([value], index) => {
             const ratingValue = calculateWeightScore(value.rating);
             if (index < ratings.length) {
                 const weight = ratings[index];
