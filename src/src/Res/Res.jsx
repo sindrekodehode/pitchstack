@@ -96,11 +96,11 @@ export function Res() {
         return totalScore;
     };
 
+    
+    const score = calculateScore(response);
     const weightedScore = calculateWeightedScore(response, ratings)
 
     console.log(weightedScore);
-
-    const score = calculateScore(response);
     
     return (
         <div className={styles.container}>
