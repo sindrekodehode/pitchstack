@@ -82,7 +82,7 @@ export function Res() {
         });
     };
 
-    const result = calculateWeightedScore(responseData, ratings)
+    const result = calculateWeightedScore(response, ratings)
 
     console.log(result);
 
