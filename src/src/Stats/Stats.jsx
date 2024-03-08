@@ -35,7 +35,7 @@ export function Stats() {
         }
 
         const imgData = "/jpgbanner.jpg";
-        doc.addImage(imgData, 'JPG', 10, 10, 50, 15);
+        doc.addImage(imgData, 'JPG', 0, 0, 60, 20);
 
 
         doc.setFontSize(14);
