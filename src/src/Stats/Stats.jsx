@@ -21,6 +21,8 @@ export function Stats() {
         const maxLineWidth = pageWidth - margin * 2;
 
         const addText = (text, yPosition) => {
+            text = text.replace(/≥/g, ">=");
+            text = text.replace(/≤/g, "<=");
             let lines = doc.splitTextToSize(text, maxLineWidth);
             lines.forEach(line => {
                 if (yPosition > pageHeight - 10) {
