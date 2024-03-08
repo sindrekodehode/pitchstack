@@ -42,13 +42,13 @@ export function Stats() {
                 doc.addPage();
                 yPosition = 10;
             } else {
-                yPosition +=10
+                yPosition +=7
             }
 
             yPosition = addText(`${key}`, yPosition + 10);
             yPosition = addText(`Item: ${value.item}`, yPosition);
-            yPosition = addText(`${value.evaluation}`, yPosition);
-            yPosition = addText(`${value.rating}`, yPosition);
+            yPosition = addText(`Evaluation: ${value.evaluation}`, yPosition);
+            yPosition = addText(`Rating: ${value.rating}`, yPosition);
         });
 
         doc.save(`${selectedFileNames[0].originalFileName}-pitchstack.pdf`)
