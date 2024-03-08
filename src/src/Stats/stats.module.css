@@ -168,8 +168,9 @@
     font-size: 14px;
     border-radius: 6px;
     height: 3rem;
-    color: goldenrod;
-    border: 1px solid goldenrod;
+    padding-left: 0.5rem;
+    color: #f1f1f1;
+    box-shadow: 2px 2px 4px black;
 }
 
 .iconContainer img {
