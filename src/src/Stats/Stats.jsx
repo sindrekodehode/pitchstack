@@ -13,19 +13,22 @@ export function Stats() {
     function generatePDFWithText(pdfData) {
         console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
+        doc.setFontSize(12);
         let yPosition = 10;
         const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
         const margin = 10;
         const maxLineWidth = pageWidth - margin * 2;
 
         const addText = (text, yPosition) => {
-            const lines = doc.splitTextToSize(text, maxLineWidth);
+            let lines = doc.splitTextToSize(text, maxLineWidth);
             lines.forEach(line => {
-                if (yPosition > 280) {
+                if (yPosition > pageHeight - 10) {
                     doc.addPage();
+                    yPosition = 10
                 }
                 doc.text(line, 10, yPosition)
-                yPosition += 10;
+                yPosition += 7;
             });
             return yPosition;
         }
@@ -35,6 +38,13 @@ export function Stats() {
         
 
         Object.entries(pdfData.data).forEach(([key, value]) => {
+            if (yPosition > pageHeight - 20) {
+                doc.addPage();
+                yPosition = 10;
+            } else {
+                yPosition +=10
+            }
+
             yPosition = addText(`${key}`, yPosition + 10);
             yPosition = addText(`Item: ${value.item}`, yPosition);
             yPosition = addText(`${value.evaluation}`, yPosition);
