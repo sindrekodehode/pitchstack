@@ -42,7 +42,7 @@ export function Stats() {
     function calculateWeightScore(data) {
         switch (data) {
             case "green":
-                return 3;
+                return 2;
             case "yellow":
                 return 1;
             case "red":
