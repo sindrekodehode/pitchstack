@@ -44,10 +44,8 @@ export function Stats() {
 
         xPosition += pitchScoreWidth + 5;
         doc.setFontSize(24);
-        doc.setFont(undefined, isBold = true);
         const weightedScore = calculateWeightedScore(pdfData.data, ratings)
         doc.text(`${weightedScore}`, xPosition, yPosition);
-        doc.setFont(undefined, isBold = false);
 
         Object.entries(pdfData.data).forEach(([key, value]) => {
             if (yPosition > pageHeight - 20) {
