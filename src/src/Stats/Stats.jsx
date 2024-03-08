@@ -18,8 +18,7 @@ export function Stats() {
                     width: 500,
                 }],
             };
-            console.log("selectedPDFData:",selectedPDFData)
-            console.log("selectedFileNames[0].originalFileName:", selectedFileNames)
+            console.log("selectedFileNames[0].originalFileName:", selectedFileNames[0].originalFileName)
             pdfMake.createPdf(docDefinition).download(`pitchstack.pdf`);
         });
     }
