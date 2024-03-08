@@ -158,8 +158,10 @@
 .pdfBtnContainer {
     display: flex;
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 5%;
+    font-size: 14px;
+    border-radius: 6px;
 }
 
 .pdfBtn {
