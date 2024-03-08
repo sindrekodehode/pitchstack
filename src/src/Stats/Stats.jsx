@@ -11,16 +11,15 @@ export function Stats() {
     const { selectedPDFData, hasSubmitted, selectedFileNames } = useContext(AppContext);
 
     function generatePDFWithText(pdfData) {
-        console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
-        doc.setFontSize(12);
         let yPosition = 10;
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
         const margin = 10;
         const maxLineWidth = pageWidth - margin * 2;
 
-        const addText = (text, yPosition) => {
+        const addText = (text, yPosition, fontSize = 12, isBold = false) => {
+            doc.setFontSize(fontSize);
             text = text.replace(/≥/g, ">=");
             text = text.replace(/≤/g, "<=");
             let lines = doc.splitTextToSize(text, maxLineWidth);
@@ -36,7 +35,8 @@ export function Stats() {
         }
 
         const weightedScore = calculateWeightedScore(pdfData.data, ratings)
-        yPosition = addText(`Your pitchscore: ${weightedScore}`, yPosition);
+        yPosition = addText(`Your pitchscore:`, yPosition, 14, false);
+        yPosition = addText(`${weightedScore}`, yPosition, 24, true);
         
 
         Object.entries(pdfData.data).forEach(([key, value]) => {
@@ -47,7 +47,7 @@ export function Stats() {
                 yPosition +=5
             }
 
-            yPosition = addText(`${key}`, yPosition + 6);
+            yPosition = addText(`${key}`, yPosition + 6, 14, true);
             yPosition = addText(`Item: ${value.item}`, yPosition);
             yPosition = addText(`Evaluation: ${value.evaluation}`, yPosition);
             yPosition = addText(`Rating: ${value.rating}`, yPosition);
