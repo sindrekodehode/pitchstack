@@ -14,7 +14,7 @@ export function Stats() {
         console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
         doc.setFontSize(12);
-        let yPosition = 10;
+        let yPosition = 8;
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
         const margin = 10;
@@ -28,7 +28,7 @@ export function Stats() {
                     yPosition = 10
                 }
                 doc.text(line, 5, yPosition)
-                yPosition += 3;
+                yPosition += 5;
             });
             return yPosition;
         }
