@@ -172,7 +172,8 @@
     border: 1px solid goldenrod;
 }
 
-.iconContainer {
+.iconContainer img {
     height: calc(var(--custom-15)*0.5);
     width: calc(var(--custom-15)*0.5);
 }
+
