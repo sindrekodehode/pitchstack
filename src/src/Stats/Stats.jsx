@@ -24,6 +24,7 @@ export function Stats() {
     // }
 
     function generatePDFWithText(pdfData) {
+        console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
         let yPosition = 10;
         const weightedScore = calculateWeightedScore(pdfData.data, ratings)
