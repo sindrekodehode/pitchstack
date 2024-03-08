@@ -107,7 +107,7 @@ export function Stats() {
                             <div className={styles.pdfstats}>
                             <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{weightedScore}</div></div>
                             <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup. </p></div>
-                            <div className={styles.pdfBtnContainer}><button className={styles.pdfBtn} onClick={() => generatePDFWithText() }>Download as PDF</button></div>
+                            <div className={styles.pdfBtnContainer}><button className={styles.pdfBtn} onClick={() => generatePDFWithText(pdfData) }>Download as PDF</button></div>
                             {pdfData.data && Object.entries(pdfData.data).map(([key, value]) => (
                                 <div key={key} className={styles.itemCard}>
                                     <div className={styles.cardText}>
