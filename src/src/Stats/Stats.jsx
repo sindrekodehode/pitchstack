@@ -10,36 +10,35 @@ import jsPDF from 'jspdf';
 export function Stats() {
     const { selectedPDFData, hasSubmitted, selectedFileNames } = useContext(AppContext);
 
-    // function generatePDF() {
-    //     html2canvas(document.body).then(canvas => {
-    //         const imageData = canvas.toDataURL('image/png');
-    //         const docDefinition = {
-    //             content: [{
-    //                 image: imageData,
-    //                 width: 500,
-    //             }],
-    //         };
-    //         pdfMake.createPdf(docDefinition).download(`${selectedFileNames[0].originalFileName}-pitchstack.pdf`);
-    //     });
-    // }
-
     function generatePDFWithText(pdfData) {
         console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
         let yPosition = 10;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const margin = 10;
+        const maxLineWidth = pageWidth - margin * 2;
+
+        const addText = (text, yPosition) => {
+            const lines = doc.splitTextToSize(text, maxLineWidth);
+            lines.forEach(line => {
+                if (yPosition > 280) {
+                    doc.addPage();
+                }
+                doc.text(line, 10, yPosition)
+                yPosition += 10;
+            });
+            return yPosition;
+        }
+
         const weightedScore = calculateWeightedScore(pdfData.data, ratings)
-        doc.text(`Your pitchscore: ${weightedScore}`, 10, yPosition);
-        yPosition += 10;
+        yPosition = addText(`Your pitchscore: ${weightedScore}`, yPosition);
+        
 
         Object.entries(pdfData.data).forEach(([key, value]) => {
-            doc.text(`${key}`, 10, yPosition);
-            yPosition += 10;
-            doc.text(`Item: ${value.item}`, 10, yPosition);
-            yPosition += 10;
-            doc.text(`Evaluation: ${value.evaluation}`, 10, yPosition);
-            yPosition += 10;
-            doc.text(`Rating: ${value.rating}`, 10, yPosition);
-            yPosition += 10;
+            yPosition = addText(`${key}`, yPosition + 10);
+            yPosition = addText(`Item: ${value.item}`, yPosition);
+            yPosition = addText(`${value.evaluation}`, yPosition);
+            yPosition = addText(`${value.rating}`, yPosition);
         });
 
         doc.save(`${selectedFileNames[0].originalFileName}-pitchstack.pdf`)
