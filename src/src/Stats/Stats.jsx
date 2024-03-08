@@ -12,7 +12,6 @@ export function Stats() {
 
     function generatePDFWithText(pdfData) {
         const doc = new jsPDF();
-        let yPosition = 10;
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
         const margin = 10;
@@ -20,6 +19,7 @@ export function Stats() {
 
         const addText = (text, yPosition, fontSize = 12, isBold = false) => {
             doc.setFontSize(fontSize);
+            doc.setFont(undefined, isBold ? 'bold' : 'normal');
             text = text.replace(/≥/g, ">=");
             text = text.replace(/≤/g, "<=");
             let lines = doc.splitTextToSize(text, maxLineWidth);
@@ -34,10 +34,20 @@ export function Stats() {
             return yPosition;
         }
 
+        doc.setFontSize(14);
+        let pitchScoreLabel = "Your pitchscore";
+        let pitchScoreWidth = doc.getTextWidth(pitchScoreLabel);
+        let xPosition = 10;
+        let yPosition = 10;
+
+        doc.text(pitchScoreLabel, xPosition, yPosition);
+
+        xPosition += pitchScoreWidth + 5;
+        doc.setFontSize(24);
+        doc.setFont(undefined, isBold = true);
         const weightedScore = calculateWeightedScore(pdfData.data, ratings)
-        yPosition = addText(`Your pitchscore:`, yPosition, 14, false);
-        yPosition = addText(`${weightedScore}`, yPosition, 24, true);
-        
+        doc.text(`${weightedScore}`, xPosition, yPosition);
+        doc.setFont(undefined, isBold = false);
 
         Object.entries(pdfData.data).forEach(([key, value]) => {
             if (yPosition > pageHeight - 20) {
