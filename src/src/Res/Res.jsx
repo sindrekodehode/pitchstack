@@ -59,7 +59,7 @@ export function Res() {
         }
     }
 
-    const ratings = [10, 9, 8, 20, 13, 5, 5, 5, 0.5, 1, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 1, 1, 1, 1];
+    const ratings = [10, 9, 8, 20, 14, 5, 5, 5, 0.5, 0.5, 1, 0.5, 8, 0.5, 0.5, 5, 3, 1, 0.5, 1, 1, 1];
 
     function calculateWeightedScore(responseData, ratings) {
         let totalScore = 0;
