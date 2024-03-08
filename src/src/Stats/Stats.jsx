@@ -27,7 +27,7 @@ export function Stats() {
                     doc.addPage();
                     yPosition = 10
                 }
-                doc.text(line, 10, yPosition)
+                doc.text(line, 7, yPosition)
                 yPosition += 7;
             });
             return yPosition;
@@ -42,7 +42,7 @@ export function Stats() {
                 doc.addPage();
                 yPosition = 10;
             } else {
-                yPosition +=7
+                yPosition +=5
             }
 
             yPosition = addText(`${key}`, yPosition + 10);
