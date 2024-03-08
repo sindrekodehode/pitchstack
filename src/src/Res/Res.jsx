@@ -49,7 +49,7 @@ export function Res() {
     function calculateWeightScore(data) {
         switch (data) {
             case "green":
-                return 2;
+                return 2.5;
             case "yellow":
                 return 1;
             case "red":
