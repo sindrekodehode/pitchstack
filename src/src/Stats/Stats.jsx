@@ -44,7 +44,7 @@ export function Stats() {
         let pitchScoreLabel = "Your pitchscore";
         let pitchScoreWidth = doc.getTextWidth(pitchScoreLabel);
         let xPosition = 5;
-        let yPosition = 40;
+        let yPosition = 30;
 
         doc.text(pitchScoreLabel, xPosition, yPosition);
 
