@@ -14,7 +14,7 @@ export function Stats() {
         console.log("pdfdata:",pdfData)
         const doc = new jsPDF();
         doc.setFontSize(12);
-        let yPosition = 8;
+        let yPosition = 10;
         const pageWidth = doc.internal.pageSize.getWidth();
         const pageHeight = doc.internal.pageSize.getHeight();
         const margin = 10;
@@ -45,7 +45,7 @@ export function Stats() {
                 yPosition +=5
             }
 
-            yPosition = addText(`${key}`, yPosition + 10);
+            yPosition = addText(`${key}`, yPosition + 8);
             yPosition = addText(`Item: ${value.item}`, yPosition);
             yPosition = addText(`Evaluation: ${value.evaluation}`, yPosition);
             yPosition = addText(`Rating: ${value.rating}`, yPosition);
