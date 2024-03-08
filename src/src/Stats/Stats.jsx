@@ -34,11 +34,15 @@ export function Stats() {
             return yPosition;
         }
 
+        const imgData = "/jpgbanner.jpg";
+        doc.addImage(imgData, 'JPG', 10, 10, 50, 15);
+
+
         doc.setFontSize(14);
         let pitchScoreLabel = "Your pitchscore";
         let pitchScoreWidth = doc.getTextWidth(pitchScoreLabel);
-        let xPosition = 10;
-        let yPosition = 10;
+        let xPosition = 5;
+        let yPosition = 30;
 
         doc.text(pitchScoreLabel, xPosition, yPosition);
 
