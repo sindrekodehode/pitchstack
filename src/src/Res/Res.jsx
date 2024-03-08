@@ -47,26 +47,27 @@ export function Res() {
     }
 
 
-    function calculateScore(responseData) {
-        let totalScore = 0;
-        Object.values(responseData).forEach(item => {
-            switch (item.rating) {
-                case "green":
-                    totalScore += 3;
-                    break;
-                case "yellow":
-                    totalScore += 1;
-                    break;
-                case "red":
-                    break;
-                    default:
-                    break;
-            }    
-        });
+    // function calculateScore(responseData) {
+    //     let totalScore = 0;
+    //     Object.values(responseData).forEach(item => {
+    //         switch (item.rating) {
+    //             case "green":
+    //                 totalScore += 3;
+    //                 break;
+    //             case "yellow":
+    //                 totalScore += 1;
+    //                 break;
+    //             case "red":
+    //                 break;
+    //                 default:
+    //                 break;
+    //         }    
+    //     });
         
-        const scoreValue = Math.floor((totalScore / 66) *100);
-        return scoreValue;
-    }
+    //     const scoreValue = Math.floor((totalScore / 66) *100);
+    //     return scoreValue;
+    // }
+
 
     function calculateWeightScore(data) {
         switch (data) {
@@ -99,17 +100,15 @@ export function Res() {
     };
 
     
-    const score = calculateScore(response);
+    // const score = calculateScore(response);
     const weightedScore = calculateWeightedScore(response, ratings)
-
-    console.log(weightedScore);
     
     return (
         <div className={styles.container}>
             <div className={styles.stats}>
             <div className={styles.pdfcontainer}>
                 <div className={styles.pdfstats}>
-                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{score}</div><div>{weightedScore}</div></div>
+                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{weightedScore}</div></div>
                 <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup.</p></div>
                
                         {Object.entries(response).map(([key, value]) => (
