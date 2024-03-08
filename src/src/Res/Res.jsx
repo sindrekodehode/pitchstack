@@ -46,29 +46,6 @@ export function Res() {
         }
     }
 
-
-    // function calculateScore(responseData) {
-    //     let totalScore = 0;
-    //     Object.values(responseData).forEach(item => {
-    //         switch (item.rating) {
-    //             case "green":
-    //                 totalScore += 3;
-    //                 break;
-    //             case "yellow":
-    //                 totalScore += 1;
-    //                 break;
-    //             case "red":
-    //                 break;
-    //                 default:
-    //                 break;
-    //         }    
-    //     });
-        
-    //     const scoreValue = Math.floor((totalScore / 66) *100);
-    //     return scoreValue;
-    // }
-
-
     function calculateWeightScore(data) {
         switch (data) {
             case "green":
@@ -95,12 +72,10 @@ export function Res() {
                 totalScore += ratingValue * weight;
             }
         });
-        const scoreValue = (totalScore / 300) * 100
+        const scoreValue = Math.floor((totalScore / 300) * 100);
         return scoreValue;
     };
 
-    
-    // const score = calculateScore(response);
     const weightedScore = calculateWeightedScore(response, ratings)
     
     return (
