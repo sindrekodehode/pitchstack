@@ -35,14 +35,16 @@ export function Stats() {
         }
 
         const imgData = "/jpgbanner.jpg";
-        doc.addImage(imgData, 'JPG', 0, 0, 60, 20);
+        doc.addImage(imgData, 'JPG', 0, 0, 60, 16);
+
+        doc.textWithLink("Vis Innovasjon", 65, 30, { url: "https://www.visinnovasjon.no/" });
 
 
         doc.setFontSize(14);
         let pitchScoreLabel = "Your pitchscore";
         let pitchScoreWidth = doc.getTextWidth(pitchScoreLabel);
         let xPosition = 5;
-        let yPosition = 30;
+        let yPosition = 40;
 
         doc.text(pitchScoreLabel, xPosition, yPosition);
 
