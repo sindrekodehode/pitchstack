@@ -45,7 +45,7 @@ export function Stats() {
                 yPosition +=5
             }
 
-            yPosition = addText(`${key}`, yPosition + 8);
+            yPosition = addText(`${key}`, yPosition + 6);
             yPosition = addText(`Item: ${value.item}`, yPosition);
             yPosition = addText(`Evaluation: ${value.evaluation}`, yPosition);
             yPosition = addText(`Rating: ${value.rating}`, yPosition);
