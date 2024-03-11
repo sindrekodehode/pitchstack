@@ -33,7 +33,7 @@ export function Stats() {
         }
 
         const imgData = "/jpgbanner2.jpg";
-        doc.addImage(imgData, 'JPG', 0, 0, 60, 30);
+        doc.addImage(imgData, 'JPG', 0, 0, 60, 28);
 
         doc.textWithLink("Vis Innovasjon", 155, 13, { url: "https://www.visinnovasjon.no/" });
 
@@ -42,7 +42,7 @@ export function Stats() {
         let pitchScoreLabel = "Your pitchscore";
         let pitchScoreWidth = doc.getTextWidth(pitchScoreLabel);
         let xPosition = 5;
-        let yPosition = 30;
+        let yPosition = 40;
 
         doc.text(pitchScoreLabel, xPosition, yPosition);
 
