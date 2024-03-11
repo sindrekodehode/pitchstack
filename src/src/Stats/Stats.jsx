@@ -3,8 +3,6 @@ import { Aside } from './components/Aside';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppContext, checkLoginState } from '../Context/Context';
-import html2canvas from 'html2canvas';
-import pdfMake from 'pdfmake/build/pdfmake';
 import jsPDF from 'jspdf';
 
 export function Stats() {
@@ -34,7 +32,7 @@ export function Stats() {
             return yPosition;
         }
 
-        const imgData = "/jpgbanner.jpg";
+        const imgData = "/jpgbanner2.jpg";
         doc.addImage(imgData, 'JPG', 0, 0, 60, 16);
 
         doc.textWithLink("Vis Innovasjon", 155, 13, { url: "https://www.visinnovasjon.no/" });
