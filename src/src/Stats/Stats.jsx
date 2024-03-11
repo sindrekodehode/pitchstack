@@ -40,7 +40,7 @@ export function Stats() {
         doc.addImage(imgData, 'JPG', 0, 0, 60, 28);
         doc.setTextColor(241, 241, 241);
         doc.setFontSize(12);
-        doc.textWithLink("https://www.visinnovasjon.no/", 155, 23, { url: "https://www.visinnovasjon.no/" });
+        doc.textWithLink("https://www.visinnovasjon.no/", 150, 23, { url: "https://www.visinnovasjon.no/" });
         doc.setTextColor(24, 24, 24);
 
 
