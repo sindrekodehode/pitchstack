@@ -33,7 +33,7 @@ export function Stats() {
         }
 
         const imgData = "/jpgbanner2.jpg";
-        doc.addImage(imgData, 'JPG', 0, 0, 60, 16);
+        doc.addImage(imgData, 'JPG', 0, 0, 60, 18);
 
         doc.textWithLink("Vis Innovasjon", 155, 13, { url: "https://www.visinnovasjon.no/" });
 
