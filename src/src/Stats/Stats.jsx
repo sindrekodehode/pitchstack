@@ -17,7 +17,7 @@ export function Stats() {
 
         const headerHeight = 28;
         doc.setFillColor(0);
-        doc.react(0, 0, pageWidth, headerHeight, 'F');
+        doc.rect(0, 0, pageWidth, headerHeight, 'F');
 
         const addText = (text, yPosition, fontSize = 12, isBold = false) => {
             doc.setFontSize(fontSize);
