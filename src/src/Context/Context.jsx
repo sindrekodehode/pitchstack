@@ -107,9 +107,17 @@ export async function checkLoginState() {
     const now = new Date();
 
     try {
-        await refreshToken();
+        const refreshResult = await refreshToken();
+        if (refreshResult && refreshResult.expiresIn) {
+            const expiresInMs = parseInt(refreshResult.expiresIn) * 1000;
+            const updatedExpiry = now.getTime() + expiresInMs
+            item.expiry = updatedExpiry;
+            localStorage.setItem("loginState", JSON.stringify(item));
+        }
     } catch (error) {
         console.error("Error fetching cookie:", error);
+        localStorage.removeItem("loginState");
+        return { hasSubmitted: false };
     }
 
     if (now.getTime() > item.expiry) {
