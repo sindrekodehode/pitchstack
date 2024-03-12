@@ -82,6 +82,8 @@ export const refreshToken = async () => {
 
     } catch (error) {
         console.error('Error refreshing token:', error);
+        localStorage.removeItem("loginState");
+        return { hasSubmitted: false };
     }
 };
 
