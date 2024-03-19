@@ -12,9 +12,6 @@ export function Aside() {
     const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState, setUploadType, uploadType } = useContext(AppContext);
     const [isOpen, setIsOpen] = useState(true);
 
-    const handleFileRadioChange = (event) => {
-        setUploadType(event.target.value);
-      }
 
     const handleRadioButtonChange =  async (fileHash, fileName) => {
         
@@ -121,14 +118,6 @@ export function Aside() {
                 <div className={styles.radioSlider} style={sliderTrackStyle}>
                     {hasSubmitted && isOpen && (
                     <>
-                        <div className={styles.hfradioContainer}>
-                            <ul>
-                                <input type="radio" id='pitch' onChange={handleFileRadioChange} checked={uploadType === "pitch"} value="pitch"></input>
-                                <label htmlFor='pitch'>Pitch</label>
-                                <input type="radio" id='form' onChange={handleFileRadioChange} checked={uploadType === "form"} value="form"></input>
-                                <label htmlFor='form'>Application</label>
-                            </ul>
-                        </div>
                         <div className={styles.radioContainer}>
                             <h3>Tidligere resultater</h3>
                             {responseObj.map((element, index) => (
