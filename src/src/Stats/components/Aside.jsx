@@ -9,8 +9,12 @@ import { jsonrepair } from 'jsonrepair';
 export function Aside() {
     const [responseObj, setResponseObj] = useState([]);
     const [error, setError] = useState(null);
-    const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState } = useContext(AppContext);
+    const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState, setUploadType, uploadType } = useContext(AppContext);
     const [isOpen, setIsOpen] = useState(true);
+
+    const handleFileRadioChange = (event) => {
+        setUploadType(event.target.value);
+      }
 
     const handleRadioButtonChange =  async (fileHash, fileName) => {
         
@@ -39,22 +43,50 @@ export function Aside() {
             withCredentials: true,
         }
         
-        axios.get("https://aivispitchstackserver.azurewebsites.net/uploads", config)
-        .then(response => {
-            const responseData = response.data;
-            const pdfArray = Object.keys(responseData).map(hash => {
-                return {
-                    hash: hash,
-                    ...responseData[hash]
-                };
-            });
-            setResponseObj(pdfArray);
-            console.log(response);
-        })
-        .catch(error => {
-            setError(error);
-            console.error('Error fetching data:', error);
-        })
+        if (uploadType === "form") {
+            axios.get("https://aivispitchstackserver.azurewebsites.net/application", config)
+            .then(response => {
+                const responseData = response.data;
+                const pdfArray = Object.keys(responseData).map(hash => {
+                    return {
+                        hash: hash,
+                        ...responseData[hash]
+                    };
+                });
+                setResponseObj(pdfArray);
+                console.log(response);
+            })
+            .catch(error => {
+                setError(error);
+                console.error('Error fetching data:', error);
+            })
+
+        }
+
+        else if (uploadType === "pitch") {
+            
+            axios.get("https://aivispitchstackserver.azurewebsites.net/uploads", config)
+            .then(response => {
+                const responseData = response.data;
+                const pdfArray = Object.keys(responseData).map(hash => {
+                    return {
+                        hash: hash,
+                        ...responseData[hash]
+                    };
+                });
+                setResponseObj(pdfArray);
+                console.log(response);
+            })
+            .catch(error => {
+                setError(error);
+                console.error('Error fetching data:', error);
+            })
+        }
+
+        else {
+            console.error('Error, please specify upload type', error);
+            setUploadError('An error occurred during file upload.');
+        }
         
     }, []);
 
@@ -88,17 +120,27 @@ export function Aside() {
                 </div>
                 <div className={styles.radioSlider} style={sliderTrackStyle}>
                     {hasSubmitted && isOpen && (
-                    <div className={styles.radioContainer}>
-                        <h3>Tidligere resultater</h3>
-                        {responseObj.map((element, index) => (
-                            <React.Fragment key={index}>
-                                <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
-                                <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
-                                <div className={styles.radioPos} style={calculatePosition(index)}></div>
-                            </React.Fragment>
-                        ))}
-                        
-                    </div>)}
+                    <>
+                        <div className={styles.hfradioContainer}>
+                            <ul>
+                                <input type="radio" id='pitch' onChange={handleFileRadioChange} checked={uploadType === "pitch"} value="pitch"></input>
+                                <label htmlFor='pitch'>Pitch</label>
+                                <input type="radio" id='form' onChange={handleFileRadioChange} checked={uploadType === "form"} value="form"></input>
+                                <label htmlFor='form'>Application</label>
+                            </ul>
+                        </div>
+                        <div className={styles.radioContainer}>
+                            <h3>Tidligere resultater</h3>
+                            {responseObj.map((element, index) => (
+                                <React.Fragment key={index}>
+                                    <input type="radio" id={`pdf-${index}`} checked={checkedState[element.hash] || false} onChange={(e) => handleRadioButtonChange(element.hash, element.originalFileName)} value="1"></input>
+                                    <label htmlFor={`pdf-${index}`}>{shortenPdfName(element.originalFileName)}</label>
+                                    <div className={styles.radioPos} style={calculatePosition(index)}></div>
+                                </React.Fragment>
+                            ))}
+                            
+                        </div>
+                    </>)}
                 </div>
             </div>
         </div>

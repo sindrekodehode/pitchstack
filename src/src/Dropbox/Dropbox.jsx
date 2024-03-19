@@ -11,7 +11,7 @@ import { jokesArray } from './jokesarray'
 export function Dropbox() {
   const [isUploadComplete, setUploadComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const  {fileHash, setFileHash, setRetryAttempt}  = useContext(AppContext);
+  const  {fileHash, setFileHash, setRetryAttempt, setUploadType, uploadType}  = useContext(AppContext);
   const messages = jokesArray;
 
   const [currentMessage, setCurrentMessage] = useState('');
@@ -25,6 +25,10 @@ export function Dropbox() {
 
   const drop = React.useRef(null);
   const fileInput = React.useRef(null);
+
+  const handleRadioButtonChange = (event) => {
+    setUploadType(event.target.value);
+  }
 
   useEffect(() => {
     if (isLoading) {
@@ -85,17 +89,36 @@ export function Dropbox() {
       withCredentials: true,
     };
 
-    try {
-      const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
-      console.log('Upload successful', response.data);
-      console.log('Response filehash:',response.data.metadata.fileHash);
-      setFileHash(response.data.metadata.fileHash);
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      setKey(prevKey => prevKey + 1);
-    } finally {
-      setIsLoading(false);
-    }
+    if (uploadType === "pitch") {
+      try {
+        const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
+        console.log('Upload successful', response.data);
+        console.log('Response filehash:',response.data.metadata.fileHash);
+        setFileHash(response.data.metadata.fileHash);
+        navigate('/res');
+      } catch (error) {
+        console.error('Error uploading file:', error);
+        setUploadError('An error occurred during file upload.')
+      } finally {
+        setIsLoading(false);
+      }
+      } else if (uploadType === "form") {
+        try {
+          const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/applications', formData, config);
+          console.log('Upload successful', response.data);
+          console.log('Response filehash:',response.data.metadata.fileHash);
+          setFileHash(response.data.metadata.fileHash);
+          navigate('/res');
+        } catch (error) {
+          console.error('Error uploading file:', error);
+          setUploadError('An error occurred during file upload.')
+        } finally {
+          setIsLoading(false);
+        }
+        } else {
+          console.error('Error, please specify upload type', error);
+          setUploadError('An error occurred during file upload.')
+        }
     };
 
   useEffect(() => {
@@ -168,6 +191,16 @@ export function Dropbox() {
 
   return (
     <div className={styles.dropbox} >
+
+      <div className={styles.dbradioContainer}>
+        <ul>
+          <input type="radio" id='pitch' onChange={handleRadioButtonChange} checked={uploadType === "pitch"} value="pitch"></input>
+          <label htmlFor='pitch'>Pitch pdf</label>
+          <input type="radio" id='form' onChange={handleRadioButtonChange} checked={uploadType === "form"} value="form"></input>
+          <label htmlFor='form'>Application pdf</label>
+        </ul>
+      </div>
+
       {uploadError && (
         <div className={styles.errorMessage}>
           <h1>{uploadError}</h1>

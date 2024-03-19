@@ -21,6 +21,7 @@ export const ContextProvider = ({ children }) => {
     const [isLogin, setIsLogin] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [uploadType, setUploadType] = useState("");
 
     useEffect( () => {
         const initializeState = async () => {
@@ -62,7 +63,9 @@ export const ContextProvider = ({ children }) => {
         username,
         setUsername,
         password,
-        setPassword
+        setPassword,
+        uploadType,
+        setUploadType
 
     };
 
