@@ -21,7 +21,7 @@ export const ContextProvider = ({ children }) => {
     const [isLogin, setIsLogin] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [uploadType, setUploadType] = useState("");
+    const [uploadType, setUploadType] = useState("pitch");
 
     useEffect( () => {
         const initializeState = async () => {
