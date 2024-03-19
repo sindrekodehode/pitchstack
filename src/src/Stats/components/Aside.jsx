@@ -55,7 +55,7 @@ export function Aside() {
             })
             .catch(error => {
                 setError(error);
-                console.error('Error fetching data:', error);
+                console.error('Error fetching application data:', error);
             })
 
         }
@@ -76,7 +76,7 @@ export function Aside() {
             })
             .catch(error => {
                 setError(error);
-                console.error('Error fetching data:', error);
+                console.error('Error fetching pitch data:', error);
             })
         }
 
