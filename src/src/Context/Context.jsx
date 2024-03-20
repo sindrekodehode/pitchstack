@@ -165,14 +165,7 @@ export async function fetchNewData(fileHash) {
 
                 evaluationString = firstMessageContent.content[0].text.value;
                 console.log("eval string:", evaluationString)
-                    
-                
-                let evaluations;
-                try {
-                    evaluations = JSON.parse(evaluationString);
-                    return evaluations
-                } catch (error) {
-                    console.error("Error parsing the evaluation string:", error);
+                    return evaluationString
                 }
                 // let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
 
@@ -186,7 +179,6 @@ export async function fetchNewData(fileHash) {
                 // } else {
                 //     console.error("response.data is undefined");
                 // }
-            } 
         } catch (error) {
             console.error("Error fetching data:", error);
             throw error;
