@@ -63,8 +63,6 @@ export function Res() {
 
     function calculateWeightedScore(responseData, ratings) {
         let totalScore = 0;
-        console.log("Data:", responseData);
-        console.log("Ratings:", ratings);
         Object.entries(responseData).forEach(([key, value], index) => {
             const ratingValue = calculateWeightScore(value.rating);
             if (index < ratings.length) {
