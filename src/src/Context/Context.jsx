@@ -148,12 +148,12 @@ export async function fetchNewData(fileHash) {
         }
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            console.log(response)
+            console.log(response.data)
 
             if (response) {
                 let responseObj;
                 try {
-                    responseObj = JSON.parse(response.pitchresponse.response);
+                    responseObj = JSON.parse(response.data.pitchresponse.response);
                 } catch (error) {
                     console.error("Error parsing the response:", error);
                 }
