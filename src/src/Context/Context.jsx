@@ -154,18 +154,16 @@ export async function fetchNewData(fileHash) {
                 let responseObj;
                 try {
                     responseObj = JSON.parse(response.data.pitchresponse.response);
-                    console.log("responseObj:", responseObj)
                 } catch (error) {
                     console.error("Error parsing the response:", error);
                 }
-
                 let evaluationString;
                 let firstMessageContent = responseObj.body.data[0];
-                console.log("firstMessageContent:", firstMessageContent)
-
                 evaluationString = firstMessageContent.content[0].text.value;
-                console.log("eval string:", evaluationString)
-                    return evaluationString
+                const fixedString = evaluationString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
+                const repairedString = jsonrepair(fixedString)
+
+                    return repairedString
                 }
                 // let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
 
