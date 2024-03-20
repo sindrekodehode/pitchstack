@@ -148,20 +148,19 @@ export async function fetchNewData(fileHash) {
         }
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            console.log(response.data)
-            console.log(response.data.pitchresponse.response)
+            
 
             if (response) {
                 let responseObj;
                 try {
                     responseObj = JSON.parse(response.data.pitchresponse.response);
-                    console.log(responseObj)
+                    console.log("responseObj:", responseObj)
                 } catch (error) {
                     console.error("Error parsing the response:", error);
                 }
 
                 let evaluationString;
-                if (responseObj && responseObj.body && responseObj.body.length > 0) {
+                if (responseObj) {
                     const firstMessageContent = responseObj.body.data[0];
                     if (firstMessageContent) {
                         evaluationString = firstMessageContent[0].text.value;
