@@ -162,8 +162,8 @@ export async function fetchNewData(fileHash) {
                 let evaluationString;
                 let firstMessageContent = responseObj.body.data[0];
                 console.log("firstMessageContent:", firstMessageContent)
-                
-                evaluationString = firstMessageContent[0].text.value;
+
+                evaluationString = firstMessageContent.content[0].text.value;
                 console.log("eval string:", evaluationString)
                     
                 
