@@ -155,6 +155,7 @@ export async function fetchNewData(fileHash) {
                 let responseObj;
                 try {
                     responseObj = JSON.parse(response.data.pitchresponse.response);
+                    console.log(responseObj)
                 } catch (error) {
                     console.error("Error parsing the response:", error);
                 }
