@@ -149,6 +149,7 @@ export async function fetchNewData(fileHash) {
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
             console.log(response.data)
+            console.log(response.data.pitchresponse.response)
 
             if (response) {
                 let responseObj;
