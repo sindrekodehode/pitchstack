@@ -148,26 +148,48 @@ export async function fetchNewData(fileHash) {
         }
         try {
             const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            console.log(response.data)
+            console.log(response)
 
-            if (response?.data) {
-                let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
-
-                    if (responseString !== undefined) {
-                        responseString = responseString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
-                        const repairedString = jsonrepair(responseString);
-                        return repairedString;
-                    } else {
-                        console.error("responseString is undefined");
-                    }
-                } else {
-                    console.error("response.data is undefined");
+            if (response) {
+                let responseObj;
+                try {
+                    responseObj = JSON.parse(response.pitchresponse.response);
+                } catch (error) {
+                    console.error("Error parsing the response:", error);
                 }
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                throw error;
-            }
-        };
+
+                let evaluationString;
+                if (responseObj && responseObj.body && responseObj.body.length > 0) {
+                    const firstMessageContent = responseObj.body.data[0].content;
+                    if (firstMessageContent && firstMessageContent.length > 0) {
+                        evaluationString = firstMessageContent[0].text.value;
+                    }
+                }
+                let evaluations;
+                try {
+                    evaluations = JSON.parse(evaluationString);
+                    return evaluations
+                } catch (error) {
+                    console.error("Error parsing the evaluation string:", error);
+                }
+                // let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
+
+                //     if (responseString !== undefined) {
+                //         responseString = responseString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
+                //         const repairedString = jsonrepair(responseString);
+                //         return repairedString;
+                //     } else {
+                //         console.error("responseString is undefined");
+                //     }
+                // } else {
+                //     console.error("response.data is undefined");
+                // }
+            } 
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            throw error;
+        }
+    };
 
 export function deleteResponse(fileHash) {
         const config = {
