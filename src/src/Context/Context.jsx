@@ -160,13 +160,11 @@ export async function fetchNewData(fileHash) {
                 }
 
                 let evaluationString;
-                if (responseObj) {
-                    const firstMessageContent = responseObj.body.data[0];
-                    if (firstMessageContent) {
-                        evaluationString = firstMessageContent[0].text.value;
-                        console.log("eval string:", evaluationString)
-                    }
-                }
+                let firstMessageContent = responseObj.body.data[0];
+                evaluationString = firstMessageContent[0].text.value;
+                console.log("eval string:", evaluationString)
+                    
+                
                 let evaluations;
                 try {
                     evaluations = JSON.parse(evaluationString);
