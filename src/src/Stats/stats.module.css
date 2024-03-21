@@ -8,7 +8,6 @@
 
 .container {
     display: flex;
-    width: 98vw;
     min-height: calc(100vh - 15.5rem);
 }
 
