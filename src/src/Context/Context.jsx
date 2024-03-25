@@ -142,10 +142,11 @@ export function setLogout() {
 
 
 
-export async function fetchNewData(fileHash) {
+export async function fetchNewData(fileHash, uploadType) {
         const config = {
             withCredentials: true,
         }
+        
 
         if (uploadType === "form") {
             try {

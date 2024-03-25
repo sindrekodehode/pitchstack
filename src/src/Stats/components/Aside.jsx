@@ -16,7 +16,7 @@ export function Aside() {
     const handleRadioButtonChange =  async (fileHash, fileName) => {
         
         try {
-            const responseString = await fetchNewData(fileHash)
+            const responseString = await fetchNewData(fileHash, uploadType)
             const responseObject = JSON.parse(responseString);
                 
             setSelectedPDFData([{ hash: fileHash, data: responseObject }]);
