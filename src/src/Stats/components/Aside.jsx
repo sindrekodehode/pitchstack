@@ -41,7 +41,7 @@ export function Aside() {
         }
         
         if (uploadType === "form") {
-            axios.get("https://aivispitchstackserver.azurewebsites.net/application", config)
+            axios.get("https://aivispitchstackserver.azurewebsites.net/applications", config)
             .then(response => {
                 const responseData = response.data;
                 const pdfArray = Object.keys(responseData).map(hash => {
