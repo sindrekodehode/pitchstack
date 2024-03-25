@@ -146,40 +146,63 @@ export async function fetchNewData(fileHash) {
         const config = {
             withCredentials: true,
         }
-        try {
-            const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
-            
 
-            if (response) {
-                let responseObj;
-                try {
-                    responseObj = JSON.parse(response.data.pitchresponse.response);
-                } catch (error) {
-                    console.error("Error parsing the response:", error);
-                }
-                let evaluationString;
-                let firstMessageContent = responseObj.body.data[0];
-                evaluationString = firstMessageContent.content[0].text.value;
-                const fixedString = evaluationString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
-                const repairedString = jsonrepair(fixedString)
+        if (uploadType === "form") {
+            try {
+                const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/applications/${fileHash}`, config);
+                
+    
+                if (response) {
+                    let responseObj;
+                    try {
+                        responseObj = JSON.parse(response.data.pitchresponse.response);
+                    } catch (error) {
+                        console.error("Error parsing the response:", error);
+                    }
+                    let evaluationString;
+                    let firstMessageContent = responseObj.body.data[0];
+                    evaluationString = firstMessageContent.content[0].text.value;
+                    const fixedString = evaluationString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
+                    const repairedString = jsonrepair(fixedString)
+    
+                        return repairedString
+                    }
+                    
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                throw error;
+            }
 
-                    return repairedString
-                }
-                // let responseString = response.data?.pitchresponse?.response?.body?.data[0]?.content[0]?.text?.value;
+        } else if (uploadType === "pitch") {
 
-                //     if (responseString !== undefined) {
-                //         responseString = responseString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
-                //         const repairedString = jsonrepair(responseString);
-                //         return repairedString;
-                //     } else {
-                //         console.error("responseString is undefined");
-                //     }
-                // } else {
-                //     console.error("response.data is undefined");
-                // }
-        } catch (error) {
-            console.error("Error fetching data:", error);
-            throw error;
+            try {
+                const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config);
+                
+    
+                if (response) {
+                    let responseObj;
+                    try {
+                        responseObj = JSON.parse(response.data.pitchresponse.response);
+                    } catch (error) {
+                        console.error("Error parsing the response:", error);
+                    }
+                    let evaluationString;
+                    let firstMessageContent = responseObj.body.data[0];
+                    evaluationString = firstMessageContent.content[0].text.value;
+                    const fixedString = evaluationString.replace(/^```(plaintext|json|javascript)?\s*(plaintext|json|javascript)?\s*\n?|\n?\s*```$/gm, '').trim()
+                    const repairedString = jsonrepair(fixedString)
+    
+                        return repairedString
+                    }
+                    
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                throw error;
+            }
+
+        } else {
+            console.error('Error, please specify upload type', error);
+            setUploadError('An error occurred during data fetching.');
         }
     };
 

@@ -39,8 +39,6 @@ export function Aside() {
             },
             withCredentials: true,
         }
-
-        console.log("uploadtype:", uploadType)
         
         if (uploadType === "form") {
             axios.get("https://aivispitchstackserver.azurewebsites.net/applications", config)
