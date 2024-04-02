@@ -76,10 +76,10 @@ export function Stats() {
     }
 
     const clickDiv = (key) => {
-        if ( key === activeDiv ) {
-            setActiveDiv(null);
+        if (activeDiv === null) {
+            setActiveDiv(key); 
         } else {
-            setActiveDiv(key);
+            setActiveDiv(null);
         }
     }
 
