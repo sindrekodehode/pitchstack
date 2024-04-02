@@ -50,6 +50,7 @@
     padding-bottom: 12rem;
     width: inherit;
     height: inherit;
+    position: relative;
 }
 
 .itemCard {
