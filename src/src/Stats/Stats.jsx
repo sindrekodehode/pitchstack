@@ -112,11 +112,10 @@ export function Stats() {
             Object.entries(responseData).forEach(([key, value], index) => {
                 const ratingValue = calculateWeightScore(value.rating);
                 if (index < ratings.length) {
-                    const weight = ratings[index] ?? 0;
-                    totalScore += ratingValue * weight;
+                    totalScore += ratingValue;
                 }
             });
-            const scoreValue = Math.floor((totalScore / 300) * 100);
+            const scoreValue = Math.floor((totalScore / 12.5) * 100);
             return scoreValue;
 
         } else {
@@ -124,10 +123,11 @@ export function Stats() {
             Object.entries(responseData).forEach(([key, value], index) => {
                 const ratingValue = calculateWeightScore(value.rating);
                 if (index < ratings.length) {
-                    totalScore += ratingValue;
+                    const weight = ratings[index] ?? 0;
+                    totalScore += ratingValue * weight;
                 }
             });
-            const scoreValue = Math.floor((totalScore / 12.5) * 100);
+            const scoreValue = Math.floor((totalScore / 300) * 100);
             return scoreValue;
         }
         
