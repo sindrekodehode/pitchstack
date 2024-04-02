@@ -46,6 +46,14 @@ export function Res() {
         }
     }
 
+    const clickDiv = (key) => {
+        if (activeDiv === null) {
+            setActiveDiv(key); 
+        } else {
+            setActiveDiv(null);
+        }
+    }
+
     function calculateWeightScore(data) {
         switch (data) {
             case "green":
@@ -99,7 +107,7 @@ export function Res() {
                 <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup.  A score between 0-35 is considered poor, 35-50 good and over 50 is excellent.</p></div>
                
                         {Object.entries(response).map(([key, value]) => (
-                            <div key={key} className={styles.itemCard}>
+                            <div key={key} className={styles.itemCard} onClick={() => clickDiv(key)} style={activeDiv === key ? {zindex: 10, transform: 'scale(1.5)', background: '#020202', height: '-webkit-fit-content', height: '-moz-fit-content', height: 'fit-content'} : {}}>
                             <div className={styles.cardText}>
                             <div className={styles.cardTextHeaderContainer}>
                                 <div className={styles.colorBox} >
