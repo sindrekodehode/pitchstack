@@ -6,7 +6,7 @@ import { AppContext, checkLoginState } from '../Context/Context';
 import jsPDF from 'jspdf';
 
 export function Stats() {
-    const { selectedPDFData, hasSubmitted, selectedFileNames } = useContext(AppContext);
+    const { selectedPDFData, hasSubmitted, selectedFileNames, uploadType } = useContext(AppContext);
 
     function generatePDFWithText(pdfData) {
         const doc = new jsPDF();
@@ -108,15 +108,29 @@ export function Stats() {
 
     function calculateWeightedScore(responseData, ratings) {
         let totalScore = 0;
-        Object.entries(responseData).forEach(([key, value], index) => {
-            const ratingValue = calculateWeightScore(value.rating);
-            if (index < ratings.length) {
-                const weight = ratings[index] ?? 0;
-                totalScore += ratingValue * weight;
-            }
-        });
-        const scoreValue = Math.floor((totalScore / 300) * 100);
-        return scoreValue;
+        if (uploadType === form) {
+            Object.entries(responseData).forEach(([key, value], index) => {
+                const ratingValue = calculateWeightScore(value.rating);
+                if (index < ratings.length) {
+                    const weight = ratings[index] ?? 0;
+                    totalScore += ratingValue * weight;
+                }
+            });
+            const scoreValue = Math.floor((totalScore / 300) * 100);
+            return scoreValue;
+
+        } else {
+
+            Object.entries(responseData).forEach(([key, value], index) => {
+                const ratingValue = calculateWeightScore(value.rating);
+                if (index < ratings.length) {
+                    totalScore += ratingValue;
+                }
+            });
+            const scoreValue = Math.floor((totalScore / 12.5) * 100);
+            return scoreValue;
+        }
+        
     };
 
 
