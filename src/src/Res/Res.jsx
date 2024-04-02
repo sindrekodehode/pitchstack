@@ -11,6 +11,7 @@ import { jsonrepair } from 'jsonrepair';
 
 export function Res() {
     const [response, setResponse] = useState([]);
+    const [ activeDiv, setActiveDiv ] = useState(null);
     const [error, setError] = useState(null);
     const { fileHash, retryAttempt, setRetryAttempt, uploadType } = useContext(AppContext);
     const navigate = useNavigate();
