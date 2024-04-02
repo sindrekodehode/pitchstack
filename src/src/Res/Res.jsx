@@ -12,14 +12,14 @@ import { jsonrepair } from 'jsonrepair';
 export function Res() {
     const [response, setResponse] = useState([]);
     const [error, setError] = useState(null);
-    const { fileHash, retryAttempt, setRetryAttempt } = useContext(AppContext);
+    const { fileHash, retryAttempt, setRetryAttempt, uploadType } = useContext(AppContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchData = async () => {
         if (fileHash) {
                 try {
-                    const responseString = await fetchNewData(fileHash)
+                    const responseString = await fetchNewData(fileHash, uploadType)
                     const responseObject = JSON.parse(responseString);
                     setResponse(responseObject);
                     setRetryAttempt(false);
