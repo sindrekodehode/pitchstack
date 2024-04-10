@@ -20,6 +20,20 @@ export function Dropbox() {
   const [uploadError, setUploadError] = useState('');
   const [key, setKey] = useState(0);
 
+
+  const sendInfo = async () => {
+    if (currentUser) {
+        const config= {
+            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+            withCredentials: true,
+        }
+        await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
+    }
+}
+
+  useEffect(()=> {
+    sendInfo();
+  }, [])
   
   const navigate = useNavigate()
 

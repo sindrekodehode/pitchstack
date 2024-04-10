@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
-import { useAuth } from '../../Context/authContext/index';
+import { getUser, useAuth } from '../../Context/authContext/index';
 import { deleteResponse, fetchNewData } from '../../Context/Context';
 import { jsonrepair } from 'jsonrepair';
 
@@ -36,10 +36,11 @@ export function Aside() {
 
 
     const getInfo = async () => {
+        const user = await getUser();
+        const token = user.token
         if (currentUser) {
             const config= {
-                headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
-                withCredentials: true,
+                headers: {'Authorization': 'Bearer ' + token},
             }
             if (uploadType === "form") {
                 axios.get("https://aivispitchstackserver.azurewebsites.net/applications", config)
