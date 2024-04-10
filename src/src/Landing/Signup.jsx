@@ -24,8 +24,9 @@ export function Signup() {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            await doCreateUserWithEmailAndPassword(email, password)
-            await sendInfo();
+            await doCreateUserWithEmailAndPassword(email, password).then(
+                await sendInfo()
+            )
         }
     }
 
@@ -35,8 +36,9 @@ export function Signup() {
             setIsRegistering(true);
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
-            })
-            await sendInfo();
+            }).then(
+                await sendInfo()
+            )
         }
     }
 
