@@ -3,7 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
-import { useAuth } from '../Context/authContext/index';
+import { useAuth } from '../../Context/authContext/index';
 import { deleteResponse, fetchNewData } from '../../Context/Context';
 import { jsonrepair } from 'jsonrepair';
 
