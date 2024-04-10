@@ -4,6 +4,7 @@ import { Navigate, Link, useNavigate } from "react-router-dom";
 import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../firebase/auth"; 
 import { useAuth } from "../Context/authContext";
 
+
 export function Signin() {
     const { userLoggedIn, currentUser } = useAuth();
     const [email, setEmail] = useState('');
@@ -12,21 +13,24 @@ export function Signin() {
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
+
     const sendInfo = async () => {
-        const config= {
-            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
-            withCredentials: true,
+        if (currentUser) {
+            const config= {
+                headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+                withCredentials: true,
+            }
+            await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
         }
-        await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
     }
 
     const onSubmit = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            await doSignInWithEmailAndPassword(email, password);
-            await sendInfo();
+            await doSignInWithEmailAndPassword(email, password); 
         }
+        await sendInfo();
     }
 
     const onGoogleSignIn = async (e) => {
@@ -36,8 +40,8 @@ export function Signin() {
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
             })
-            await sendInfo();
         }
+        await sendInfo();
     }
 
     return (

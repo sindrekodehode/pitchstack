@@ -13,11 +13,13 @@ export function Signup() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const sendInfo = async () => {
-        const config= {
-            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
-            withCredentials: true,
+        if (currentUser) {
+            const config= {
+                headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+                withCredentials: true,
+            }
+            await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
         }
-        await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
     }
 
     const onSubmit = async (e) => {
