@@ -33,11 +33,8 @@ export function Aside() {
     }
 
     useEffect(() => {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            withCredentials: true,
+        const config= {
+            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
         }
         
         if (uploadType === "form") {
