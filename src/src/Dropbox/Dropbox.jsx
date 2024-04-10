@@ -101,9 +101,11 @@ export function Dropbox() {
     const formData = new FormData();
     formData.append('file', files[0]);
 
+    const user = await getUser();
+    const token = user.token;
+
     const config = {
-      headers: {'Content-Type': 'multipart/form-data'},
-      withCredentials: true,
+      headers: {'Authorization': 'Bearer ' + token},
     };
 
     if (uploadType === "pitch") {
