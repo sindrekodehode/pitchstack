@@ -5,7 +5,7 @@ import { doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../f
 import { useAuth } from "../Context/authContext";
 
 export function Signup() {
-    const { userLoggedIn, currentUser } = useAuth();
+    const { userLoggedIn, currentUser, setCurrentUser } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isSigningIn, setIsSigningIn] = useState(false);
@@ -24,10 +24,10 @@ export function Signup() {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            await doCreateUserWithEmailAndPassword(email, password).then(
-                await sendInfo()
-            )
+            const user = await doCreateUserWithEmailAndPassword(email, password);
+            setCurrentUser(user);
         }
+        await sendInfo()
     }
 
     const onGoogleSignIn = async (e) => {
@@ -36,10 +36,9 @@ export function Signup() {
             setIsRegistering(true);
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
-            }).then(
-                await sendInfo()
-            )
+            })
         }
+        await sendInfo()
     }
 
     return (
