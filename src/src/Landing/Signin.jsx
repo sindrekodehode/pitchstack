@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../firebase/auth"; 
-import { useAuth } from "../Context/authContext";
+import { useAuth, getUser } from "../Context/authContext";
 
 
 export function Signin() {
@@ -15,9 +15,11 @@ export function Signin() {
 
 
     const sendInfo = async () => {
+        const user = await getUser();
+        const token = user.token;
         if (currentUser) {
             const config= {
-                headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+                headers: {'Authorization': 'Bearer ' + token},
                 withCredentials: true,
             }
             await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)

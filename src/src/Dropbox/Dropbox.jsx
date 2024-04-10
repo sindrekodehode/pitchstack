@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import styles from './dropbox.module.css'
 import axios from 'axios';
 import { AppContext } from '../Context/Context';
+import { getUser, useAuth } from '../../Context/authContext/index';
 import { jokesArray } from './jokesarray'
 
 
@@ -12,6 +13,7 @@ export function Dropbox() {
   const [isUploadComplete, setUploadComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const  {fileHash, setFileHash, setRetryAttempt, setUploadType, uploadType}  = useContext(AppContext);
+  const { currentUser } = useAuth();
   const messages = jokesArray;
 
   const [currentMessage, setCurrentMessage] = useState('');
@@ -22,12 +24,14 @@ export function Dropbox() {
 
 
   const sendInfo = async () => {
+    const user = await getUser();
+    const token = user.token;
     if (currentUser) {
         const config= {
-            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+            headers: {'Authorization': 'Bearer ' + token},
             withCredentials: true,
         }
-        await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
+        await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
     }
 }
 
