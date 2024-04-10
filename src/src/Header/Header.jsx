@@ -11,11 +11,17 @@ export function Header() {
   const { currentUser, userLoggedIn } = useAuth();
   
   useEffect(() => {
+    const fetchUser = async () => {
       if (currentUser) {
-        const user = getUser();
-        setUsername(user.displayName)
+        const user = await getUser();
+        if (user) {
+          setUsername(user.displayName)
+        }
       }
-    }, []);
+    };
+    
+    fetchUser();
+    }, [currentUser]);
 
   const navigate = useNavigate();
 

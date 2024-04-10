@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
 }
 
 
-export function getUser() {
+export async function getUser() {
     const auth = getAuth();
     const user = auth.currentUser;
     if (user !== null) {
@@ -51,7 +51,8 @@ export function getUser() {
         const email = user.email;
         const photoURL = user.photoURL;
         const emailVerified = user.emailVerified;
-        const token = User.getToken();
+
+        const token = await user.getIdToken();
 
         const currentUser = {
             displayName: displayName,
@@ -60,6 +61,7 @@ export function getUser() {
             emailVerified: emailVerified,
             token: token,
         }
-        return currentUser
+        return currentUser;
     }
+    return null;
 }
