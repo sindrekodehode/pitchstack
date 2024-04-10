@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios';
 import { AppContext, ContextProvider, refreshToken } from '../Context/Context';
 import { doSignOut } from '../../../firebase/auth';
-import { useAuth, getUser } from '../Context/authContext';
+import { useAuth, getUser } from '../Context/authContext/index';
 
 export function Header() {
   const { canLogout, setCanLogout, username, setUsername} = useContext(AppContext);
