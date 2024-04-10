@@ -28,7 +28,7 @@ export function Dropbox() {
     const token = user.token;
     if (currentUser) {
         const config= {
-            headers: {'Authorization': 'Bearer ' + token},
+            headers: {'Authorization': token},
         }
         await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
     }
