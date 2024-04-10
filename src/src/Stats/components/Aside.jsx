@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
+import { useAuth } from '../Context/authContext/index';
 import { deleteResponse, fetchNewData } from '../../Context/Context';
 import { jsonrepair } from 'jsonrepair';
 
@@ -10,6 +11,7 @@ export function Aside() {
     const [responseObj, setResponseObj] = useState([]);
     const [error, setError] = useState(null);
     const { hasSubmitted, setSelectedPDFData, setSelectedFileNames, selectedFileNames, checkedState, setCheckedState, setUploadType, uploadType } = useContext(AppContext);
+    const { currentUser } = useAuth();
     const [isOpen, setIsOpen] = useState(true);
 
 
@@ -32,56 +34,58 @@ export function Aside() {
         }
     }
 
+
+    const getInfo = async () => {
+        if (currentUser) {
+            const config= {
+                headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
+                withCredentials: true,
+            }
+            if (uploadType === "form") {
+                axios.get("https://aivispitchstackserver.azurewebsites.net/applications", config)
+                .then(response => {
+                    const responseData = response.data;
+                    const pdfArray = Object.keys(responseData).map(hash => {
+                        return {
+                            hash: hash,
+                            ...responseData[hash]
+                        };
+                    });
+                    setResponseObj(pdfArray);
+                    console.log(response);
+                })
+                .catch(error => {
+                    setError(error);
+                    console.error('Error fetching application data:', error);
+                })
+    
+            }
+    
+            else if (uploadType === "pitch") {
+                
+                axios.get("https://aivispitchstackserver.azurewebsites.net/uploads", config)
+                .then(response => {
+                    const responseData = response.data;
+                    const pdfArray = Object.keys(responseData).map(hash => {
+                        return {
+                            hash: hash,
+                            ...responseData[hash]
+                        };
+                    });
+                    setResponseObj(pdfArray);
+                    console.log(response);
+                })
+                .catch(error => {
+                    setError(error);
+                    console.error('Error fetching pitch data:', error);
+                })
+            }
+        }
+    }
+
+
     useEffect(() => {
-        const config= {
-            headers: {'Authorization': 'Bearer ' + currentUser.getIdToken()},
-        }
-        
-        if (uploadType === "form") {
-            axios.get("https://aivispitchstackserver.azurewebsites.net/applications", config)
-            .then(response => {
-                const responseData = response.data;
-                const pdfArray = Object.keys(responseData).map(hash => {
-                    return {
-                        hash: hash,
-                        ...responseData[hash]
-                    };
-                });
-                setResponseObj(pdfArray);
-                console.log(response);
-            })
-            .catch(error => {
-                setError(error);
-                console.error('Error fetching application data:', error);
-            })
-
-        }
-
-        else if (uploadType === "pitch") {
-            
-            axios.get("https://aivispitchstackserver.azurewebsites.net/uploads", config)
-            .then(response => {
-                const responseData = response.data;
-                const pdfArray = Object.keys(responseData).map(hash => {
-                    return {
-                        hash: hash,
-                        ...responseData[hash]
-                    };
-                });
-                setResponseObj(pdfArray);
-                console.log(response);
-            })
-            .catch(error => {
-                setError(error);
-                console.error('Error fetching pitch data:', error);
-            })
-        }
-
-        else {
-            console.error('Error, please specify upload type', error);
-            setUploadError('An error occurred during file upload.');
-        }
-        
+        getInfo();
     }, []);
 
     function shortenPdfName(filename) {

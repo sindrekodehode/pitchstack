@@ -3,11 +3,13 @@ import { Aside } from './components/Aside';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppContext, checkLoginState } from '../Context/Context';
+import { useAuth } from '../Context/authContext/index'
 import jsPDF from 'jspdf';
 
 export function Stats() {
     const { selectedPDFData, hasSubmitted, selectedFileNames, uploadType } = useContext(AppContext);
     const [ activeDiv, setActiveDiv ] = useState(null);
+    const { currentUser } = useAuth()
 
     function generatePDFWithText(pdfData) {
         const doc = new jsPDF();
