@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import styles from './dropbox.module.css'
 import axios from 'axios';
 import { AppContext } from '../Context/Context';
-import { getUser, useAuth } from '../../Context/authContext/index';
+import { getUser, useAuth } from '../Context/authContext/index';
 import { jokesArray } from './jokesarray'
 
 
