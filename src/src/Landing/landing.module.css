@@ -1,0 +1,143 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+    min-height: 80vh;
+}
+
+.btnContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.gradientText {
+    background-image: linear-gradient(to left, #d61f9a, #8d4de7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs {
+    width: 18rem;
+    padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+    border-radius: 26px;
+    background-color: #02020279;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #02020279;
+    box-shadow: 2px 2px 4px black;
+    padding: 2rem;
+    height: 36rem;
+    width: 26rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    gap: 2rem;
+    padding-top: 3rem !important;
+}
+
+.inputForm {
+    display: flex;
+    flex-direction: column;
+    height: 16rem;
+    gap: 0.5rem;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.loginBtnContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.inputFormBtn {
+    border-radius: 12px;
+    background-image: linear-gradient(to left, #d61f9a, #8d4de7);
+    border: 2px solid #02020296;
+}
+
+.inputFormBtn:hover {
+    border-bottom: none;
+    opacity: 80%;
+    cursor: pointer;
+}
+
+.googleBtnContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.googleBtn {
+    font-size: 1rem;
+    font-weight: 700;
+    height: 2rem;
+    width: 14rem;
+    border-radius: 1rem;
+    padding: 0rem 0.5rem;
+    background: #f2f2f2;
+    color: #020202;
+    gap: 4px;
+}
+
+
+.googleSvg {
+    height: 20px;
+    width: 20px;
+}
+
+.rarrowSvg {
+    height: 20px;
+    width: 20px;
+}
+
+.blurb {
+    font-size: 12px;
+    margin: 0 2rem;
+    text-align: center;
+}
+
+.blurbP {
+    letter-spacing: 0.0045rem;
+}
+
+.headerThing {
+    font-size: 2rem;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
+
+.line {
+    flex-grow: 1;
+    height: 0.125rem;
+    background-image: linear-gradient(to left, #d61f9a, #8d4de7);
+    opacity: 80%;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
