@@ -99,7 +99,6 @@ export function Res() {
 
     useEffect(() => {
         if (response) {
-
             console.log("response:", response);
             console.log(typeof response);
         }
@@ -111,7 +110,7 @@ export function Res() {
             <div className={styles.stats}>
             <div className={styles.pdfcontainer}>
                 <div className={styles.pdfstats}>
-                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{weightedScore}</div></div>
+                <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}></div></div>
                 <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup.  A score between 0-35 is considered poor, 35-50 good and over 50 is excellent.</p></div>
                
                         {/* {response?.data && Object.entries(response.data).map(([key, value]) => (
