@@ -145,7 +145,7 @@ export function Stats() {
 
 
     useEffect(() => {
-        console.log("selectedPDFData[0].data:", selectedPDFData[0].data);
+        console.log("selectedPDFData[0]:", selectedPDFData[0]);
     }, [selectedPDFData])
 
     return (
