@@ -119,7 +119,7 @@ export function Aside() {
                     <img src='/menu.svg' onClick={() => setIsOpen(!isOpen)} className={styles.menu}></img>
                 </div>
                 <div className={styles.radioSlider} style={sliderTrackStyle}>
-                    {hasSubmitted && isOpen && (
+                    {isOpen && (
                     <>
                         <div className={styles.radioContainer}>
                             <h3>Tidligere resultater</h3>
