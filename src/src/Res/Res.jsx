@@ -100,7 +100,7 @@ export function Res() {
     useEffect(() => {
         if (response) {
             console.log("response:", response);
-            console.log(typeof response);
+            console.log(typeof response.evaluation);
         }
     })
     const weightedScore = calculateWeightedScore(response, ratings)

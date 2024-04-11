@@ -22,22 +22,6 @@ export function Dropbox() {
   const [uploadError, setUploadError] = useState('');
   const [key, setKey] = useState(0);
 
-
-//   const sendInfo = async () => {
-//     const user = await getUser();
-//     const token = user.token;
-//     if (currentUser) {
-//         const config= {
-//             headers: {'Authorization': token},
-//         }
-//         await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
-//     }
-// }
-
-//   useEffect(()=> {
-//     sendInfo();
-//   }, [])
-  
   const navigate = useNavigate()
 
   const drop = React.useRef(null);
