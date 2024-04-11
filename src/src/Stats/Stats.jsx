@@ -155,7 +155,7 @@ export function Stats() {
     return (
         <div className={styles.container}>
             <Aside />
-            {selectedPDFData && selectedPDFData[0]?.data (
+            {selectedPDFData && selectedPDFData[0]?.data && (
                 <div className={styles.stats}>
                     {Object.entries(selectedPDFData[0]?.data).map(([key, value], index) => (
                         <div key={index}>
