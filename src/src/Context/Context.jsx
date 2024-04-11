@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import axios from 'axios';
 import { jsonrepair } from 'jsonrepair';
+import { getUser } from "../Context/authContext";
 
 export const AppContext = createContext()
 
