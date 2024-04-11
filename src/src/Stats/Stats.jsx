@@ -144,9 +144,9 @@ export function Stats() {
 
 
 
-    useEffect(() => {
-        checkLoginState()
-    })
+    // useEffect(() => {
+    //     checkLoginState()
+    // })
 
     return (
         <div className={styles.container}>

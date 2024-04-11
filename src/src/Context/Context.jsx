@@ -72,69 +72,69 @@ export const ContextProvider = ({ children }) => {
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-export const refreshToken = async () => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        withCredentials: true,
-    };
-    try {
-        const refresh = await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', {}, config);
+// export const refreshToken = async () => {
+//     const config = {
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         withCredentials: true,
+//     };
+//     try {
+//         const refresh = await axios.post('https://aivispitchstackserver.azurewebsites.net/refresh', {}, config);
 
 
-    } catch (error) {
-        console.error('Error refreshing token:', error);
-        localStorage.removeItem("loginState");
-        return { hasSubmitted: false };
-    }
-};
+//     } catch (error) {
+//         console.error('Error refreshing token:', error);
+//         localStorage.removeItem("loginState");
+//         return { hasSubmitted: false };
+//     }
+// };
 
 
-export function setLoginState(user) {
-    const now = new Date();
-    const item = {
-        hasSubmitted: true,
-        username: user,
-        expiry: now.getTime() + (24 * 60 * 60 * 10000),
-    };
-    localStorage.setItem("loginState", JSON.stringify(item));
-};
+// export function setLoginState(user) {
+//     const now = new Date();
+//     const item = {
+//         hasSubmitted: true,
+//         username: user,
+//         expiry: now.getTime() + (24 * 60 * 60 * 10000),
+//     };
+//     localStorage.setItem("loginState", JSON.stringify(item));
+// };
 
-export async function checkLoginState() {
-    const itemStr = localStorage.getItem("loginState");
+// export async function checkLoginState() {
+//     const itemStr = localStorage.getItem("loginState");
 
-    if (!itemStr) {
-        return { hasSubmitted: false };
-    }
+//     if (!itemStr) {
+//         return { hasSubmitted: false };
+//     }
 
-    const item = JSON.parse(itemStr);
-    const now = new Date();
+//     const item = JSON.parse(itemStr);
+//     const now = new Date();
 
-    try {
-        const refreshResult = await refreshToken();
-        if (refreshResult && refreshResult.expiresIn) {
-            const expiresInMs = parseInt(refreshResult.expiresIn) * 1000;
-            const updatedExpiry = now.getTime() + expiresInMs
-            item.expiry = updatedExpiry;
-            localStorage.setItem("loginState", JSON.stringify(item));
-        }
-    } catch (error) {
-        console.error("Error fetching cookie:", error);
-        localStorage.removeItem("loginState");
-        return { hasSubmitted: false };
-    }
+//     try {
+//         const refreshResult = await refreshToken();
+//         if (refreshResult && refreshResult.expiresIn) {
+//             const expiresInMs = parseInt(refreshResult.expiresIn) * 1000;
+//             const updatedExpiry = now.getTime() + expiresInMs
+//             item.expiry = updatedExpiry;
+//             localStorage.setItem("loginState", JSON.stringify(item));
+//         }
+//     } catch (error) {
+//         console.error("Error fetching cookie:", error);
+//         localStorage.removeItem("loginState");
+//         return { hasSubmitted: false };
+//     }
 
-    if (now.getTime() > item.expiry) {
-        localStorage.removeItem("loginState");
-        return { hasSubmitted: false };
-    }
+//     if (now.getTime() > item.expiry) {
+//         localStorage.removeItem("loginState");
+//         return { hasSubmitted: false };
+//     }
 
-    return {
-        hasSubmitted: item.hasSubmitted,
-        username: item.username,
-    }
-};
+//     return {
+//         hasSubmitted: item.hasSubmitted,
+//         username: item.username,
+//     }
+// };
 
 export function setLogout() {
     localStorage.removeItem("loginState");
@@ -143,11 +143,13 @@ export function setLogout() {
 
 
 export async function fetchNewData(fileHash, uploadType) {
-        const config = {
-            withCredentials: true,
-        }
+        const user = await getUser();
+        const token = user.token;
         
-
+        const config= {
+            headers: {'Authorization': 'Bearer ' + token},     
+            }
+        
         if (uploadType === "form") {
             try {
                 const response = await axios.get(`https://aivispitchstackserver.azurewebsites.net/applications/${fileHash}`, config);
@@ -207,10 +209,13 @@ export async function fetchNewData(fileHash, uploadType) {
         }
     };
 
-export function deleteResponse(fileHash) {
-        const config = {
-            withCredentials: true,
-        }
+export async function deleteResponse(fileHash) {
+        const user = await getUser();
+        const token = user.token;
+        
+        const config= {
+            headers: {'Authorization': 'Bearer ' + token},     
+            }
         axios.delete(`https://aivispitchstackserver.azurewebsites.net/uploads/${fileHash}`, config)
             .then(response => console.log("Deleted response successfully", response))
             .catch(error => Promise.reject(error));
