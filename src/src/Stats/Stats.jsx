@@ -144,9 +144,9 @@ export function Stats() {
 
 
 
-    // useEffect(() => {
-    //     checkLoginState()
-    // })
+    useEffect(() => {
+        console.log("selectedPDFData:", selectedPDFData);
+    }, [selectedPDFData])
 
     return (
         <div className={styles.container}>
