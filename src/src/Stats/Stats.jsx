@@ -155,40 +155,46 @@ export function Stats() {
     return (
         <div className={styles.container}>
             <Aside />
-            {selectedPDFData && (
+            {selectedPDFData && selectedPDFData[0]?.data (
                 <div className={styles.stats}>
-                    {selectedPDFData && selectedPDFData[0]?.data && typeof selectedPDFData[0]?.data === 'object' && Object.entries(selectedPDFData[0]?.data).map(([key, pdfData], index) => {
-                        const weightedScore = calculateWeightedScore(pdfData.data, ratings);
-                        return (
-                        <div key={index} className={styles.pdfcontainer}>
-                            <div className={styles.pdfstats}>
-                            <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{weightedScore}</div></div>
-                            <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup.  A score between 0-35 is considered poor, 35-50 good and over 50 is excellent.</p></div>
-                            <div className={styles.pdfBtnContainer}><button className={styles.pdfBtn} onClick={() => generatePDFWithText(pdfData) }><div className={styles.iconContainer}><img src='/pdfdl.svg'></img></div>Download as PDF</button></div>
-                            {/* {pdfData && pdfData.data && typeof pdfData.data === 'object' && Object.entries(pdfData.data).map(([key, value]) => (
-                                <div key={key} className={styles.itemCard} onClick={() => clickDiv(key)} style={activeDiv === key ? {zindex: 10, transform: 'scale(1.5)', background: '#020202', height: '-webkit-fit-content', height: '-moz-fit-content', height: 'fit-content'} : {}}>
-                                    <div className={styles.cardText}>
-                                    <div className={styles.cardTextHeaderContainer}>
-                                        <div className={styles.colorBox} >
-                                            <img src={ getColor(value.rating) } alt='crab color rating image'></img>
-                                        </div>
-                                        <div className={styles.textcontainer}>
-                                            <h3>{key}:</h3>
-                                        </div>
-                                    </div>
-                                    <p>{value.item}</p>
-                                    <p>{value.evaluation}</p>
-                                    </div>
-                                    
-                                </div>
-                            ))} */}
-
-                            </div>
+                    {Object.entries(selectedPDFData[0]?.data).map(([key, value], index) => (
+                        <div key={index}>
+                            <h3>{key}</h3>
+                            <p>{JSON.stringify({value})}</p>
                         </div>
-                        );
-                    })}
-                </div>
-            )}
+                    
+                        // const weightedScore = calculateWeightedScore(pdfData.data, ratings);
+                        // return (
+                        // <div key={index} className={styles.pdfcontainer}>
+                        //     <div className={styles.pdfstats}>
+                        //     <div className={styles.score}><h2>Your pitchscore </h2><div className={styles.scoreNum}>{weightedScore}</div></div>
+                        //     <div className={styles.infographic}><p>The pitchstack replicates a VC fundmember that is an industry expert. In a similar way to how one expert might give a different score than another when reviewing a pitchstack the pitchstack AI will also vary in its scoring.  When weighted against previous pitchstacks that have done well and ones that have done poorly, there is a good correlation between scoring highly and the subsequent success of the startup.  A score between 0-35 is considered poor, 35-50 good and over 50 is excellent.</p></div>
+                        //     <div className={styles.pdfBtnContainer}><button className={styles.pdfBtn} onClick={() => generatePDFWithText(pdfData) }><div className={styles.iconContainer}><img src='/pdfdl.svg'></img></div>Download as PDF</button></div>
+                        //     {pdfData && pdfData.data && typeof pdfData.data === 'object' && Object.entries(pdfData.data).map(([key, value]) => (
+                        //         <div key={key} className={styles.itemCard} onClick={() => clickDiv(key)} style={activeDiv === key ? {zindex: 10, transform: 'scale(1.5)', background: '#020202', height: '-webkit-fit-content', height: '-moz-fit-content', height: 'fit-content'} : {}}>
+                        //             <div className={styles.cardText}>
+                        //             <div className={styles.cardTextHeaderContainer}>
+                        //                 <div className={styles.colorBox} >
+                        //                     <img src={ getColor(value.rating) } alt='crab color rating image'></img>
+                        //                 </div>
+                        //                 <div className={styles.textcontainer}>
+                        //                     <h3>{key}:</h3>
+                        //                 </div>
+                        //             </div>
+                        //             <p>{value.item}</p>
+                        //             <p>{value.evaluation}</p>
+                        //             </div>
+                                    
+                        //         </div>
+                        //     ))}
+
+                        //     </div>
+                        // </div>
+                        // );
+                //     })}
+                // </div>
+                    ))}
+            </div> )}
         </div>
-    );
-  }
+    )
+}
