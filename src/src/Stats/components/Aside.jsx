@@ -101,7 +101,6 @@ export function Aside() {
     useEffect(() => {
         if (responseObj.length > 0) {
             console.log("Crab");
-            console.log("responseObj:", responseObj);
         }
     }, [responseObj]);
 
