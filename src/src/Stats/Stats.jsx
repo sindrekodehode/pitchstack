@@ -148,6 +148,7 @@ export function Stats() {
         console.log("selectedPDFData[0]:", selectedPDFData[0]);
         if (selectedPDFData[0]?.data) {
             console.log(".data", selectedPDFData[0]?.data)
+            console.log("typeof:", typeof selectedPDFData[0]?.data)
         }
     }, [selectedPDFData])
 
@@ -156,7 +157,7 @@ export function Stats() {
             <Aside />
             {selectedPDFData && (
                 <div className={styles.stats}>
-                    {selectedPDFData && selectedPDFData[0]?.data && Object.entries(selectedPDFData[0]?.data).map(([key, pdfData], index) => {
+                    {selectedPDFData && selectedPDFData[0]?.data && typeof selectedPDFData[0]?.data === 'object' && Object.entries(selectedPDFData[0]?.data).map(([key, pdfData], index) => {
                         const weightedScore = calculateWeightedScore(pdfData.data, ratings);
                         return (
                         <div key={index} className={styles.pdfcontainer}>
