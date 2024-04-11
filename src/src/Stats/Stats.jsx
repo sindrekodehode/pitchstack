@@ -153,7 +153,7 @@ export function Stats() {
         if (selectedPDFData[0]?.data) {
             console.log(".data", selectedPDFData[0]?.data)
         }
-    }, [selectedPDFData])
+    }, [selectedPDFData, pdfData])
 
     return (
         <div className={styles.container}>
