@@ -15,7 +15,7 @@ export function Header() {
       if (currentUser) {
         const user = await getUser();
         if (user.displayName) {
-          setUsername(user.displayName) 
+          setUsername(user.displayName.split('@')[0]) 
         } else {
           setUsername(user.email)
         }
