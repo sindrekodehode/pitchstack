@@ -11,6 +11,7 @@ export function Signup() {
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [username, setUsername] = useState('');
 
     const sendInfo = async () => {
         const user = await getUser();
@@ -24,15 +25,33 @@ export function Signup() {
         }
     }
 
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (!isSigningIn) {
-            setIsSigningIn(true);
-            const user = await doCreateUserWithEmailAndPassword(email, password);
-            doSendEmailVerification();
-            setCurrentUser(user);
+        if (!isRegistering) {
+            setIsRegistering(true);
+            try {
+                const userCredential = await doCreateUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                await doSendEmailVerification();
+                setCurrentUser(user);
+            } catch (error) {
+                console.error("Registration or verification failed:", error);
+            }
+            setIsRegistering(false);
         }
-        await sendInfo()
+        await sendInfo();
     }
 
     const onGoogleSignIn = async (e) => {
@@ -64,13 +83,15 @@ export function Signup() {
                                 <span>or</span>
                                 <div className={styles.line}></div>
                             </div>
-                            <form className={styles.inputForm}>
+                            <form className={styles.inputForm} onSubmit={onSubmit}>
                                 <label htmlFor="username">Username</label>
                                 <input
                                     className={styles.inputs}
                                     type="text"
                                     id="username"
                                     name="username"
+                                    value={username}
+                                    onChange={handleUsernameChange}
                                     placeholder="User"
                                 />
                                 <label htmlFor="email">Email</label>
@@ -79,6 +100,8 @@ export function Signup() {
                                     type="text"
                                     id="email"
                                     name="email"
+                                    value={email}
+                                    onChange={handleEmailChange}
                                     placeholder="email@gmail.com"
                                 />
                                 <label htmlFor="password"></label>
@@ -87,11 +110,13 @@ export function Signup() {
                                     type="password"
                                     id="password"
                                     name="password"
+                                    value={password}
+                                    onChange={handlePasswordChange}
                                     placeholder="Password"
                                 />
                                 <div className={styles.loginBtnContainer}>
                                     <button 
-                                    onSubmit={onSubmit}
+                                    type="submit"
                                     className={styles.inputFormBtn}
                                     >Sign Up</button>
                                 </div>

@@ -2,7 +2,12 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerificati
 import { auth } from "./firebase";
 
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+    try {
+        return createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+        console.error("Failed to create user:", error);
+        throw error;
+    }
 }
 
 export const doSignInWithEmailAndPassword = (email, password) => {
@@ -28,10 +33,16 @@ export const doPasswordChange = (password) => {
     return updatePassword(auth.currentUser, password);
 }
 
-export const doSendEmailVerification = () => {
-    return sendEmailVerification(auth.currentUser, {
-        url: `${window.location.origin}/home`,
-    });
+export const doSendEmailVerification = async () => {
+    if (auth.currentUser) {
+        try {
+            await sendEmailVerification(auth.currentUser, {
+                url: `${window.location.origin}/home`,
+            });
+        } catch (error) {
+            console.error("Failed to send validation email:", error);
+        }
+    } 
 }
 
 
