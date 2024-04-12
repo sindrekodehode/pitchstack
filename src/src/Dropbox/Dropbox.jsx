@@ -196,7 +196,6 @@ export function Dropbox() {
     if (currentUser) {
       const doGlobalDBUpdate = async () => {
         const user = await getUser();
-        console.log(user)
         const token = user.token;
         const config= {
             headers: {'Authorization': 'Bearer ' + token},

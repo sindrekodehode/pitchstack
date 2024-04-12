@@ -41,6 +41,7 @@ export function Signin() {
 
     const doValidateUser = async () => {
         const user = await getUser();
+        console.log(user);
         if (user.emailVerified) {
             setUserVerified(true);
         } else {
@@ -90,7 +91,7 @@ export function Signin() {
                                     <div className={styles.googleBtnContainer}>
                                         <button
                                         onClick={onGoogleSignIn}
-                                        className={styles.googleBtn}><img src='/google.svg' alt='google logo' className={styles.googleSvg}></img>Sign up with google<img src='/right.svg' alt='right arrow' className={styles.rarrowSvg}></img></button>
+                                        className={styles.googleBtn}><img src='/google.svg' alt='google logo' className={styles.googleSvg}></img>Sign in with google<img src='/right.svg' alt='right arrow' className={styles.rarrowSvg}></img></button>
                                     </div>
 
                                     <div className={styles.divider}>
