@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../firebase/auth"; 
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword, sendPasswordResetEmail } from "../../../firebase/auth"; 
 import { useAuth, getUser } from "../Context/authContext";
 
 
@@ -111,6 +111,7 @@ export function Signin() {
                                 >Sign In</button>
                             </div>
                         </form>
+                        <span onClick={handlePasswordReset}>Forgot Password</span>
                 </div>
             </main>
         </div>
