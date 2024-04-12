@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
-import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSendEmailVerification, doPasswordChange, sendPasswordResetEmail } from "../../../firebase/auth"; 
+import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSendEmailVerification, doPasswordReset } from "../../../firebase/auth"; 
 import { useAuth, getUser } from "../Context/authContext";
 
 export function Signup() {
@@ -38,7 +38,7 @@ export function Signup() {
     const handlePasswordReset = (event) => {
         event.preventDefault();
         const mail = event.target.email.value;
-        sendPasswordResetEmail(mail);
+        doPasswordReset(mail);
         setSubmittedForgotMail(prevState => !prevState);
     };
 
