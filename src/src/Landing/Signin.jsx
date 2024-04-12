@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { doSignInWithEmailAndPassword, doSignInWithGoogle, doPasswordReset } from "../../../firebase/auth"; 
@@ -78,6 +78,13 @@ export function Signin() {
             await sendInfo();
         }
     }
+
+    useEffect(() => {
+        if (currentUser) {
+            doValidateUser();
+            sendInfo();
+        }
+    }, [currentUser]);
 
     return (
         <div>
