@@ -62,8 +62,6 @@ export function Signin() {
         if (!isSigningIn) {
             setIsSigningIn(true);
             await doSignInWithEmailAndPassword(email, password); 
-            await doValidateUser();
-            await sendInfo();
         }
     }
 
@@ -74,8 +72,6 @@ export function Signin() {
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
             });
-            await doValidateUser();
-            await sendInfo();
         }
     }
 

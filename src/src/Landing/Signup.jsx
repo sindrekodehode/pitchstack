@@ -91,6 +91,13 @@ export function Signup() {
         }
     }
 
+    useEffect(() => {
+        if (currentUser) {
+            doValidateUser();
+            sendInfo();
+        }
+    }, [currentUser]);
+
     return (
         <div>
             {userLoggedIn && userVerified && (<Navigate to={'/dropbox'} replace={true} />)}
