@@ -26,6 +26,13 @@ export function Signin() {
         }
     }
 
+    const handlePasswordReset = (event) => {
+        event.preventDefault();
+        const mail = event.target.email.value;
+        doPasswordReset(mail);
+        setSubmittedForgotMail(prevState => !prevState);
+    };
+
     const doValidateUser = async () => {
         const user = await getUser();
         if (user.emailVerified) {
