@@ -174,9 +174,6 @@ export function Dropbox() {
     return removeEventListeners
   }, []);
   
-  
-  
-  
   const handleFileSelect = (e) => {
     const { files } = e.target;
     
@@ -191,6 +188,12 @@ export function Dropbox() {
   const handleClick = () => {
     fileInput.current.click();
   };
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/');
+    }
+  })
 
   return (
     <div className={styles.dropbox} >
