@@ -28,6 +28,11 @@ export function Signin() {
 
     const doValidateUser = async () => {
         const user = await getUser();
+        try {
+            await sendInfo();
+        } catch (error) {
+            console.log("Authorization from global database failed:", error);
+        }
         if (user.emailVerified) {
             setUserVerified(true);
         } else {
