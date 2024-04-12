@@ -14,8 +14,10 @@ export function Header() {
     const fetchUser = async () => {
       if (currentUser) {
         const user = await getUser();
-        if (user) {
-          setUsername(user.displayName)
+        if (user.displayName !== "") {
+          setUsername(user.displayName) 
+        } else {
+          setUsername(user.email)
         }
       }
     };
@@ -72,102 +74,3 @@ export function Header() {
     </>
   )
 }
-
-  // useEffect(() => {
-  //   try {
-  //     const loginState = checkLoginState()
-  //     if (loginState && loginState.hasSubmitted) {
-  //       setHasSubmitted(true);
-  //       setUsername(loginState.username);
-  //       setCanLogin(false);
-  //     } else {
-  //       setHasSubmitted(false);
-  //       setCanLogin(true);
-  //       setCanLogout(false);
-  //     }
-  // } catch (err) {
-  //   console.error('Error checking localstorage', err);
-  //   setCanLogin(true);
-  //   setCanLogout(false);
-  // }
-  // }, []);
-  
-
-  // const handleSubmit = async (e, action) => {
-
-  //   if (!username.includes('@')) {
-  //     alert('Email must contain an @ symbol.');
-  //     return;
-  //   }
-
-  //   e.preventDefault();
-  //   const config = {
-  //     headers: {'Content-Type': 'application/json'},
-  //     withCredentials: true,
-  //   }
-    
-  //   console.log('Form submitted with data:', userData)
-
-  //   if (action === 'login') {
-  //     try {
-  //       const response =  await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', JSON.stringify(userData), config);
-  //       console.log('Logged in successfully', response.data);
-  //       setTimeout(async () => {
-  //       try {
-  //         await refreshToken()
-  //         setIsLogin(false);
-  //         setCanLogin(false);
-  //         setLoginState(username);
-  //         setHasSubmitted(true);
-  //       } catch (error) {
-  //         console.error('Error requesting refreshtoken:', error);
-  //       }
-  //     }, 100)
-  //     } catch (error) {
-  //       console.error('Error posting data:', error.response ? error.response.data : error.message);
-  //     }
-  //   } else if (action === 'register') {
-  //     try {
-  //       const response =  await axios.post('https://aivispitchstackserver.azurewebsites.net/register', JSON.stringify(userData), config);
-  //       console.log('Registered new user:', response.data);
-  //     } catch (error) {
-  //       console.error('Error posting data:', error);
-  //     }
-  //     try {
-  //       const response =  await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', JSON.stringify(userData), config);
-  //       console.log('Logged in successfully', response.data);
-  //       setTimeout(async () => {
-  //       try {
-  //         await refreshToken()
-  //         setIsLogin(false);
-  //         setCanLogin(false);
-  //         setLoginState(username);
-  //         setHasSubmitted(true);
-  //       } catch (error) {
-  //         console.error('Error requesting refreshtoken:', error);
-  //       }
-  //     }, 200)
-  //     } catch (error) {
-  //       console.error('Error posting data:', error.response ? error.response.data : error.message);
-  //     }
-  //   }
-  // };
-
-  // const handleLogout = async (e, action) => {
-  //   e.preventDefault();
-  //   const config = {
-  //     headers: {'Content-Type': 'application/json'},
-  //     withCredentials: true,
-  //   }
-  //   try {
-  //     const response =  await axios.post('https://aivispitchstackserver.azurewebsites.net/logout', JSON.stringify(userData), config);
-  //     console.log('Logged out successfully', response.data);
-  //     setLogout();
-  //     setIsLogin(false);
-  //     setHasSubmitted(false);
-  //     setCanLogout(false);
-  //     setCanLogin(true);
-  //   } catch (error) {
-  //     console.error('Error posting data:', error);
-  //   }
-  // }
