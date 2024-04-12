@@ -13,6 +13,8 @@ export function Signin() {
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [userVerified, setUserVerified] = useState(false);
+    const [forgotPassword, setForgotPassword] = useState(false);
+    const [submittedForgotMail, setSubmittedForgotMail] = useState(false);
 
 
     const sendInfo = async () => {
@@ -25,6 +27,10 @@ export function Signin() {
             await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
         }
     }
+
+    const toggleForgotPassword = () => {
+        setForgotPassword(prevState => !prevState);
+    };
 
     const handlePasswordReset = (event) => {
         event.preventDefault();
@@ -77,48 +83,128 @@ export function Signin() {
             {userLoggedIn && userVerified && (<Navigate to={'/dropbox'} replace={true} />)}
             <main className={styles.main}>
                 <div className={styles.inputContainer}>
-                    <h3 className={styles.headerThing}>Sign in to your account</h3>
-                        <div className={styles.googleBtnContainer}>
-                            <button
-                            onClick={onGoogleSignIn}
-                            className={styles.googleBtn}><img src='/google.svg' alt='google logo' className={styles.googleSvg}></img>Sign in with google<img src='/right.svg' alt='arrow right' className={styles.rarrowSvg}></img></button>
-                        </div>
+                {!forgotPassword && (
+                        <>
+                         <h3 className={styles.headerThing}>Create your account</h3>
+                            <div className={styles.inputWrapper}>
+                                <div className={styles.googleBtnContainer}>
+                                    <button
+                                    onClick={onGoogleSignIn}
+                                    className={styles.googleBtn}><img src='/google.svg' alt='google logo' className={styles.googleSvg}></img>Sign up with google<img src='/right.svg' alt='right arrow' className={styles.rarrowSvg}></img></button>
+                                </div>
 
-                        <div className={styles.divider}>
-                            <div className={styles.line}></div>
-                            <span>or</span>
-                            <div className={styles.line}></div>
-                        </div>
-
-                        <form className={styles.inputForm} onSubmit={onSubmit}>
-                            <label htmlFor="email">Email</label>
-                            <input
-                                className={styles.inputs}
-                                type="text"
-                                id="email"
-                                value={email}
-                                onChange={handleEmailChange}
-                                name="email"
-                                placeholder="email@gmail.com"
-                            />
-                            <label htmlFor="password">Password</label>
-                            <input
-                                className={styles.inputs}
-                                type="password"
-                                id="password"
-                                value={password}
-                                onChange={handlePasswordChange}
-                                name="password"
-                                placeholder="Password"
-                            />
-                            <div className={styles.loginBtnContainer}>
-                                <button 
-                                type="submit"
-                                className={styles.inputFormBtn}
-                                >Sign In</button>
+                                <div className={styles.divider}>
+                                    <div className={styles.line}></div>
+                                    <span>or</span>
+                                    <div className={styles.line}></div>
+                                </div>
+                                <form className={styles.inputForm} onSubmit={onSubmit}>
+                                    <label htmlFor="email">Email</label>
+                                    <input
+                                        className={styles.inputs}
+                                        type="text"
+                                        id="email"
+                                        name="email"
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                        placeholder="email@gmail.com"
+                                    />
+                                    <label htmlFor="password"></label>
+                                    <input
+                                        className={styles.inputs}
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        value={password}
+                                        onChange={handlePasswordChange}
+                                        placeholder="Password"
+                                    />
+                                    <div className={styles.loginBtnContainer}>
+                                        <button 
+                                        type="submit"
+                                        className={styles.inputFormBtn}
+                                        >Sign Up</button>
+                                    </div>
+                                </form>
+                                <span onClick={toggleForgotPassword}>Forgot Password</span>
                             </div>
-                        </form>
-                        <span onClick={handlePasswordReset}>Forgot Password</span>
+                        </>
+                        )}  
+                    {forgotPassword && !submittedForgotMail && (
+                        <>
+                        <h3 className={styles.headerThing}>Submit to reset password</h3>
+                        <div className={styles.inputWrapper}>
+                            <form className={styles.inputForm} onSubmit={handlePasswordReset}>
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    className={styles.inputs}
+                                    type="text"
+                                    id="email"
+                                    name="email"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    placeholder="email@gmail.com"
+                                    required
+                                />
+                                <label htmlFor="password"></label>
+                                <div className={styles.loginBtnContainer}>
+                                        <button 
+                                        type="submit"
+                                        className={styles.inputFormBtn}
+                                        >Reset Password</button>
+                                    </div>
+                            </form>
+                            <span onClick={toggleForgotPassword}>Back</span>
+                        </div>
+                        </>
+                    )}
+
+                    {forgotPassword && submittedForgotMail && (
+                        <h3 className={styles.gradientText}>Email sent with Password reset!</h3>
+                    )}
+{/*                     
+                    //  <h3 className={styles.headerThing}>Sign in to your account</h3>
+                    //     <div className={styles.googleBtnContainer}>
+                    //         <button
+                    //         onClick={onGoogleSignIn}
+                    //         className={styles.googleBtn}><img src='/google.svg' alt='google logo' className={styles.googleSvg}></img>Sign in with google<img src='/right.svg' alt='arrow right' className={styles.rarrowSvg}></img></button>
+                    //     </div>
+
+                    //     <div className={styles.divider}>
+                    //         <div className={styles.line}></div>
+                    //         <span>or</span>
+                    //         <div className={styles.line}></div>
+                    //     </div>
+
+                    //     <form className={styles.inputForm} onSubmit={onSubmit}>
+                    //         <label htmlFor="email">Email</label>
+                    //         <input
+                    //             className={styles.inputs}
+                    //             type="text"
+                    //             id="email"
+                    //             value={email}
+                    //             onChange={handleEmailChange}
+                    //             name="email"
+                    //             placeholder="email@gmail.com"
+                    //         />
+                    //         <label htmlFor="password">Password</label>
+                    //         <input
+                    //             className={styles.inputs}
+                    //             type="password"
+                    //             id="password"
+                    //             value={password}
+                    //             onChange={handlePasswordChange}
+                    //             name="password"
+                    //             placeholder="Password"
+                    //         />
+                    //         <div className={styles.loginBtnContainer}>
+                    //             <button 
+                    //             type="submit"
+                    //             className={styles.inputFormBtn}
+                    //             >Sign In</button>
+                    //         </div>
+                    //     </form>
+                    //     <span onClick={toggleForgotPassword}>Forgot Password</span> */}
                 </div>
             </main>
         </div>
