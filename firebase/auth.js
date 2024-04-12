@@ -37,7 +37,7 @@ export const doSendEmailVerification = async () => {
     if (auth.currentUser) {
         try {
             await sendEmailVerification(auth.currentUser, {
-                url: `${window.location.origin}/home`,
+                url: `${window.location.origin}/dropbox`,
             });
         } catch (error) {
             console.error("Failed to send validation email:", error);

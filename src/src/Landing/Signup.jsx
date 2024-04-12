@@ -51,7 +51,11 @@ export function Signup() {
                 await doSendEmailVerification();
                 setCurrentUser(user);
                 await doValidateUser();
-                await sendInfo();
+                try {
+                    await sendInfo();
+                } catch (error) {
+                    console.error("Registration to global db failed:", error);
+                }
             } catch (error) {
                 console.error("Registration or verification failed:", error);
             }
@@ -66,7 +70,11 @@ export function Signup() {
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
             })
-            await sendInfo()
+            try {
+                await sendInfo();
+            } catch (error) {
+                console.error("Registration to global db failed:", error);
+            }
         }
     }
 

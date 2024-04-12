@@ -83,7 +83,7 @@ export function Signin() {
                             <div className={styles.line}></div>
                         </div>
 
-                        <form className={styles.inputForm}>
+                        <form className={styles.inputForm} onSubmit={onSubmit}>
                             <label htmlFor="email">Email</label>
                             <input
                                 className={styles.inputs}
@@ -106,7 +106,7 @@ export function Signin() {
                             />
                             <div className={styles.loginBtnContainer}>
                                 <button 
-                                onSubmit={onSubmit}
+                                type="submit"
                                 className={styles.inputFormBtn}
                                 >Sign In</button>
                             </div>
