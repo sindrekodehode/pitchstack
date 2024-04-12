@@ -85,7 +85,7 @@ export function Signin() {
                 <div className={styles.inputContainer}>
                 {!forgotPassword && (
                         <>
-                         <h3 className={styles.headerThing}>Create your account</h3>
+                         <h3 className={styles.headerThing}>Sign in to your account</h3>
                             <div className={styles.inputWrapper}>
                                 <div className={styles.googleBtnContainer}>
                                     <button
@@ -123,7 +123,7 @@ export function Signin() {
                                         <button 
                                         type="submit"
                                         className={styles.inputFormBtn}
-                                        >Sign Up</button>
+                                        >Sign In</button>
                                     </div>
                                 </form>
                                 <span onClick={toggleForgotPassword}>Forgot Password</span>
