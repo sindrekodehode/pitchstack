@@ -11,7 +11,7 @@ export function Signup() {
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [username, setUsername] = useState('');
+    const [userVerified, setUserVerified] = useState(false);
 
     const sendInfo = async () => {
         const user = await getUser();
@@ -19,18 +19,22 @@ export function Signup() {
         if (currentUser) {
             const config= {
                 headers: {'Authorization': 'Bearer ' + token},
-                withCredentials: true,
             }
             await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
         }
     }
 
+    const doValidateUser = async () => {
+        const user = await getUser();
+        if (user.emailVerified) {
+            setUserVerified(true);
+        } else {
+            console.log("User email not verified");
+        }
+    }
+
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
-    };
-
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
     };
 
     const handlePasswordChange = (event) => {
@@ -46,12 +50,13 @@ export function Signup() {
                 const user = userCredential.user;
                 await doSendEmailVerification();
                 setCurrentUser(user);
+                await doValidateUser();
+                await sendInfo();
             } catch (error) {
                 console.error("Registration or verification failed:", error);
             }
             setIsRegistering(false);
-        }
-        await sendInfo();
+        }  
     }
 
     const onGoogleSignIn = async (e) => {
@@ -61,13 +66,13 @@ export function Signup() {
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
             })
+            await sendInfo()
         }
-        await sendInfo()
     }
 
     return (
         <div>
-            {userLoggedIn && (<Navigate to={'/dropbox'} replace={true} />)}
+            {userLoggedIn && userVerified && (<Navigate to={'/dropbox'} replace={true} />)}
             <main className={styles.main}>
                 <div className={styles.inputContainer}>
                     <h3 className={styles.headerThing}>Create your account</h3>
@@ -84,16 +89,6 @@ export function Signup() {
                                 <div className={styles.line}></div>
                             </div>
                             <form className={styles.inputForm} onSubmit={onSubmit}>
-                                <label htmlFor="username">Username</label>
-                                <input
-                                    className={styles.inputs}
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    value={username}
-                                    onChange={handleUsernameChange}
-                                    placeholder="User"
-                                />
                                 <label htmlFor="email">Email</label>
                                 <input
                                     className={styles.inputs}

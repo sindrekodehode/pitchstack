@@ -12,6 +12,7 @@ export function Signin() {
     const [isSigningIn, setIsSigningIn] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [userVerified, setUserVerified] = useState(false);
 
 
     const sendInfo = async () => {
@@ -20,19 +21,36 @@ export function Signin() {
         if (currentUser) {
             const config= {
                 headers: {'Authorization': 'Bearer ' + token},
-                withCredentials: true,
             }
             await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
         }
     }
+
+    const doValidateUser = async () => {
+        const user = await getUser();
+        if (user.emailVerified) {
+            setUserVerified(true);
+        } else {
+            console.log("User email not verified");
+        }
+    }
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
             await doSignInWithEmailAndPassword(email, password); 
+            await doValidateUser();
+            await sendInfo();
         }
-        await sendInfo();
     }
 
     const onGoogleSignIn = async (e) => {
@@ -41,14 +59,15 @@ export function Signin() {
             setIsSigningIn(true);
             doSignInWithGoogle().catch(err => {
                 setIsSigningIn(false);
-            })
+            });
+            await doValidateUser();
+            await sendInfo();
         }
-        await sendInfo();
     }
 
     return (
         <div>
-            {userLoggedIn && (<Navigate to={'/dropbox'} replace={true} />)}
+            {userLoggedIn && userVerified && (<Navigate to={'/dropbox'} replace={true} />)}
             <main className={styles.main}>
                 <div className={styles.inputContainer}>
                     <h3 className={styles.headerThing}>Sign in to your account</h3>
@@ -70,6 +89,8 @@ export function Signin() {
                                 className={styles.inputs}
                                 type="text"
                                 id="email"
+                                value={email}
+                                onChange={handleEmailChange}
                                 name="email"
                                 placeholder="email@gmail.com"
                             />
@@ -78,6 +99,8 @@ export function Signin() {
                                 className={styles.inputs}
                                 type="password"
                                 id="password"
+                                value={password}
+                                onChange={handlePasswordChange}
                                 name="password"
                                 placeholder="Password"
                             />
