@@ -193,7 +193,28 @@ export function Dropbox() {
     if (!currentUser) {
       navigate('/');
     }
-  })
+    if (currentUser) {
+      const doGlobalDBUpdate = async () => {
+        const user = await getUser();
+        const token = user.token;
+        const config= {
+            headers: {'Authorization': 'Bearer ' + token},
+        }
+        try {
+          await axios.post('https://aivispitchstackserver.azurewebsites.net/auth', config)
+        } catch (error) {
+          console.log("Error authorizing user from GlobalDB", error);
+          try {
+            await axios.post('https://aivispitchstackserver.azurewebsites.net/register', config)
+          } catch (error) {
+            console.log("Error updating GlobalDB", error);
+          }
+        }
+      }
+      
+      doGlobalDBUpdate();
+    }
+  }, [currentUser]);
 
   return (
     <div className={styles.dropbox} >

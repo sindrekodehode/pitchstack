@@ -26,11 +26,6 @@ export function Signup() {
 
     const doValidateUser = async () => {
         const user = await getUser();
-        try {
-            await sendInfo();
-        } catch (error) {
-            console.log("Registering to global database failed:", error);
-        }
         if (user.emailVerified) {
             setUserVerified(true);
         } else {
