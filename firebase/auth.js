@@ -33,3 +33,7 @@ export const doSendEmailVerification = () => {
         url: `${window.location.origin}/home`,
     });
 }
+
+
+
+

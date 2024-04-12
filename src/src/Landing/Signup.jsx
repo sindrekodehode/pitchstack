@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
-import { doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../firebase/auth"; 
+import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSendEmailVerification } from "../../../firebase/auth"; 
 import { useAuth, getUser } from "../Context/authContext";
 
 export function Signup() {
@@ -29,6 +29,7 @@ export function Signup() {
         if (!isSigningIn) {
             setIsSigningIn(true);
             const user = await doCreateUserWithEmailAndPassword(email, password);
+            doSendEmailVerification();
             setCurrentUser(user);
         }
         await sendInfo()
