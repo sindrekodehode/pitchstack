@@ -14,7 +14,7 @@ export function Header() {
     const fetchUser = async () => {
       if (currentUser) {
         const user = await getUser();
-        if (user.displayName !== "") {
+        if (user.displayName) {
           setUsername(user.displayName) 
         } else {
           setUsername(user.email)
