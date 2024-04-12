@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
-import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword, sendPasswordResetEmail } from "../../../firebase/auth"; 
+import { doSignInWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../../../firebase/auth"; 
 import { useAuth, getUser } from "../Context/authContext";
 
 

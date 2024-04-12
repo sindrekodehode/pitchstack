@@ -173,7 +173,7 @@ export function Signup() {
                     )}
 
                     {forgotPassword && submittedForgotMail && (
-                        <h3 className={styles.gradientText}>Email sent with Passowrd reset!</h3>
+                        <h3 className={styles.gradientText}>Email sent with Password reset!</h3>
                     )}
                 </div>
             </main>
