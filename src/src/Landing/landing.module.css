@@ -141,3 +141,8 @@ main {
     flex-direction: column;
     gap: 2rem;
 }
+
+.accountSpan {
+    text-align: center;
+    cursor: pointer;
+}

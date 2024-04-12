@@ -139,7 +139,7 @@ export function Signup() {
                                         >Sign Up</button>
                                     </div>
                                 </form>
-                                <span onClick={toggleForgotPassword}>Forgot Password</span>
+                                <span className={styles.accountSpan} onClick={toggleForgotPassword}>Forgot Password</span>
                             </div>
                         </>
                         )}  
@@ -167,7 +167,7 @@ export function Signup() {
                                         >Reset Password</button>
                                     </div>
                             </form>
-                            <span onClick={toggleForgotPassword}>Back</span>
+                            <span className={styles.accountSpan} onClick={toggleForgotPassword}>Back</span>
                         </div>
                         </>
                     )}
