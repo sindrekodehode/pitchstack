@@ -252,7 +252,7 @@ export function Dropbox() {
       )}
         {uploadType === "form" && (
         <div key={key} ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
-        <div id='dropboxlabel'>Drop application form here
+        <div id='dropboxlabel'>Drop application here
         <span
           role='img'
           aria-label='emoji'
