@@ -96,37 +96,53 @@ export function Dropbox() {
       headers: {'Authorization': 'Bearer ' + token},
     };
 
-    if (uploadType === "pitch") {
-      try {
-        const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
-        console.log('Upload successful', response.data);
-        console.log('Response filehash:',response.data.metadata.fileHash);
-        setFileHash(response.data.metadata.fileHash);
-        navigate('/res');
-      } catch (error) {
-        console.error('Error uploading file:', error);
-        setUploadError('An error occurred during file upload.')
-      } finally {
-        setIsLoading(false);
-      }
-      } else if (uploadType === "form") {
-        try {
-          const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/applications', formData, config);
-          console.log('Upload successful', response.data);
-          console.log('Response filehash:',response.data.metadata.fileHash);
-          setFileHash(response.data.metadata.fileHash);
-          navigate('/res');
-        } catch (error) {
-          console.error('Error uploading file:', error);
-          setUploadError('An error occurred during file upload.')
-        } finally {
-          setIsLoading(false);
-        }
-        } else {
-          console.error('Error, please specify upload type', error);
-          setUploadError('An error occurred during file upload.')
-        }
-    };
+    
+    
+    try {
+      const url = uploadType === "pitch" ? "https://aivispitchstackserver.azurewebsites.net/uploads" : "https://aivispitchstackserver.azurewebsites.net/applications";
+      const response = await axios.post(url, formData, config);
+      console.log("Upload successful", response.data);
+      setFileHash(response.data.metadata.fileHash);
+      navigate('/res');
+    } catch (error) {
+      console.error('Error uploading file:', error);
+      setUploadError('An error occurred during file upload.')
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+    // if (uploadType === "pitch") {
+    //   try {
+    //     const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
+    //     console.log('Upload successful', response.data);
+    //     console.log('Response filehash:',response.data.metadata.fileHash);
+    //     setFileHash(response.data.metadata.fileHash);
+    //     navigate('/res');
+    //   } catch (error) {
+    //     console.error('Error uploading file:', error);
+    //     setUploadError('An error occurred during file upload.')
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    //   } else if (uploadType === "form") {
+    //     try {
+    //       const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/applications', formData, config);
+    //       console.log('Upload successful', response.data);
+    //       console.log('Response filehash:',response.data.metadata.fileHash);
+    //       setFileHash(response.data.metadata.fileHash);
+    //       navigate('/res');
+    //     } catch (error) {
+    //       console.error('Error uploading file:', error);
+    //       setUploadError('An error occurred during file upload.')
+    //     } finally {
+    //       setIsLoading(false);
+    //     }
+    //     } else {
+    //       console.error('Error, please specify upload type', error);
+    //       setUploadError('An error occurred during file upload.')
+    //     }
+    // };
 
   useEffect(() => {
     if (isUploadComplete && fileHash) {
