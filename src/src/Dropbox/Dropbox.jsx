@@ -95,8 +95,6 @@ export function Dropbox() {
     const config = {
       headers: {'Authorization': 'Bearer ' + token},
     };
-
-    
     
     try {
       const url = uploadType === "pitch" ? "https://aivispitchstackserver.azurewebsites.net/uploads" : "https://aivispitchstackserver.azurewebsites.net/applications";
@@ -112,37 +110,6 @@ export function Dropbox() {
     }
   }, [uploadType, navigate])
 
-    // if (uploadType === "pitch") {
-    //   try {
-    //     const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/uploads', formData, config);
-    //     console.log('Upload successful', response.data);
-    //     console.log('Response filehash:',response.data.metadata.fileHash);
-    //     setFileHash(response.data.metadata.fileHash);
-    //     navigate('/res');
-    //   } catch (error) {
-    //     console.error('Error uploading file:', error);
-    //     setUploadError('An error occurred during file upload.')
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    //   } else if (uploadType === "form") {
-    //     try {
-    //       const response = await axios.post('https://aivispitchstackserver.azurewebsites.net/applications', formData, config);
-    //       console.log('Upload successful', response.data);
-    //       console.log('Response filehash:',response.data.metadata.fileHash);
-    //       setFileHash(response.data.metadata.fileHash);
-    //       navigate('/res');
-    //     } catch (error) {
-    //       console.error('Error uploading file:', error);
-    //       setUploadError('An error occurred during file upload.')
-    //     } finally {
-    //       setIsLoading(false);
-    //     }
-    //     } else {
-    //       console.error('Error, please specify upload type', error);
-    //       setUploadError('An error occurred during file upload.')
-    //     }
-    // };
 
   useEffect(() => {
     if (isUploadComplete && fileHash) {
@@ -261,6 +228,8 @@ export function Dropbox() {
           {displayedMessage}
         </div>
       )}
+
+      {uploadType === "pitch" && (
         <div key={key} ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
         <div id='dropboxlabel'>Drop pitchstack here
         <span
@@ -280,6 +249,28 @@ export function Dropbox() {
           accept=".pdf"
           />
       </div>
+      )}
+        {uploadType === "form" && (
+        <div key={key} ref={drop} id='dropbox' className={`${styles.dragNdrop} ${isLoading ? styles.hidden : ''}`} onClick={handleClick}>
+        <div id='dropboxlabel'>Drop application form here
+        <span
+          role='img'
+          aria-label='emoji'
+          className='area__icon'
+        >
+          &#129408;
+        </span>
+        </div>
+        <input
+          type="file"
+          ref={fileInput}
+          onChange={handleFileSelect}
+          aria-labelledby='dropboxlabel'
+          style={{ display: "none" }}
+          accept=".pdf"
+          />
+      </div>
+      )}
     </div> 
     )
   };
