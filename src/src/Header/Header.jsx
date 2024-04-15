@@ -2,7 +2,7 @@ import styles from './header.module.css'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios';
-import { AppContext, ContextProvider, refreshToken } from '../Context/Context';
+import { AppContext } from '../Context/Context';
 import { doSignOut } from '../../../firebase/auth';
 import { useAuth, getUser } from '../Context/authContext/index';
 

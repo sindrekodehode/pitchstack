@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../Context/Context';
 import { getUser, useAuth } from '../../Context/authContext/index';
-import { deleteResponse, fetchNewData } from '../../Context/Context';
+import { fetchNewData } from '../../Context/Context';
 import { jsonrepair } from 'jsonrepair';
 
 export function Aside() {
