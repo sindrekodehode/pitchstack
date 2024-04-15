@@ -74,7 +74,7 @@ export function Dropbox() {
   }
   }, [currentMessage, isLoading]);
 
-  const onUpload = async (files) => {
+  const onUpload = useCallback(async (files) => {
     setUploadError('');
     setIsLoading(true);
     setUploadComplete(false);
@@ -110,7 +110,7 @@ export function Dropbox() {
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [uploadType, navigate])
 
     // if (uploadType === "pitch") {
     //   try {
