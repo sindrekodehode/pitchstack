@@ -32,6 +32,10 @@ export function Dropbox() {
   }
 
   useEffect(() => {
+    console.log("Upload Type changed to:", uploadType);
+  }, [uploadType]);
+
+  useEffect(() => {
     if (isLoading) {
       console.log("interval set");
       const intervalId = setInterval(() => {
@@ -217,6 +221,7 @@ export function Dropbox() {
   }, [currentUser]);
 
   return (
+    
     <div className={styles.dropbox} >
 
       <div className={styles.dbradioContainer}>

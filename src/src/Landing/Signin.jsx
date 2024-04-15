@@ -41,7 +41,6 @@ export function Signin() {
 
     const doValidateUser = async () => {
         const user = await getUser();
-        console.log(user);
         if (user.emailVerified) {
             setUserVerified(true);
         } else {
