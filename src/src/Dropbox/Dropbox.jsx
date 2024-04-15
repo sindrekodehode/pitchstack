@@ -209,8 +209,8 @@ export function Dropbox() {
 
       <div className={styles.dbradioContainer}>
         <ul>
-          <input type="radio" id='pitch' onChange={handleRadioButtonChange} checked={uploadType === "pitch"} value="pitch"></input>
           <label htmlFor='pitch'>Pitch pdf</label>
+          <input type="radio" id='pitch' onChange={handleRadioButtonChange} checked={uploadType === "pitch"} value="pitch"></input>
           <input type="radio" id='form' onChange={handleRadioButtonChange} checked={uploadType === "form"} value="form"></input>
           <label htmlFor='form'>Application pdf</label>
         </ul>
