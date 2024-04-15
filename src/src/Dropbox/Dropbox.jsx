@@ -159,7 +159,7 @@ export function Dropbox() {
     }
 
     return removeEventListeners
-  }, []);
+  }, [uploadType]);
   
   const handleFileSelect = (e) => {
     const { files } = e.target;
