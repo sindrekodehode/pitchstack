@@ -82,6 +82,10 @@ a:hover, button:hover {
     cursor: pointer;
 }
 
+.logo h2 {
+    font-family: "Orbitron", sans-serif;
+}
+
 .btnContainer {
     display: flex;
     flex-direction: row;
