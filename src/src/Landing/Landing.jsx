@@ -26,7 +26,7 @@ export function Landing() {
                         <h3 className={styles.gradientText}>IDEAS VISIBLE.</h3>
                     </div>
                     <div className={styles.blurb}>
-                        <p className={styles.blurbP}>VIS Innovasjon presents a platform powered by ChatGPT, designed to evaluate startup pitch decks and funding applications.  By uploading PDFs, users gain insights into the strangths and weaknesses of their submissions across various benchmarks.  This tool is essential for startups aiming to refine their approach and secure financial support.</p>
+                        <p className={styles.blurbP}>VIS Innovasjon presents a platform powered by ChatGPT, designed to evaluate startup pitch decks and funding applications.  By uploading PDFs, users gain insights into the strangths and weaknesses of their startup idea across various benchmarks.</p>
                     </div>
                     <div className={styles.btnContainer}>
                         <button 
