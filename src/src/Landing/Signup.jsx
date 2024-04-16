@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSendEmailVerification, doPasswordReset } from "../../../firebase/auth"; 
