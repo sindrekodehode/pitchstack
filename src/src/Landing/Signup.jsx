@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from './landing.module.css'
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { doSignInWithGoogle, doCreateUserWithEmailAndPassword, doSendEmailVerification, doPasswordReset } from "../../../firebase/auth"; 
+import axios from 'axios';
 import { useAuth, getUser } from "../Context/authContext";
 
 export function Signup() {
